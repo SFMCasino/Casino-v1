@@ -1,4 +1,4 @@
-# Casino-v1
+<h2>Casino-v1</h2>
   <p>A program egy online kaszinót szimulál.</p>  
 <h2>Funkciók</h2>
 <ul>
