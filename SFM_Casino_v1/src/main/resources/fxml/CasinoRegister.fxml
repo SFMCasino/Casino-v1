@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" styleClass="INFRegisterBG" stylesheets="@../styles/CasinoInterface.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.CasinoRegisterController">
+   <children>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#MenuCloseButton" prefHeight="43.0" prefWidth="24.0" styleClass="INFkilepes" stylesheets="@../styles/CasinoInterface.css" />
+      <Button fx:id="RegisterGomb" layoutX="38.0" layoutY="353.0" mnemonicParsing="false" onAction="#RegisterButton" prefHeight="62.0" prefWidth="311.0" styleClass="INFRegisterGomb" stylesheets="@../styles/CasinoInterface.css" />
+      <TextField fx:id="Felhasznalonev" layoutX="440.0" layoutY="301.0" prefHeight="62.0" prefWidth="261.0" promptText="Felhasználónév" style="-fx-background-color: none;">
+         <font>
+            <Font name="Agency FB" size="29.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="Jelszo" layoutX="440.0" layoutY="521.0" prefHeight="62.0" prefWidth="261.0" promptText="Jelszó" style="-fx-background-color: none;">
+         <font>
+            <Font name="Agency FB" size="29.0" />
+         </font>
+      </PasswordField>
+      <TextField fx:id="Vezeteknev" layoutX="440.0" layoutY="227.0" prefHeight="62.0" prefWidth="261.0" promptText="Vezetéknév" style="-fx-background-color: none;">
+         <font>
+            <Font name="Agency FB" size="29.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="Keresztnev" layoutX="440.0" layoutY="155.0" prefHeight="62.0" prefWidth="261.0" promptText="Keresztnév" style="-fx-background-color: none;">
+         <font>
+            <Font name="Agency FB" size="29.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="Email" layoutX="440.0" layoutY="375.0" prefHeight="62.0" prefWidth="261.0" promptText="E-mail" style="-fx-background-color: none;">
+         <font>
+            <Font name="Agency FB" size="29.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="Bank" layoutX="440.0" layoutY="448.0" onKeyTyped="#BankszamlaGombok" prefHeight="62.0" prefWidth="261.0" promptText="Bankkártya szám" style="-fx-background-color: none;">
+         <font>
+            <Font name="Agency FB" size="29.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="Jelszo2" layoutX="440.0" layoutY="590.0" prefHeight="62.0" prefWidth="261.0" promptText="Jelszó megismétlése" style="-fx-background-color: none;">
+         <font>
+            <Font name="Agency FB" size="29.0" />
+         </font>
+      </PasswordField>
+      <ChoiceBox fx:id="NEM" layoutX="788.0" layoutY="155.0" prefHeight="43.0" prefWidth="204.0" styleClass="INFchoicebox" stylesheets="@../styles/CasinoInterface.css" />
+      <ChoiceBox fx:id="HAJSZIN" layoutX="788.0" layoutY="227.0" prefHeight="43.0" prefWidth="204.0" styleClass="INFchoicebox" stylesheets="@../styles/CasinoInterface.css" />
+      <ChoiceBox fx:id="SZEMSZIN" layoutX="788.0" layoutY="298.0" prefHeight="43.0" prefWidth="204.0" styleClass="INFchoicebox" stylesheets="@../styles/CasinoInterface.css" />
+      <Button layoutX="776.0" layoutY="439.0" mnemonicParsing="false" onAction="#KuldesGomb" prefHeight="49.0" prefWidth="231.0" styleClass="INFRegisterKuldes" stylesheets="@../styles/CasinoInterface.css" />
+      <DatePicker fx:id="Szuletesidatum" layoutX="790.0" layoutY="369.0" prefHeight="43.0" prefWidth="204.0" styleClass="INFDateBox" stylesheets="@../styles/CasinoInterface.css" />
+   </children>
+</AnchorPane>

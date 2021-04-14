@@ -1,0 +1,318 @@
+.INFleftM {
+    -fx-background-image: url("/Interface/INFbalmenu.png");
+    -fx-background-color: none;
+}
+
+.INFfomenu{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFfooldalA.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFfomenu:hover{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFfooldalH.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFfomenu:pressed{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFfooldalP.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+
+.INFbj{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFbjA.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFbj:hover{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFbjH.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFbj:pressed{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFbjP.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+
+.INFcoin{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFcoinA.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFcoin:hover{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFcoinH.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFcoin:pressed{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFcoinP.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+
+.INFslotI{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFslotIA.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFslotI:hover{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFslotIH.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFslotI:pressed{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFslotIP.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+
+.INFslotII{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFslotIIA.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFslotII:hover{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFslotIIH.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFslotII:pressed{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFslotIIP.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+
+.INFwheel{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFwheelA.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFwheel:hover{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFwheelH.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFwheel:pressed{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFwheelP.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+
+.INFdice{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFdiceA.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFdice:hover{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFdiceH.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFdice:pressed{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFdiceP.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+
+.INFroulette{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFrouletteA.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFroulette:hover{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFrouletteH.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFroulette:pressed{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFrouletteP.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+
+.INFfeltolt{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFfeltoltesA.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFfeltolt:hover{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFfeltoltesH.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFfeltolt:pressed{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFfeltoltesP.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+
+.INFkijelentkezes{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFkijelentkezesA.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFkijelentkezes:hover{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFkijelentkezesH.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFkijelentkezes:pressed{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFkijelentkezesP.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+
+.INFkilepes{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFkilepesA.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFkilepes:hover{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFkilepesH.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+
+.INFbolt{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFboltA.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFbolt:hover{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFboltH.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFbolt:pressed{
+    -fx-background-color: none;
+    -fx-background-image: url("/Interface/INFboltP.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+
+.INFprofilePic{
+    -fx-background-color: grey;
+    -fx-background-repeat: no-repeat;
+    -fx-background-insets: -3px;
+    -fx-background-size: 270px 380px;
+    -fx-background-position: 35% 5%;
+}
+.INFprofilePic:hover{
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
+}
+
+.INFLoginBG{
+    -fx-background-color: none;
+    -fx-background-image: url("/LoginReg/SFMCASINOLOGIN.png");
+    -fx-background-repeat: no-repeat;
+}
+.INFRegisterBG{
+    -fx-background-color: none;
+    -fx-background-image: url("/LoginReg/SFMCASINORegister.png");
+    -fx-background-repeat: no-repeat;
+}
+
+.INFLoginGomb{
+    -fx-background-color: none;
+    -fx-background-image: url("/LoginReg/LOGReg.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFLoginKuldes{
+    -fx-background-color: none;
+    -fx-background-image: url("/LoginReg/LOGbej.png");
+    -fx-background-repeat: no-repeat;
+}
+
+.INFRegisterGomb{
+    -fx-background-color: none;
+    -fx-background-image: url("/LoginReg/REGlog.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.INFRegisterKuldes{
+    -fx-background-color: none;
+    -fx-background-image: url("/LoginReg/REGkul.png");
+    -fx-background-repeat: no-repeat;
+}
+
+.INFchoicebox{
+    -fx-background-color: none;
+}
+.INFchoicebox .label{
+    -fx-text-fill: #cccccc;
+    -fx-font-size: 20px;
+    -fx-font-family: 'Agency FB';
+}
+.INFchoicebox .context-menu{
+    -fx-background-color: black;
+}
+
+.INFDateBox{
+    -fx-background-color: none;
+}
+.INFDateBox .text-field{
+    -fx-background-color: none;
+    -fx-font-family: 'Agency FB';
+    -fx-font-size: 20px;
+    -fx-text-fill: #cccccc;
+}
+.INFDateBox .arrow-button{
+    -fx-background-color: none;
+}
+.INFDateBox .arrow-button .arrow{
+    -fx-background-color: #cccccc;
+}
+.INFDateBox .text{
+    -fx-font-family: 'Agency FB';
+    -fx-font-size: 20px;
+    -fx-text-fill: #cccccc;
+}

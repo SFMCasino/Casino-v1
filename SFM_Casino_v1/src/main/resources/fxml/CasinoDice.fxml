@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.CasinoDiceController">
+   <children>
+      <AnchorPane prefHeight="768.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="768.0" prefWidth="180.0" styleClass="INFleftM" stylesheets="@../styles/CasinoInterface.css">
+               <children>
+                  <Button layoutY="240.0" mnemonicParsing="false" onAction="#MenuFooldalGomb" prefHeight="37.0" prefWidth="180.0" styleClass="INFfomenu" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="277.0" mnemonicParsing="false" onAction="#MenuBJButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFbj" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="314.0" mnemonicParsing="false" onAction="#MenuCoinButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFcoin" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="351.0" mnemonicParsing="false" onAction="#MenuSlotIButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFslotI" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="388.0" mnemonicParsing="false" onAction="#MenuWheelButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFwheel" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="425.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="180.0" styleClass="INFdice" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="698.0" mnemonicParsing="false" onAction="#MenuFeltoltesButton" prefHeight="27.0" prefWidth="180.0" styleClass="INFfeltolt" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="733.0" mnemonicParsing="false" onAction="#MenuBoltButton" prefHeight="27.0" prefWidth="180.0" styleClass="INFbolt" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button fx:id="ProfilKep" layoutX="11.0" layoutY="14.0" mnemonicParsing="false" onAction="#MenuProfileButton" prefHeight="158.0" prefWidth="158.0" styleClass="INFprofilePic" stylesheets="@../styles/CasinoInterface.css" />
+                  <Label fx:id="ChipMoney" layoutX="56.0" layoutY="656.0" prefHeight="22.0" prefWidth="98.0" text="100000000" textFill="#c9c9c9">
+                     <font>
+                        <Font name="Agency FB" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="BankMoney" layoutX="56.0" layoutY="607.0" prefHeight="22.0" prefWidth="98.0" text="100000000" textFill="#c9c9c9">
+                     <font>
+                        <Font name="Agency FB" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button layoutY="462.0" mnemonicParsing="false" onAction="#MenuSlotIIButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFslotII" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="499.0" mnemonicParsing="false" onAction="#MenuRouletteButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFroulette" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="549.0" mnemonicParsing="false" onAction="#MenuKijelentkezesButton" prefHeight="23.0" prefWidth="180.0" styleClass="INFkijelentkezes" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutX="14.0" layoutY="183.0" mnemonicParsing="false" onAction="#MenuCloseButton" prefHeight="43.0" prefWidth="24.0" styleClass="INFkilepes" stylesheets="@../styles/CasinoInterface.css" />
+               </children></AnchorPane>
+            <Pane layoutX="180.0" prefHeight="768.0" prefWidth="844.0" style="-fx-background-color: grey;" stylesheets="@../styles/Games.css">
+               <children>
+                  <Button fx:id="Start" layoutX="410.0" layoutY="412.0" mnemonicParsing="false" onAction="#Start" prefHeight="85.0" prefWidth="110.0" text="Start" />
+                  <Label fx:id="kocka1Label" alignment="CENTER" layoutX="319.0" layoutY="322.0" prefHeight="56.0" prefWidth="73.0" text="kocka1" />
+                  <Label fx:id="kocka2Label" alignment="CENTER" layoutX="428.0" layoutY="322.0" prefHeight="56.0" prefWidth="73.0" text="kocka2" />
+                  <Label fx:id="kocka3Label" alignment="CENTER" layoutX="521.0" layoutY="322.0" prefHeight="56.0" prefWidth="73.0" text="kocka3" />
+                  <Label fx:id="gep1Label" alignment="CENTER" layoutX="319.0" layoutY="181.0" prefHeight="56.0" prefWidth="73.0" text="gep1" />
+                  <Label fx:id="gep2Label" alignment="CENTER" contentDisplay="CENTER" layoutX="428.0" layoutY="181.0" prefHeight="56.0" prefWidth="73.0" text="gep2" />
+                  <Label fx:id="gep3Label" alignment="CENTER" layoutX="521.0" layoutY="181.0" prefHeight="56.0" prefWidth="73.0" text="gep3" />
+                  <Label fx:id="eredmenyLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="421.0" layoutY="80.0" prefHeight="56.0" prefWidth="88.0" text="eredmeny" textAlignment="CENTER" />
+                  <Label fx:id="GepLabel" alignment="CENTER" layoutX="164.0" layoutY="159.0" prefHeight="100.0" prefWidth="100.0" styleClass="gepLabel" stylesheets="@../styles/Games.css" />
+                  <Label fx:id="JatekosLabel" alignment="CENTER" layoutX="164.0" layoutY="300.0" prefHeight="100.0" prefWidth="100.0" styleClass="jatekosLabel" stylesheets="@../styles/Games.css" />
+                  <Label fx:id="getID" layoutX="14.0" layoutY="14.0" text="Label" />
+               </children></Pane>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="768.0" prefWidth="1024.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>
