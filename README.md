@@ -1,7 +1,8 @@
 # Casino-v1
+<p>A program egy online kaszinót szimulál.</p>  
 <h2>Leírás</h2>
 <ul>
-  <p>A program egy online kaszinót szimulál.</p>  
+  
 </ul>
 <h2>Készítette</h1>
 <ul>
