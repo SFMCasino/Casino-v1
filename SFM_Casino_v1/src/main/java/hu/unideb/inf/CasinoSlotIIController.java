@@ -89,8 +89,8 @@ public class CasinoSlotIIController implements Initializable {
         global.LoadScene(event, getID.getText(), "Wheel");
     }
 
-    public static int egyenleg = 100000000;
-    public static int Chipmoney = 0;
+    public static int egyenleg;
+    public static int Chipmoney;
     public static int vonal = 5;
     public static int vonaltet = 10;
     public static int scatter;
@@ -730,8 +730,6 @@ public class CasinoSlotIIController implements Initializable {
     public ImageView otharom;
     public ImageView logo;
     public ImageView bgimage;
-    public Label egyenleglabel;
-    public Label ujpenzlabel;
     public Label nyeremenylabel;
     public Label teljestetlabel;
     public Label vonallabel;
@@ -760,21 +758,21 @@ public class CasinoSlotIIController implements Initializable {
                 {
                     Chipmoney -= (vonal*vonal)-egyenleg;
                     egyenleg = 0;
+                    BankMoney.setText("" + egyenleg);
                 }
                 else
                 {
                     egyenleg -= vonal*vonaltet;
+                    BankMoney.setText("" + egyenleg);
                 }
             }
-            egyenleglabel.setText("Egyenleg: " + egyenleg);
-            ujpenzlabel.setText("Új pénz: " + Chipmoney);
             char[][] slot = new char[3][5];
             porgetes(slot);
             nyertpenz = nyeremeny(slot);
             nyeremenylabel.setText("Nyeremény: " + nyertpenz);
             Chipmoney += nyertpenz;
-            ujpenzlabel.setText("Új pénz: " + Chipmoney);
-            egyenleglabel.setText("Egyenleg: " + egyenleg);
+            ChipMoney.setText("" + Chipmoney);
+            global.saveData(id, egyenleg, Chipmoney, nem, hajszem, Kellekek);
             teljestetlabel.setText("Teljes tét " + vonaltet * vonal);
             if(!bonuszvalto) {
                 bonusz(slot);
@@ -834,8 +832,8 @@ public class CasinoSlotIIController implements Initializable {
                     lowButt.setDisable(false);
                     highButt.setDisable(false);
                     Chipmoney += bonusznyeremeny;
-                    egyenleglabel.setText("Egyenleg: " + egyenleg);
-                    ujpenzlabel.setText("Új pénz: " + Chipmoney);
+                    ChipMoney.setText("" + Chipmoney);
+                    global.saveData(id, egyenleg, Chipmoney, nem, hajszem, Kellekek);
                     bonuszlabel.setVisible(false);
                     bonusznyeremenylabel.setVisible(false);
                 }
@@ -922,6 +920,7 @@ public class CasinoSlotIIController implements Initializable {
                 else
                 {
                     egyenleg -= vonal*vonaltet;
+                    BankMoney.setText("" + egyenleg);
                 }
                     char[][] slot = new char[3][5];
                     porgetes(slot);
@@ -933,9 +932,9 @@ public class CasinoSlotIIController implements Initializable {
                     }
             }
             Chipmoney += nyertpenz;
+            ChipMoney.setText("" + Chipmoney);
+            global.saveData(id, egyenleg, Chipmoney, nem, hajszem, Kellekek);
             nyeremenylabel.setText("Nyeremény: " + nyertpenz);
-            egyenleglabel.setText("Egyenleg: " + egyenleg);
-            ujpenzlabel.setText("Új pénz: " + Chipmoney);
             teljestetlabel.setText("Teljes tét " + vonaltet * vonal);
         }
 
@@ -955,8 +954,6 @@ public class CasinoSlotIIController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         bgimage.setImage(new Image("/icons/bg.png"));
         nyeremenylabel.setText("Nyeremény: " + 0);
-        egyenleglabel.setText("Egyenleg: " + egyenleg);
-        ujpenzlabel.setText("Új pénz: " + Chipmoney);
         vonaltetlabel.setText("" + vonaltet);
         teljestetlabel.setText("Teljes tét " + vonaltet*vonal);
     }
@@ -974,6 +971,8 @@ public class CasinoSlotIIController implements Initializable {
             for (int i = 4; i < penzek.length; i++) {
                 Kellekek[i-4] = penzek[i];
             }
+            egyenleg = Integer.parseInt(BankMoney.getText());
+            Chipmoney = Integer.parseInt(ChipMoney.getText());
             ProfilKep.setStyle(global.ProfilKepCsere(nem, hajszem));
         } catch (FileNotFoundException e) {
             // Exception handling
