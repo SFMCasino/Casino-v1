@@ -72,6 +72,12 @@
     -fx-scale-x: .95;
     -fx-scale-y: .95;
 }
+.wheelbutt{
+	-fx-background-color: none;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
 
 /*Szabi*/
 
