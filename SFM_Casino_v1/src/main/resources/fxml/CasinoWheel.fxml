@@ -40,6 +40,16 @@
                </children></AnchorPane>
             <Pane layoutX="180.0" prefHeight="768.0" prefWidth="844.0" stylesheets="@../styles/CasinoInterface.css">
                <children>
+                  <ImageView fitHeight="768.0" fitWidth="844.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/Wheel/bg.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="215.0" layoutY="46.0" prefHeight="66.0" prefWidth="416.0" text="Szerencse kerék" textAlignment="CENTER">
+                     <font>
+                        <Font name="SimSun" size="49.0" />
+                     </font>
+                  </Label>
                   <ImageView fx:id="kerekimg" fitHeight="545.0" fitWidth="621.0" layoutX="150.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/Wheel/kerek.png" />
@@ -51,7 +61,12 @@
                         <Image url="@../images/Wheel/nyil.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="wheelButt" layoutX="181.0" layoutY="144.0" mnemonicParsing="false" onAction="#wheelButtPushed" prefHeight="483.0" prefWidth="482.0" styleClass="wheelbutt" stylesheets="@../styles/Games.css" />
+                  <Button fx:id="wheelButt" layoutX="182.0" layoutY="143.0" mnemonicParsing="false" onAction="#wheelButtPushed" prefHeight="483.0" prefWidth="482.0" styleClass="wheelbutt" stylesheets="@../styles/Games.css" />
+                  <Label alignment="CENTER" layoutX="215.0" layoutY="657.0" prefHeight="66.0" prefWidth="416.0" text="5000 Ft a tét!" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="SimSun" size="38.0" />
+                     </font>
+                  </Label>
                </children></Pane>
          </children>
       </AnchorPane>
