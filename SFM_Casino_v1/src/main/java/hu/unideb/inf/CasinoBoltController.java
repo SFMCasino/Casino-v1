@@ -232,6 +232,7 @@ public class CasinoBoltController implements Initializable {
                 Kellekek[3] = "1";
                 ChipMoney.setText("" + jatekospenz2);
             }
+            
             global.saveData(id, jatekospenz, jatekospenz2, nem, hajszem, Kellekek);
             ProfilKep.setStyle(global.ProfilKepCsere(nem, hajszem));
             BoltAvatarCheck.setStyle(global.ProfilKepCsere(nem, hajszem));
