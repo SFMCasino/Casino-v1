@@ -46,14 +46,14 @@ public class CasinoWheelController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.close();
     }
-    
+
     Globalis global = new Globalis();
-    
+
     @FXML
     void MenuFooldalGomb(ActionEvent event) throws IOException {
         global.LoadScene(event, getID.getText(), "Fomenu");
     }
-    
+
     @FXML
     void MenuKijelentkezesButton(ActionEvent event) throws IOException {
         global.LoadScene(event, getID.getText(), "Login");
@@ -63,12 +63,12 @@ public class CasinoWheelController implements Initializable {
     void MenuRouletteButton(ActionEvent event) throws IOException {
         global.LoadScene(event, getID.getText(), "Roulette");
     }
-    
+
     @FXML
     void MenuProfileButton(ActionEvent event) throws IOException {
         global.LoadScene(event, getID.getText(), "Profile");
     }
-    
+
     @FXML
     void MenuBJButton(ActionEvent event) throws IOException {
         global.LoadScene(event, getID.getText(), "BJ");
@@ -103,7 +103,7 @@ public class CasinoWheelController implements Initializable {
     void MenuSlotIIButton(ActionEvent event) throws IOException {
         global.LoadScene(event, getID.getText(), "SlotII");
     }
-    
+
     @FXML
     private Label BankMoney,ChipMoney,getID;
     public ImageView kerekimg;
@@ -133,24 +133,30 @@ public class CasinoWheelController implements Initializable {
         kerekrotate.setRate(5);
         kerekrotate.setCycleCount(1);
         kerekrotate.play();
+        kerekrotate.setOnFinished(e -> vissza());
+    }
+
+    public void vissza()
+    {
         fizet();
+        wheelButt.setDisable(false);
     }
 
     public void randomizal()
     {
         Random rand = new Random();
         int valto = rand.nextInt(1000);
-        if(valto<10)
+        if(valto<5)
         {
             x = 0;
             nyeremeny = 500000;
         }
-        else if(valto<60)
+        else if(valto<90)
         {
             x = cikk;
             nyeremeny = 500;
         }
-        else if(valto<160)
+        else if(valto<120)
         {
             x = cikk*2;
             nyeremeny = 5000;
@@ -160,7 +166,7 @@ public class CasinoWheelController implements Initializable {
             x = cikk*3;
             nyeremeny = 100;
         }
-        else if(valto<230)
+        else if(valto<260)
         {
             x = cikk*4;
             nyeremeny = 2500;
@@ -195,7 +201,7 @@ public class CasinoWheelController implements Initializable {
             x = cikk*10;
             nyeremeny = 500;
         }
-        else if(valto<550)
+        else if(valto<540)
         {
             x = cikk*11;
             nyeremeny = 50000;
@@ -210,7 +216,7 @@ public class CasinoWheelController implements Initializable {
             x = cikk*13;
             nyeremeny = 500;
         }
-        else if(valto<710)
+        else if(valto<690)
         {
             x = cikk*14;
             nyeremeny = 6000;
@@ -220,7 +226,7 @@ public class CasinoWheelController implements Initializable {
             x = cikk*15;
             nyeremeny = 1000;
         }
-        else if(valto<800)
+        else if(valto<780)
         {
             x = cikk*16;
             nyeremeny = 10000;
@@ -235,7 +241,7 @@ public class CasinoWheelController implements Initializable {
             x = cikk*18;
             nyeremeny = 500;
         }
-        else if(valto<950)
+        else if(valto<930)
         {
             x = cikk*19;
             nyeremeny = 10000;
@@ -250,9 +256,9 @@ public class CasinoWheelController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
-    
+
+    }
+
     public void Adatatvitel(String ID){
         String kisid = ID;
         id = ID;
@@ -274,7 +280,7 @@ public class CasinoWheelController implements Initializable {
         } catch (IOException e) {
             // Exception handling
         }
-        
+
     }
 
     public void wheelButtPushed(ActionEvent actionEvent) {
@@ -292,6 +298,5 @@ public class CasinoWheelController implements Initializable {
         global.saveData(id, elso, masodik, nem, hajszem, Kellekek);
         wheelButt.setDisable(true);
         porges();
-        wheelButt.setDisable(false);
     }
 }
