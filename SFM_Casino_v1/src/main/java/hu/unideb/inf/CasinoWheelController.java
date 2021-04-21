@@ -46,14 +46,14 @@ public class CasinoWheelController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.close();
     }
-    
+
     Globalis global = new Globalis();
-    
+
     @FXML
     void MenuFooldalGomb(ActionEvent event) throws IOException {
         global.LoadScene(event, getID.getText(), "Fomenu");
     }
-    
+
     @FXML
     void MenuKijelentkezesButton(ActionEvent event) throws IOException {
         global.LoadScene(event, getID.getText(), "Login");
@@ -63,12 +63,12 @@ public class CasinoWheelController implements Initializable {
     void MenuRouletteButton(ActionEvent event) throws IOException {
         global.LoadScene(event, getID.getText(), "Roulette");
     }
-    
+
     @FXML
     void MenuProfileButton(ActionEvent event) throws IOException {
         global.LoadScene(event, getID.getText(), "Profile");
     }
-    
+
     @FXML
     void MenuBJButton(ActionEvent event) throws IOException {
         global.LoadScene(event, getID.getText(), "BJ");
@@ -103,7 +103,7 @@ public class CasinoWheelController implements Initializable {
     void MenuSlotIIButton(ActionEvent event) throws IOException {
         global.LoadScene(event, getID.getText(), "SlotII");
     }
-    
+
     @FXML
     private Label BankMoney,ChipMoney,getID;
     public ImageView kerekimg;
@@ -250,9 +250,9 @@ public class CasinoWheelController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
-    
+
+    }
+
     public void Adatatvitel(String ID){
         String kisid = ID;
         id = ID;
@@ -274,7 +274,7 @@ public class CasinoWheelController implements Initializable {
         } catch (IOException e) {
             // Exception handling
         }
-        
+
     }
 
     public void wheelButtPushed(ActionEvent actionEvent) {
