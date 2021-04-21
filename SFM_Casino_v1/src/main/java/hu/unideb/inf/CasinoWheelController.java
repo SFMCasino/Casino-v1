@@ -133,24 +133,30 @@ public class CasinoWheelController implements Initializable {
         kerekrotate.setRate(5);
         kerekrotate.setCycleCount(1);
         kerekrotate.play();
+        kerekrotate.setOnFinished(e -> vissza());
+    }
+
+    public void vissza()
+    {
         fizet();
+        wheelButt.setDisable(false);
     }
 
     public void randomizal()
     {
         Random rand = new Random();
         int valto = rand.nextInt(1000);
-        if(valto<10)
+        if(valto<5)
         {
             x = 0;
             nyeremeny = 500000;
         }
-        else if(valto<60)
+        else if(valto<90)
         {
             x = cikk;
             nyeremeny = 500;
         }
-        else if(valto<160)
+        else if(valto<120)
         {
             x = cikk*2;
             nyeremeny = 5000;
@@ -165,7 +171,7 @@ public class CasinoWheelController implements Initializable {
             x = cikk*4;
             nyeremeny = 2500;
         }
-        else if(valto<300)
+        else if(valto<280)
         {
             x = cikk*5;
             nyeremeny = 7500;
@@ -195,7 +201,7 @@ public class CasinoWheelController implements Initializable {
             x = cikk*10;
             nyeremeny = 500;
         }
-        else if(valto<580)
+        else if(valto<540)
         {
             x = cikk*11;
             nyeremeny = 50000;
@@ -210,7 +216,7 @@ public class CasinoWheelController implements Initializable {
             x = cikk*13;
             nyeremeny = 500;
         }
-        else if(valto<720)
+        else if(valto<690)
         {
             x = cikk*14;
             nyeremeny = 6000;
@@ -220,7 +226,7 @@ public class CasinoWheelController implements Initializable {
             x = cikk*15;
             nyeremeny = 1000;
         }
-        else if(valto<820)
+        else if(valto<780)
         {
             x = cikk*16;
             nyeremeny = 10000;
@@ -235,7 +241,7 @@ public class CasinoWheelController implements Initializable {
             x = cikk*18;
             nyeremeny = 500;
         }
-        else if(valto<950)
+        else if(valto<930)
         {
             x = cikk*19;
             nyeremeny = 10000;
@@ -292,6 +298,5 @@ public class CasinoWheelController implements Initializable {
         global.saveData(id, elso, masodik, nem, hajszem, Kellekek);
         wheelButt.setDisable(true);
         porges();
-        wheelButt.setDisable(false);
     }
 }
