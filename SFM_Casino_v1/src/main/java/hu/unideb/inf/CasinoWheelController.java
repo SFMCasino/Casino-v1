@@ -160,12 +160,12 @@ public class CasinoWheelController implements Initializable {
             x = cikk*3;
             nyeremeny = 100;
         }
-        else if(valto<230)
+        else if(valto<260)
         {
             x = cikk*4;
             nyeremeny = 2500;
         }
-        else if(valto<280)
+        else if(valto<300)
         {
             x = cikk*5;
             nyeremeny = 7500;
@@ -195,7 +195,7 @@ public class CasinoWheelController implements Initializable {
             x = cikk*10;
             nyeremeny = 500;
         }
-        else if(valto<550)
+        else if(valto<580)
         {
             x = cikk*11;
             nyeremeny = 50000;
@@ -210,7 +210,7 @@ public class CasinoWheelController implements Initializable {
             x = cikk*13;
             nyeremeny = 500;
         }
-        else if(valto<710)
+        else if(valto<720)
         {
             x = cikk*14;
             nyeremeny = 6000;
@@ -220,7 +220,7 @@ public class CasinoWheelController implements Initializable {
             x = cikk*15;
             nyeremeny = 1000;
         }
-        else if(valto<800)
+        else if(valto<820)
         {
             x = cikk*16;
             nyeremeny = 10000;
