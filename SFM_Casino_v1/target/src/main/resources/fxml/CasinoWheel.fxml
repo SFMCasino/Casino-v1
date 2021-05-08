@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.CasinoWheelController">
+   <children>
+      <AnchorPane prefHeight="768.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="768.0" prefWidth="180.0" styleClass="INFleftM" stylesheets="@../styles/CasinoInterface.css">
+               <children>
+                  <Button layoutY="240.0" mnemonicParsing="false" onAction="#MenuFooldalGomb" prefHeight="37.0" prefWidth="180.0" styleClass="INFfomenu" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="277.0" mnemonicParsing="false" onAction="#MenuBJButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFbj" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="314.0" mnemonicParsing="false" onAction="#MenuCoinButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFcoin" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="351.0" mnemonicParsing="false" onAction="#MenuSlotIButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFslotI" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="388.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="180.0" styleClass="INFwheel" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="425.0" mnemonicParsing="false" onAction="#MenuDiceButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFdice" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="698.0" mnemonicParsing="false" onAction="#MenuFeltoltesButton" prefHeight="27.0" prefWidth="180.0" styleClass="INFfeltolt" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="733.0" mnemonicParsing="false" onAction="#MenuBoltButton" prefHeight="27.0" prefWidth="180.0" styleClass="INFbolt" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button fx:id="ProfilKep" layoutX="11.0" layoutY="14.0" mnemonicParsing="false" onAction="#MenuProfileButton" prefHeight="158.0" prefWidth="158.0" styleClass="INFprofilePic" stylesheets="@../styles/CasinoInterface.css" />
+                  <Label fx:id="ChipMoney" layoutX="56.0" layoutY="656.0" prefHeight="22.0" prefWidth="98.0" text="100000000" textFill="#c9c9c9">
+                     <font>
+                        <Font name="Agency FB" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="BankMoney" layoutX="56.0" layoutY="607.0" prefHeight="22.0" prefWidth="98.0" text="100000000" textFill="#c9c9c9">
+                     <font>
+                        <Font name="Agency FB" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button layoutY="462.0" mnemonicParsing="false" onAction="#MenuSlotIIButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFslotII" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="499.0" mnemonicParsing="false" onAction="#MenuRouletteButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFroulette" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="549.0" mnemonicParsing="false" onAction="#MenuKijelentkezesButton" prefHeight="23.0" prefWidth="180.0" styleClass="INFkijelentkezes" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutX="14.0" layoutY="183.0" mnemonicParsing="false" onAction="#MenuCloseButton" prefHeight="43.0" prefWidth="24.0" styleClass="INFkilepes" stylesheets="@../styles/CasinoInterface.css" />
+               </children></AnchorPane>
+            <Pane layoutX="180.0" prefHeight="768.0" prefWidth="844.0" stylesheets="@../styles/CasinoInterface.css">
+               <children>
+                  <ImageView fitHeight="768.0" fitWidth="844.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/Wheel/bg.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="215.0" layoutY="46.0" prefHeight="66.0" prefWidth="416.0" text="Szerencse kerék" textAlignment="CENTER">
+                     <font>
+                        <Font name="SimSun" size="49.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="kerekimg" fitHeight="545.0" fitWidth="621.0" layoutX="150.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Wheel/kerek.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="getID" layoutY="746.0" text="Label" />
+                  <ImageView fitHeight="53.0" fitWidth="47.0" layoutX="648.0" layoutY="361.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Wheel/nyil.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="wheelButt" layoutX="182.0" layoutY="143.0" mnemonicParsing="false" onAction="#wheelButtPushed" prefHeight="483.0" prefWidth="482.0" styleClass="wheelbutt" stylesheets="@../styles/Games.css" />
+                  <Label alignment="CENTER" layoutX="215.0" layoutY="657.0" prefHeight="66.0" prefWidth="416.0" text="5000 Ft a tét!" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="SimSun" size="38.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="768.0" prefWidth="1024.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>

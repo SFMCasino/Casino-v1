@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.CasinoFeltoltesController">
+   <children>
+      <AnchorPane prefHeight="768.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="768.0" prefWidth="180.0" styleClass="INFleftM" stylesheets="@../styles/CasinoInterface.css">
+               <children>
+                  <Button layoutY="240.0" mnemonicParsing="false" onAction="#MenuFooldalGomb" prefHeight="37.0" prefWidth="180.0" styleClass="INFfomenu" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="277.0" mnemonicParsing="false" onAction="#MenuBJButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFbj" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="314.0" mnemonicParsing="false" onAction="#MenuCoinButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFcoin" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="351.0" mnemonicParsing="false" onAction="#MenuSlotIButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFslotI" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="388.0" mnemonicParsing="false" onAction="#MenuWheelButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFwheel" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="425.0" mnemonicParsing="false" onAction="#MenuDiceButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFdice" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="698.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="180.0" styleClass="INFfeltolt" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="733.0" mnemonicParsing="false" onAction="#MenuBoltButton" prefHeight="27.0" prefWidth="180.0" styleClass="INFbolt" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button fx:id="ProfilKep" layoutX="11.0" layoutY="14.0" mnemonicParsing="false" onAction="#MenuProfileButton" prefHeight="158.0" prefWidth="158.0" styleClass="INFprofilePic" stylesheets="@../styles/CasinoInterface.css" />
+                  <Label fx:id="ChipMoney" layoutX="56.0" layoutY="656.0" prefHeight="22.0" prefWidth="98.0" text="100000000" textFill="#c9c9c9">
+                     <font>
+                        <Font name="Agency FB" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="BankMoney" layoutX="56.0" layoutY="607.0" prefHeight="22.0" prefWidth="98.0" text="100000000" textFill="#c9c9c9">
+                     <font>
+                        <Font name="Agency FB" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button layoutY="462.0" mnemonicParsing="false" onAction="#MenuSlotIIButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFslotII" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="499.0" mnemonicParsing="false" onAction="#MenuRouletteButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFroulette" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutY="549.0" mnemonicParsing="false" onAction="#MenuKijelentkezesButton" prefHeight="23.0" prefWidth="180.0" styleClass="INFkijelentkezes" stylesheets="@../styles/CasinoInterface.css" />
+                  <Button layoutX="14.0" layoutY="183.0" mnemonicParsing="false" onAction="#MenuCloseButton" prefHeight="43.0" prefWidth="24.0" styleClass="INFkilepes" stylesheets="@../styles/CasinoInterface.css" />
+               </children></AnchorPane>
+            <Pane layoutX="180.0" prefHeight="768.0" prefWidth="844.0" stylesheets="@../styles/CasinoInterface.css">
+               <children>
+                  <Label fx:id="getID" layoutX="8.0" layoutY="746.0" text="Label" />
+                  <ImageView fitHeight="768.0" fitWidth="844.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../icons/gray-background-31.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="201.0" layoutY="-22.0" prefHeight="167.0" prefWidth="443.0" text="Válassz feltöltési módot" textAlignment="CENTER">
+                     <font>
+                        <Font name="Candara Light Italic" size="35.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="cardButt" layoutX="201.0" layoutY="168.0" mnemonicParsing="false" onAction="#cardButtPressed" prefHeight="124.0" prefWidth="204.0" styleClass="INFcard" stylesheets="@../styles/Games.css" textAlignment="CENTER" />
+                  <Button fx:id="bankButt" layoutX="508.0" layoutY="162.0" mnemonicParsing="false" onAction="#bankButtPressed" prefHeight="135.0" prefWidth="136.0" styleClass="INFbank" stylesheets="@../styles/Games.css" />
+                  <Pane fx:id="cardPane" layoutX="44.0" layoutY="322.0" prefHeight="413.0" prefWidth="752.0">
+                     <children>
+                        <TextField fx:id="cardText" onKeyTyped="#cardnyomva" layoutX="43.0" layoutY="60.0" prefHeight="25.0" prefWidth="359.0" promptText="00000000-00000000-00000000" />
+                        <Label layoutX="42.0" layoutY="22.0" text="Kártyaszám">
+                           <font>
+                              <Font name="Candara Light Italic" size="29.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="426.0" layoutY="33.0" prefHeight="27.0" prefWidth="180.0" text="Lejárati Dátum">
+                           <font>
+                              <Font name="Candara Light" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="427.0" layoutY="108.0" prefHeight="28.0" prefWidth="136.0" text="CVC kód">
+                           <font>
+                              <Font name="Candara Light Italic" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="231.0" layoutY="181.0" text="Feltöltendő összeg">
+                           <font>
+                              <Font name="Candara Light Italic" size="42.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="cardpenzText" onKeyTyped="#cardpenznyomva" alignment="CENTER_RIGHT" layoutX="110.0" layoutY="241.0" prefHeight="116.0" prefWidth="316.0" promptText="50.00">
+                           <font>
+                              <Font name="Candara Light" size="58.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="466.0" layoutY="243.0" prefHeight="115.0" prefWidth="92.0" text="Ft">
+                           <font>
+                              <Font name="Candara Light Italic" size="96.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="expText" onKeyTyped="#expnyomva" layoutX="427.0" layoutY="60.0" promptText="MM/YY" />
+                        <PasswordField fx:id="cvcText" onKeyTyped="#cvcnyomva" layoutX="427.0" layoutY="136.0" promptText="***" />
+                        <Button fx:id="feltoltesButt" layoutX="600.0" layoutY="299.0" mnemonicParsing="false" onAction="#feltoltesbuttpushed" prefHeight="51.0" prefWidth="73.0" text="Feltöltés" />
+                     </children></Pane>
+                  <Pane fx:id="bankPane" layoutX="44.0" layoutY="322.0" prefHeight="413.0" prefWidth="752.0" visible="false">
+                     <children>
+                        <Label layoutX="66.0" layoutY="38.0" text="Számlaszám">
+                           <font>
+                              <Font name="Candara Light Italic" size="29.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="66.0" layoutY="83.0" text="10918001-00000005-61540005">
+                           <font>
+                              <Font name="Bodoni MT" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="404.0" layoutY="40.0" text="Közleménybe írt kód">
+                           <font>
+                              <Font name="Candara Light Italic" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="kozlLabel" layoutX="404.0" layoutY="83.0" prefHeight="17.0" prefWidth="208.0">
+                           <font>
+                              <Font name="Bodoni MT" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="466.0" layoutY="243.0" prefHeight="115.0" prefWidth="86.0" text="Ft">
+                           <font>
+                              <Font name="Candara Light Italic" size="96.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="bankpenzText" onKeyTyped="#bankpenznyomva" alignment="CENTER_RIGHT" layoutX="110.0" layoutY="241.0" prefHeight="116.0" prefWidth="316.0" promptText="50.00">
+                           <font>
+                              <Font name="Candara Light" size="58.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="231.0" layoutY="181.0" prefHeight="51.0" prefWidth="319.0" text="Feltöltendő összeg">
+                           <font>
+                              <Font name="Candara Light Italic" size="42.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="bankfeltoltesButt" layoutX="600.0" layoutY="299.0" mnemonicParsing="false" onAction="#bankfeltoltesbuttpushed" prefHeight="51.0" prefWidth="73.0" text="Feltöltés" />
+                     </children>
+                  </Pane>
+               </children></Pane>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="768.0" prefWidth="1024.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>
