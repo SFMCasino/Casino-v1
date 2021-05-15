@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" styleClass="INFRegisterBG" stylesheets="@../styles/CasinoInterface.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.CasinoRegisterController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" styleClass="INFRegisterBG" stylesheets="@../styles/CasinoInterface.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.CasinoRegisterController">
    <children>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#MenuCloseButton" prefHeight="43.0" prefWidth="24.0" styleClass="INFkilepes" stylesheets="@../styles/CasinoInterface.css" />
       <Button fx:id="RegisterGomb" layoutX="38.0" layoutY="353.0" mnemonicParsing="false" onAction="#RegisterButton" prefHeight="62.0" prefWidth="311.0" styleClass="INFRegisterGomb" stylesheets="@../styles/CasinoInterface.css" />
