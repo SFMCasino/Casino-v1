@@ -12,7 +12,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import hu.unideb.inf.model.JpaCasinoDAO;
+import hu.unideb.inf.model.User2;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -55,29 +59,31 @@ public class CasinoLoginController implements Initializable {
     @FXML
     private TextField Felhasznalo;
     
-    String directory = System.getProperty("user.home");
-    String fileName = "registerTest.txt";
-    String absolutePath = directory + File.separator + fileName;
+//    String directory = System.getProperty("user.home");
+//    String fileName = "registerTest.txt";
+//    String absolutePath = directory + File.separator + fileName;
     
     @FXML
     void MenuFooldalGomb(ActionEvent event) throws IOException {
         boolean valid = false;
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(absolutePath))) {
+        /*try(BufferedReader bufferedReader = new BufferedReader(new FileReader(absolutePath))) {
             ArrayList<FelhasznaloProfile> Profile = new ArrayList<FelhasznaloProfile>();
             String szoveg = bufferedReader.readLine();
             while(szoveg != null){
                 String[] SzovegTok = szoveg.split(":");
                 Profile.add(new FelhasznaloProfile(SzovegTok[0],SzovegTok[1],SzovegTok[2]));
                 szoveg = bufferedReader.readLine();
-            }
+            }*/
+            JpaCasinoDAO userDAO = new JpaCasinoDAO();
+            List<User2> Profile = userDAO.getUser();
             String getFelhasznalo = Felhasznalo.getText();
             String getJelszo = Jelszo.getText();
             FelhasznaloProfile checkProfile = new FelhasznaloProfile(getFelhasznalo,getJelszo);
             String validID = "";
             for(var a : Profile){
-                if(checkProfile.Felhasználó.equals(a.Felhasználó) && checkProfile.Jelszó.equals(a.Jelszó)){
+                if(checkProfile.Felhasználó.equals(a.getUsername()) && checkProfile.Jelszó.equals(a.getPassword())){
                     valid = true;
-                    validID = a.ID;
+                    validID = a.getSetID();
                 }
             }
             
@@ -100,11 +106,6 @@ public class CasinoLoginController implements Initializable {
                 hiba.setHeaderText("Nem létező felhasználó vagy hibás jelszó");
                 hiba.showAndWait();
             }
-        } catch (FileNotFoundException e) {
-            // Exception handling
-        } catch (IOException e) {
-            // Exception handling
-        }
     }
     
     @FXML

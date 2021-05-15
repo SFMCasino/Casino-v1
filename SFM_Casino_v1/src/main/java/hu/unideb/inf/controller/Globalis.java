@@ -9,11 +9,16 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
+
+import hu.unideb.inf.model.JpaCasinoDAO;
+import hu.unideb.inf.model.User2;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 /**
@@ -204,11 +209,27 @@ public class Globalis {
     }
     
     void saveData(String id, int jatekospenz, int jatekospenz2, String nem, String hajszem, String[] Kellekek){
+        /*
         try(BufferedWriter bufferedWriter2 = new BufferedWriter(new FileWriter(System.getProperty("user.home") + File.separator + (id+".txt")))){
                     bufferedWriter2.write(jatekospenz + ":" + jatekospenz2 + ":" + nem + ":" + hajszem + ":" + Kellekek[0] + ":" + Kellekek[1] + ":" + Kellekek[2] + ":" + Kellekek[3]);
                 }catch (IOException e) {
                     // Exception handling
-                }
+                }*/
+        JpaCasinoDAO userDAO = new JpaCasinoDAO();
+        List<User2> Profile = userDAO.getUser();
+        for (var felhasznalo : Profile ) {
+            if (felhasznalo.getSetID().equals(id)){
+                felhasznalo.setJatekospenz(jatekospenz);
+                felhasznalo.setJatekospenz2(jatekospenz2);
+                felhasznalo.setNem(nem);
+                felhasznalo.setJatekos_hajszem(hajszem);
+                felhasznalo.setKellekek0(Integer.parseInt(Kellekek[0]));
+                felhasznalo.setKellekek1(Integer.parseInt(Kellekek[1]));
+                felhasznalo.setKellekek2(Integer.parseInt(Kellekek[2]));
+                felhasznalo.setKellekek2(Integer.parseInt(Kellekek[3]));
+            }
+        }
+
     }
     
     String ProfilKepCsere(String nemid, String id){

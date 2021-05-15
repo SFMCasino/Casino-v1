@@ -11,11 +11,13 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import hu.unideb.inf.model.JpaCasinoDAO;
 import hu.unideb.inf.model.User2;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -114,6 +116,7 @@ public class CasinoRegisterController implements Initializable {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
 
+
         if (vezeteknev.equals("") || keresztnev.equals("") || bank.equals("") ||
                 felhasznalo.equals("") || email.equals("") || jelszo.equals("") ||
                 jelszo2.equals("") || nem.equals("") || hajszin.equals("") ||
@@ -132,7 +135,19 @@ public class CasinoRegisterController implements Initializable {
             hiba.setTitle("Hiba");
             hiba.setHeaderText("Helytelen E-mail formátum");
             hiba.showAndWait();
-        } else {
+        }
+        else {
+            JpaCasinoDAO userDAO = new JpaCasinoDAO();
+            List<User2> Profile = userDAO.getUser();
+            for (var user : Profile ) {
+                if (user.getUsername().equals(felhasznalo)){
+                    Alert hiba = new Alert(Alert.AlertType.ERROR);
+                    hiba.setTitle("Hiba");
+                    hiba.setHeaderText("Ez a felhasználónév már foglalt!");
+                    hiba.showAndWait();
+                    return;
+                }
+            }
             Alert reg = new Alert(Alert.AlertType.INFORMATION);
             reg.setTitle("Regisztráció");
             reg.setHeaderText("Sikeres regisztráció");
@@ -149,11 +164,16 @@ public class CasinoRegisterController implements Initializable {
             user2.setEmail(email);
             user2.setCreditCardNumber(bank);
             user2.setDatum(Szuletesidatum.getValue().toString());
+            Globalis global = new Globalis();
+            String[] genderids = global.checkGenderID(nem, hajszin, szemszin);
+            user2.setJatekos_neme(genderids[0]);
+//            String jatekos_neme = genderids[0];
+            user2.setJatekos_hajszem(genderids[1]);
             entityManager.getTransaction().begin();
             entityManager.persist(user2);
             entityManager.getTransaction().commit();
-            Globalis global = new Globalis();
-            String[] genderids = global.checkGenderID(nem, hajszin, szemszin);
+
+//            String jatekos_hajszem = genderids[1];
                 /*try(BufferedWriter bufferedWriter2 = new BufferedWriter(new FileWriter(System.getProperty("user.home") + File.separator + (setID+".txt")))){
                     bufferedWriter2.write("100000:0:"+(genderids[0].equals("0") ? (genderids[0]+":"+genderids[1]+":2:0:0:0") : (genderids[0]+":"+genderids[1]+":2:0:0:0")));
                 }*/
