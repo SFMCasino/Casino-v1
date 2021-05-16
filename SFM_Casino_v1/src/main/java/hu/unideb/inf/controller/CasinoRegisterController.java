@@ -164,16 +164,16 @@ public class CasinoRegisterController implements Initializable {
             user2.setEmail(email);
             user2.setCreditCardNumber(bank);
             user2.setDatum(Szuletesidatum.getValue().toString());
-            entityManager.getTransaction().begin();
-            entityManager.persist(user2);
-            entityManager.getTransaction().commit();
             Globalis global = new Globalis();
             String[] genderids = global.checkGenderID(nem, hajszin, szemszin);
             user2.setJatekos_neme(genderids[0]);
 //            String jatekos_neme = genderids[0];
             user2.setJatekos_hajszem(genderids[1]);
-
-
+            user2.setJatekospenz(100000);
+            user2.setKellekek0(2);
+            entityManager.getTransaction().begin();
+            entityManager.persist(user2);
+            entityManager.getTransaction().commit();
 //            String jatekos_hajszem = genderids[1];
                 /*try(BufferedWriter bufferedWriter2 = new BufferedWriter(new FileWriter(System.getProperty("user.home") + File.separator + (setID+".txt")))){
                     bufferedWriter2.write("100000:0:"+(genderids[0].equals("0") ? (genderids[0]+":"+genderids[1]+":2:0:0:0") : (genderids[0]+":"+genderids[1]+":2:0:0:0")));
@@ -211,11 +211,6 @@ public class CasinoRegisterController implements Initializable {
             }
         }
     }
-
-    String directory = System.getProperty("user.home");
-    String fileName = "registerTest.txt";
-    String absolutePath = directory + File.separator + fileName;
-
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
