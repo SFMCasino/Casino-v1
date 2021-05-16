@@ -180,6 +180,8 @@ public class CasinoProfileController implements Initializable {
         MoneyChart.getData().addAll(penzm,penzm2);
         
     }
+    int jatekospenz = 0;
+    int jatekospenz2 = 0;
 
     public void Adatatvitel(String ID){
         id = ID;
@@ -190,16 +192,27 @@ public class CasinoProfileController implements Initializable {
                 getID.setText(id);
                 BankMoney.setText(""+a.getJatekospenz());
                 ChipMoney.setText(""+a.getJatekospenz2());
+                jatekospenz = a.getJatekospenz();
+                jatekospenz2 = a.getJatekospenz2();
                 nem = a.getJatekos_neme();
                 hajszem = a.getJatekos_hajszem();
                 Kellekek[0] = ""+a.getKellekek0();
                 Kellekek[1] = ""+a.getKellekek1();
                 Kellekek[2] = ""+a.getKellekek2();
                 Kellekek[3] = ""+a.getKellekek3();
+                //KNev, VNev, Nem, Datum, Mail, Bankszam, AccID
+                KNev.setText(a.getKnev());
+                VNev.setText(a.getVnev());
+                Nem.setText(a.getNem());
+                Datum.setText(a.getDatum());
+                Mail.setText(a.getEmail());
+                Bankszam.setText(a.getCreditCardNumber());
+                AccID.setText(a.getSetID());
                 break;
             }
         }
         ProfilKep.setStyle(global.ProfilKepCsere(nem, hajszem));
+        ProfileAvataros.setStyle(global.ProfilKepCsere(nem, hajszem));
     }
     
 }

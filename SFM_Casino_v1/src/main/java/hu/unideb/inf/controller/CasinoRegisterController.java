@@ -169,7 +169,8 @@ public class CasinoRegisterController implements Initializable {
             user2.setJatekos_neme(genderids[0]);
 //            String jatekos_neme = genderids[0];
             user2.setJatekos_hajszem(genderids[1]);
-            user2.setJatekospenz(100000);
+            user2.setJatekospenz(1000000);
+            user2.setJatekospenz2(1000000);
             user2.setKellekek0(2);
             entityManager.getTransaction().begin();
             entityManager.persist(user2);

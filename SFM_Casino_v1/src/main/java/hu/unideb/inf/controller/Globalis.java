@@ -227,6 +227,8 @@ public class Globalis {
                 felhasznalo.setKellekek1(Integer.parseInt(Kellekek[1]));
                 felhasznalo.setKellekek2(Integer.parseInt(Kellekek[2]));
                 felhasznalo.setKellekek2(Integer.parseInt(Kellekek[3]));
+                userDAO.saveUser(felhasznalo);
+                break;
             }
         }
 
@@ -234,7 +236,6 @@ public class Globalis {
     
     String ProfilKepCsere(String nemid, String id){
         String kep = "";
-        System.out.println(nemid + " " + id);
         if(nemid.equals("0")){
             switch (id){
                 case "0":

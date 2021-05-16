@@ -192,6 +192,8 @@ public class CasinoCoinController implements Initializable {
     private Button ProfilKep;
     
     String id = "";
+    int jatekospenz = 0;
+    int jatekospenz2 = 0;
     String nem = "", hajszem = "";
     String[] Kellekek = new String[4];
     
@@ -209,6 +211,8 @@ public class CasinoCoinController implements Initializable {
                 getID.setText(id);
                 BankMoney.setText(""+a.getJatekospenz());
                 ChipMoney.setText(""+a.getJatekospenz2());
+                jatekospenz = a.getJatekospenz();
+                jatekospenz2 = a.getJatekospenz2();
                 nem = a.getJatekos_neme();
                 hajszem = a.getJatekos_hajszem();
                 Kellekek[0] = ""+a.getKellekek0();

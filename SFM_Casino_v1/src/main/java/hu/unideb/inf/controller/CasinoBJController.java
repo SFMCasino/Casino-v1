@@ -220,6 +220,8 @@ public class CasinoBJController implements Initializable {
                 getID.setText(id);
                 BankMoney.setText(""+a.getJatekospenz());
                 ChipMoney.setText(""+a.getJatekospenz2());
+                jatekospenz = a.getJatekospenz();
+                jatekospenz2 = a.getJatekospenz2();
                 nem = a.getJatekos_neme();
                 hajszem = a.getJatekos_hajszem();
                 Kellekek[0] = ""+a.getKellekek0();

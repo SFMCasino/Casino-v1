@@ -309,7 +309,6 @@ public class CasinoSlotIController implements Initializable {
         if(Slotertek[0] == 'C' && Slotertek[1] == 'C' && Slotertek[2] == 'C'){
             jatekospenz2 += (GenjiTét/500) * 1500;
             GenjiNyertOsszeg(((GenjiTét/500) * 1500));
-            nyert = true;
         }else if(Slotertek[0] == 'S' && Slotertek[1] == 'S' && Slotertek[2] == 'S'){
             jatekospenz2 += (GenjiTét/500) * 3000;
             GenjiNyertOsszeg(((GenjiTét/500) * 3000));
@@ -349,8 +348,9 @@ public class CasinoSlotIController implements Initializable {
         }
         if(nyert){
             ChipMoney.setText("" + jatekospenz2);
-            global.saveData(id, jatekospenz, jatekospenz2, nem, hajszem, Kellekek);
+
         }
+            global.saveData(id, jatekospenz, jatekospenz2, nem, hajszem, Kellekek);
         }
     }
     
@@ -377,6 +377,8 @@ public class CasinoSlotIController implements Initializable {
                 getID.setText(id);
                 BankMoney.setText(""+a.getJatekospenz());
                 ChipMoney.setText(""+a.getJatekospenz2());
+                jatekospenz = a.getJatekospenz();
+                jatekospenz2 = a.getJatekospenz2();
                 nem = a.getJatekos_neme();
                 hajszem = a.getJatekos_hajszem();
                 Kellekek[0] = ""+a.getKellekek0();
