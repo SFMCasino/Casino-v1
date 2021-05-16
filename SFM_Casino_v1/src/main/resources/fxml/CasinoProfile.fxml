@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.CasinoProfileController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.CasinoProfileController">
    <children>
       <AnchorPane prefHeight="768.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -42,37 +42,37 @@
             <Pane layoutX="180.0" prefHeight="768.0" prefWidth="844.0" styleClass="INFprofileBG" stylesheets="@../styles/Games.css">
                <children>
                   <Label fx:id="getID" layoutY="746.0" text="Label" visible="false" />
-                  <Label fx:id="KNev" layoutX="498.0" layoutY="38.0" prefHeight="22.0" prefWidth="297.0" textFill="#aeaeae">
+                  <Label fx:id="KNev" layoutX="498.0" layoutY="34.0" prefHeight="22.0" prefWidth="297.0" textFill="#aeaeae">
                      <font>
                         <Font name="Agency FB" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="VNev" layoutX="499.0" layoutY="77.0" prefHeight="22.0" prefWidth="297.0" textFill="#aeaeae">
+                  <Label fx:id="VNev" layoutX="499.0" layoutY="73.0" prefHeight="22.0" prefWidth="297.0" textFill="#aeaeae">
                      <font>
                         <Font name="Agency FB" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="Nem" layoutX="410.0" layoutY="116.0" prefHeight="29.0" prefWidth="297.0" textFill="#aeaeae">
+                  <Label fx:id="Nem" layoutX="410.0" layoutY="112.0" prefHeight="29.0" prefWidth="297.0" textFill="#aeaeae">
                      <font>
                         <Font name="Agency FB" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="Datum" layoutX="557.0" layoutY="157.0" prefHeight="29.0" prefWidth="241.0" textFill="#aeaeae">
+                  <Label fx:id="Datum" layoutX="557.0" layoutY="153.0" prefHeight="29.0" prefWidth="241.0" textFill="#aeaeae">
                      <font>
                         <Font name="Agency FB" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="Mail" layoutX="443.0" layoutY="197.0" prefHeight="29.0" prefWidth="359.0" textFill="#aeaeae">
+                  <Label fx:id="Mail" layoutX="443.0" layoutY="193.0" prefHeight="29.0" prefWidth="359.0" textFill="#aeaeae">
                      <font>
                         <Font name="Agency FB" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="Bankszam" layoutX="573.0" layoutY="236.0" prefHeight="29.0" prefWidth="229.0" textFill="#aeaeae">
+                  <Label fx:id="Bankszam" layoutX="573.0" layoutY="232.0" prefHeight="29.0" prefWidth="229.0" textFill="#aeaeae">
                      <font>
                         <Font name="Agency FB" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="AccID" layoutX="385.0" layoutY="285.0" prefHeight="27.0" prefWidth="98.0" textFill="#aeaeae">
+                  <Label fx:id="AccID" layoutX="385.0" layoutY="281.0" prefHeight="27.0" prefWidth="98.0" textFill="#aeaeae">
                      <font>
                         <Font name="Agency FB" size="24.0" />
                      </font>

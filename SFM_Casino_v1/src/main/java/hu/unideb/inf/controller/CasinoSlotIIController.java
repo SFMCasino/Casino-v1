@@ -6,9 +6,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import hu.unideb.inf.model.JpaCasinoDAO;
+import hu.unideb.inf.model.User2;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -944,12 +947,14 @@ public class CasinoSlotIIController implements Initializable {
     private Label BankMoney,ChipMoney,getID;
 
     String id = "";
+    int jatekospenz = 0;
+    int jatekospenz2 = 0;
     String nem = "", hajszem = "";
     String[] Kellekek = new String[4];
     
     @FXML
     private Button ProfilKep;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         bgimage.setImage(new Image("/icons/bg.png"));
@@ -957,28 +962,27 @@ public class CasinoSlotIIController implements Initializable {
         vonaltetlabel.setText("" + vonaltet);
         teljestetlabel.setText("Teljes tét " + vonaltet*vonal);
     }
-    
+
     public void Adatatvitel(String ID){
-        String kisid = ID;
         id = ID;
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(System.getProperty("user.home") + File.separator + (ID+".txt")))){
-            String[] penzek = bufferedReader.readLine().split(":");
-            getID.setText(kisid);
-            BankMoney.setText(penzek[0]);
-            ChipMoney.setText(penzek[1]);
-            nem = penzek[2];
-            hajszem = penzek[3];
-            for (int i = 4; i < penzek.length; i++) {
-                Kellekek[i-4] = penzek[i];
+        JpaCasinoDAO userDAO = new JpaCasinoDAO();
+        List<User2> Profile = userDAO.getUser();
+        for(var a : Profile){
+            if(id.equals(a.getSetID())){
+                getID.setText(id);
+                BankMoney.setText(""+a.getJatekospenz());
+                ChipMoney.setText(""+a.getJatekospenz2());
+                jatekospenz = a.getJatekospenz();
+                jatekospenz2 = a.getJatekospenz2();
+                nem = a.getJatekos_neme();
+                hajszem = a.getJatekos_hajszem();
+                Kellekek[0] = ""+a.getKellekek0();
+                Kellekek[1] = ""+a.getKellekek1();
+                Kellekek[2] = ""+a.getKellekek2();
+                Kellekek[3] = ""+a.getKellekek3();
+                break;
             }
-            egyenleg = Integer.parseInt(BankMoney.getText());
-            Chipmoney = Integer.parseInt(ChipMoney.getText());
-            ProfilKep.setStyle(global.ProfilKepCsere(nem, hajszem));
-        } catch (FileNotFoundException e) {
-            // Exception handling
-        } catch (IOException e) {
-            // Exception handling
         }
-        
+        ProfilKep.setStyle(global.ProfilKepCsere(nem, hajszem));
     }
 }

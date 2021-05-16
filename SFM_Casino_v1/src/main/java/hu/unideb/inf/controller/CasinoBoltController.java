@@ -11,13 +11,17 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
+
+import hu.unideb.inf.model.JpaCasinoDAO;
+import hu.unideb.inf.model.User2;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -143,20 +147,49 @@ public class CasinoBoltController implements Initializable {
             BoltAvatarCheck.setStyle(global.ProfilKepCsere(nem, SetTiePic));
         }else if(event.getEventType().equals(javafx.scene.input.MouseEvent.MOUSE_PRESSED)){
             if(Integer.parseInt(Kellekek[1]) >= 1){
-                if(Integer.parseInt(Kellekek[0]) == 2){
-                    hajszem = "" + (Integer.parseInt(hajszem)+1);
-                    Kellekek = KepDataCsere(Kellekek,1);
-                }else if(Integer.parseInt(Kellekek[2]) == 2){
-                    hajszem = "" + (Integer.parseInt(hajszem)-1);
-                    Kellekek = KepDataCsere(Kellekek,1);
-                }else if(Integer.parseInt(Kellekek[3]) == 2){
-                    hajszem = "" + (Integer.parseInt(hajszem)-2);
-                    Kellekek = KepDataCsere(Kellekek,1);
+                ButtonType foo = new ButtonType("Igen", ButtonBar.ButtonData.OK_DONE);
+                ButtonType bar = new ButtonType("Nem", ButtonBar.ButtonData.CANCEL_CLOSE);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION,"Szeretné használni a terméket?",
+                        foo,bar);
+                alert.setHeaderText("Csokornyakkendő");
+                alert.setTitle("Bolt információ");
+                Optional<ButtonType> result = alert.showAndWait();
+
+                if (result.orElse(bar) == foo) {
+                    if (Integer.parseInt(Kellekek[0]) == 2) {
+                        hajszem = "" + (Integer.parseInt(hajszem) + 1);
+                        Kellekek = KepDataCsere(Kellekek, 1);
+                    } else if (Integer.parseInt(Kellekek[2]) == 2) {
+                        hajszem = "" + (Integer.parseInt(hajszem) - 1);
+                        Kellekek = KepDataCsere(Kellekek, 1);
+                    } else if (Integer.parseInt(Kellekek[3]) == 2) {
+                        hajszem = "" + (Integer.parseInt(hajszem) - 2);
+                        Kellekek = KepDataCsere(Kellekek, 1);
+                    }
                 }
             }else if(jatekospenz2 >= 45000){
-                jatekospenz2 -= 45000;
-                Kellekek[1] = "1";
-                ChipMoney.setText("" + jatekospenz2);
+                ButtonType foo = new ButtonType("Igen", ButtonBar.ButtonData.OK_DONE);
+                ButtonType bar = new ButtonType("Nem", ButtonBar.ButtonData.CANCEL_CLOSE);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION,"Biztosan meg szeretné vásárolni a terméket?",
+                        foo,bar);
+                alert.setHeaderText("Csokornyakkendő");
+                alert.setTitle("Bolt információ");
+                Optional<ButtonType> result = alert.showAndWait();
+
+                if (result.orElse(bar) == foo) {
+                    jatekospenz2 -= 45000;
+                    Kellekek[1] = "1";
+                    ChipMoney.setText("" + jatekospenz2);
+                    Alert siker = new Alert(Alert.AlertType.INFORMATION);
+                    siker.setTitle("Bolt információ");
+                    siker.setHeaderText("Sikeresen megvásárolta a terméket!");
+                    siker.showAndWait();
+                }
+            }else{
+                Alert hiba = new Alert(Alert.AlertType.ERROR);
+                hiba.setTitle("Hiba");
+                hiba.setHeaderText("Nincs elég kaszinó pénzed a termék megvásárlásához!");
+                hiba.showAndWait();
             }
             global.saveData(id, jatekospenz, jatekospenz2, nem, hajszem, Kellekek);
             ProfilKep.setStyle(global.ProfilKepCsere(nem, hajszem));
@@ -179,21 +212,51 @@ public class CasinoBoltController implements Initializable {
             }
             BoltAvatarCheck.setStyle(global.ProfilKepCsere(nem, SetTiePic));
         }else if(event.getEventType().equals(javafx.scene.input.MouseEvent.MOUSE_PRESSED)){
+
             if(Integer.parseInt(Kellekek[2]) >= 1){
-                if(Integer.parseInt(Kellekek[0]) == 2){
-                    hajszem = "" + (Integer.parseInt(hajszem)+2);
-                    Kellekek = KepDataCsere(Kellekek,2);
-                }else if(Integer.parseInt(Kellekek[1]) == 2){
-                    hajszem = "" + (Integer.parseInt(hajszem)+1);
-                    Kellekek = KepDataCsere(Kellekek,2);
-                }else if(Integer.parseInt(Kellekek[3]) == 2){
-                    hajszem = "" + (Integer.parseInt(hajszem)-1);
-                    Kellekek = KepDataCsere(Kellekek,2);
+                ButtonType foo = new ButtonType("Igen", ButtonBar.ButtonData.OK_DONE);
+                ButtonType bar = new ButtonType("Nem", ButtonBar.ButtonData.CANCEL_CLOSE);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION,"Szeretné használni a terméket?",
+                        foo,bar);
+                alert.setHeaderText("Monokli");
+                alert.setTitle("Bolt információ");
+                Optional<ButtonType> result = alert.showAndWait();
+
+                if (result.orElse(bar) == foo) {
+                    if (Integer.parseInt(Kellekek[0]) == 2) {
+                        hajszem = "" + (Integer.parseInt(hajszem) + 2);
+                        Kellekek = KepDataCsere(Kellekek, 2);
+                    } else if (Integer.parseInt(Kellekek[1]) == 2) {
+                        hajszem = "" + (Integer.parseInt(hajszem) + 1);
+                        Kellekek = KepDataCsere(Kellekek, 2);
+                    } else if (Integer.parseInt(Kellekek[3]) == 2) {
+                        hajszem = "" + (Integer.parseInt(hajszem) - 1);
+                        Kellekek = KepDataCsere(Kellekek, 2);
+                    }
                 }
             }else if(jatekospenz2 >= 66000){
-                jatekospenz2 -= 66000;
-                Kellekek[2] = "1";
-                ChipMoney.setText("" + jatekospenz2);
+                ButtonType foo = new ButtonType("Igen", ButtonBar.ButtonData.OK_DONE);
+                ButtonType bar = new ButtonType("Nem", ButtonBar.ButtonData.CANCEL_CLOSE);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION,"Biztosan meg szeretné vásárolni a terméket?",
+                        foo,bar);
+                alert.setHeaderText("Monokli");
+                alert.setTitle("Bolt információ");
+                Optional<ButtonType> result = alert.showAndWait();
+
+                if (result.orElse(bar) == foo) {
+                    jatekospenz2 -= 66000;
+                    Kellekek[2] = "1";
+                    ChipMoney.setText("" + jatekospenz2);
+                    Alert siker = new Alert(Alert.AlertType.INFORMATION);
+                    siker.setTitle("Bolt információ");
+                    siker.setHeaderText("Sikeresen megvásárolta a terméket!");
+                    siker.showAndWait();
+                }
+            }else{
+                Alert hiba = new Alert(Alert.AlertType.ERROR);
+                hiba.setTitle("Hiba");
+                hiba.setHeaderText("Nincs elég kaszinó pénzed a termék megvásárlásához!");
+                hiba.showAndWait();
             }
             global.saveData(id, jatekospenz, jatekospenz2, nem, hajszem, Kellekek);
             ProfilKep.setStyle(global.ProfilKepCsere(nem, hajszem));
@@ -217,20 +280,50 @@ public class CasinoBoltController implements Initializable {
             BoltAvatarCheck.setStyle(global.ProfilKepCsere(nem, SetTiePic));
         }else if(event.getEventType().equals(javafx.scene.input.MouseEvent.MOUSE_PRESSED)){
             if(Integer.parseInt(Kellekek[3]) >= 1){
-                if(Integer.parseInt(Kellekek[0]) == 2){
-                    hajszem = "" + (Integer.parseInt(hajszem)+3);
-                    Kellekek = KepDataCsere(Kellekek,3);
-                }else if(Integer.parseInt(Kellekek[1]) == 2){
-                    hajszem = "" + (Integer.parseInt(hajszem)+2);
-                    Kellekek = KepDataCsere(Kellekek,3);
-                }else if(Integer.parseInt(Kellekek[2]) == 2){
-                    hajszem = "" + (Integer.parseInt(hajszem)+1);
-                    Kellekek = KepDataCsere(Kellekek,3);
+                ButtonType foo = new ButtonType("Igen", ButtonBar.ButtonData.OK_DONE);
+                ButtonType bar = new ButtonType("Nem", ButtonBar.ButtonData.CANCEL_CLOSE);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION,"Szeretné használni a terméket?",
+                        foo,bar);
+                alert.setHeaderText("Szemüveg");
+                alert.setTitle("Bolt információ");
+                Optional<ButtonType> result = alert.showAndWait();
+
+                if (result.orElse(bar) == foo) {
+                    if (Integer.parseInt(Kellekek[0]) == 2) {
+                        hajszem = "" + (Integer.parseInt(hajszem) + 3);
+                        Kellekek = KepDataCsere(Kellekek, 3);
+                    } else if (Integer.parseInt(Kellekek[1]) == 2) {
+                        hajszem = "" + (Integer.parseInt(hajszem) + 2);
+                        Kellekek = KepDataCsere(Kellekek, 3);
+                    } else if (Integer.parseInt(Kellekek[2]) == 2) {
+                        hajszem = "" + (Integer.parseInt(hajszem) + 1);
+                        Kellekek = KepDataCsere(Kellekek, 3);
+                    }
                 }
             }else if(jatekospenz2 >= 142000){
-                jatekospenz2 -= 142000;
-                Kellekek[3] = "1";
-                ChipMoney.setText("" + jatekospenz2);
+                ButtonType foo = new ButtonType("Igen", ButtonBar.ButtonData.OK_DONE);
+                ButtonType bar = new ButtonType("Nem", ButtonBar.ButtonData.CANCEL_CLOSE);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION,"Biztosan meg szeretné vásárolni a terméket?",
+                        foo,bar);
+                alert.setHeaderText("Szemüveg");
+                alert.setTitle("Bolt információ");
+                Optional<ButtonType> result = alert.showAndWait();
+
+                if (result.orElse(bar) == foo) {
+                    jatekospenz2 -= 142000;
+                    Kellekek[3] = "1";
+                    ChipMoney.setText("" + jatekospenz2);
+                    Alert siker = new Alert(Alert.AlertType.INFORMATION);
+                    siker.setTitle("Bolt információ");
+                    siker.setHeaderText("Sikeresen megvásárolta a terméket!");
+                    siker.showAndWait();
+                }
+
+            }else{
+                Alert hiba = new Alert(Alert.AlertType.ERROR);
+                hiba.setTitle("Hiba");
+                hiba.setHeaderText("Nincs elég kaszinó pénzed a termék megvásárlásához!");
+                hiba.showAndWait();
             }
             
             global.saveData(id, jatekospenz, jatekospenz2, nem, hajszem, Kellekek);
@@ -255,30 +348,29 @@ public class CasinoBoltController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
     }
-    
+
     public void Adatatvitel(String ID){
-        String kisid = ID;
         id = ID;
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(System.getProperty("user.home") + File.separator + (ID+".txt")))){
-            String[] penzek = bufferedReader.readLine().split(":");
-            getID.setText(kisid);
-            BankMoney.setText(penzek[0]);
-            ChipMoney.setText(penzek[1]);
-            nem = penzek[2];
-            hajszem = penzek[3];
-            jatekospenz = Integer.parseInt(penzek[0]);
-            jatekospenz2 = Integer.parseInt(penzek[1]);
-            for (int i = 4; i < penzek.length; i++) {
-                Kellekek[i-4] = penzek[i];
+        JpaCasinoDAO userDAO = new JpaCasinoDAO();
+        List<User2> Profile = userDAO.getUser();
+        for(var a : Profile){
+            if(id.equals(a.getSetID())){
+                getID.setText(id);
+                BankMoney.setText(""+a.getJatekospenz());
+                ChipMoney.setText(""+a.getJatekospenz2());
+                jatekospenz = a.getJatekospenz();
+                jatekospenz2 = a.getJatekospenz2();
+                nem = a.getJatekos_neme();
+                hajszem = a.getJatekos_hajszem();
+                Kellekek[0] = ""+a.getKellekek0();
+                Kellekek[1] = ""+a.getKellekek1();
+                Kellekek[2] = ""+a.getKellekek2();
+                Kellekek[3] = ""+a.getKellekek3();
+                break;
             }
-            ProfilKep.setStyle(global.ProfilKepCsere(nem, hajszem));
-            BoltAvatarCheck.setStyle(global.ProfilKepCsere(nem, hajszem));
-        } catch (FileNotFoundException e) {
-            // Exception handling
-        } catch (IOException e) {
-            // Exception handling
         }
-        
+        ProfilKep.setStyle(global.ProfilKepCsere(nem, hajszem));
+        BoltAvatarCheck.setStyle(global.ProfilKepCsere(nem, hajszem));
     }
     
     String[] KepDataCsere(String[] Kellekek, int kellek){

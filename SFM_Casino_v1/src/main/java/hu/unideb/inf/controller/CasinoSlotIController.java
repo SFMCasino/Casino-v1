@@ -11,8 +11,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
+
+import hu.unideb.inf.model.JpaCasinoDAO;
+import hu.unideb.inf.model.User2;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -305,7 +309,6 @@ public class CasinoSlotIController implements Initializable {
         if(Slotertek[0] == 'C' && Slotertek[1] == 'C' && Slotertek[2] == 'C'){
             jatekospenz2 += (GenjiTét/500) * 1500;
             GenjiNyertOsszeg(((GenjiTét/500) * 1500));
-            nyert = true;
         }else if(Slotertek[0] == 'S' && Slotertek[1] == 'S' && Slotertek[2] == 'S'){
             jatekospenz2 += (GenjiTét/500) * 3000;
             GenjiNyertOsszeg(((GenjiTét/500) * 3000));
@@ -345,8 +348,9 @@ public class CasinoSlotIController implements Initializable {
         }
         if(nyert){
             ChipMoney.setText("" + jatekospenz2);
-            global.saveData(id, jatekospenz, jatekospenz2, nem, hajszem, Kellekek);
+
         }
+            global.saveData(id, jatekospenz, jatekospenz2, nem, hajszem, Kellekek);
         }
     }
     
@@ -362,30 +366,29 @@ public class CasinoSlotIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-    }    
-    
+    }
+
     public void Adatatvitel(String ID){
-        String kisid = ID;
         id = ID;
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(System.getProperty("user.home") + File.separator + (ID+".txt")))){
-            String[] penzek = bufferedReader.readLine().split(":");
-            getID.setText(kisid);
-            BankMoney.setText(penzek[0]);
-            ChipMoney.setText(penzek[1]);
-            nem = penzek[2];
-            hajszem = penzek[3];
-            for (int i = 4; i < penzek.length; i++) {
-                Kellekek[i-4] = penzek[i];
+        JpaCasinoDAO userDAO = new JpaCasinoDAO();
+        List<User2> Profile = userDAO.getUser();
+        for(var a : Profile){
+            if(id.equals(a.getSetID())){
+                getID.setText(id);
+                BankMoney.setText(""+a.getJatekospenz());
+                ChipMoney.setText(""+a.getJatekospenz2());
+                jatekospenz = a.getJatekospenz();
+                jatekospenz2 = a.getJatekospenz2();
+                nem = a.getJatekos_neme();
+                hajszem = a.getJatekos_hajszem();
+                Kellekek[0] = ""+a.getKellekek0();
+                Kellekek[1] = ""+a.getKellekek1();
+                Kellekek[2] = ""+a.getKellekek2();
+                Kellekek[3] = ""+a.getKellekek3();
+                break;
             }
-            jatekospenz = Integer.parseInt(BankMoney.getText());
-            jatekospenz2 = Integer.parseInt(ChipMoney.getText());
-            ProfilKep.setStyle(global.ProfilKepCsere(nem, hajszem));
-        } catch (FileNotFoundException e) {
-            // Exception handling
-        } catch (IOException e) {
-            // Exception handling
         }
-        
+        ProfilKep.setStyle(global.ProfilKepCsere(nem, hajszem));
     }
     
 }
