@@ -566,6 +566,8 @@ public class CasinoBJController implements Initializable {
             }
             BJjatekosace = BJCheckAce(BJjatekos);
             BJosztoace = BJCheckAce(BJoszto);
+            if(BJjatekosace && BJSumCards(BJjatekos) > 21 && !BJJAceOut){ BJjatekos[0] -= 10; BJJAceOut = true;}
+            if(BJosztoace && BJSumCards(BJoszto) > 21 && !BJOAceOut){ BJoszto[0] -= 10; BJOAceOut = true;}
         }
         for(int i = 0; i < 11; i++){
             System.out.println("Jatekos: " + BJjatekos[i] + " - Oszto: " + BJoszto[i]);

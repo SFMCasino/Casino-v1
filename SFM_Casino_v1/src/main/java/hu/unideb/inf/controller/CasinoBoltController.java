@@ -308,7 +308,6 @@ public class CasinoBoltController implements Initializable {
                 alert.setHeaderText("Szemüveg");
                 alert.setTitle("Bolt információ");
                 Optional<ButtonType> result = alert.showAndWait();
-
                 if (result.orElse(bar) == foo) {
                     jatekospenz2 -= 142000;
                     Kellekek[3] = "1";
@@ -318,14 +317,12 @@ public class CasinoBoltController implements Initializable {
                     siker.setHeaderText("Sikeresen megvásárolta a terméket!");
                     siker.showAndWait();
                 }
-
-            }else{
+            }else {
                 Alert hiba = new Alert(Alert.AlertType.ERROR);
                 hiba.setTitle("Hiba");
                 hiba.setHeaderText("Nincs elég kaszinó pénzed a termék megvásárlásához!");
                 hiba.showAndWait();
             }
-            
             global.saveData(id, jatekospenz, jatekospenz2, nem, hajszem, Kellekek);
             ProfilKep.setStyle(global.ProfilKepCsere(nem, hajszem));
             BoltAvatarCheck.setStyle(global.ProfilKepCsere(nem, hajszem));

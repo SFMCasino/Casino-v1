@@ -226,7 +226,7 @@ public class Globalis {
                 felhasznalo.setKellekek0(Integer.parseInt(Kellekek[0]));
                 felhasznalo.setKellekek1(Integer.parseInt(Kellekek[1]));
                 felhasznalo.setKellekek2(Integer.parseInt(Kellekek[2]));
-                felhasznalo.setKellekek2(Integer.parseInt(Kellekek[3]));
+                felhasznalo.setKellekek3(Integer.parseInt(Kellekek[3]));
                 userDAO.saveUser(felhasznalo);
                 break;
             }
