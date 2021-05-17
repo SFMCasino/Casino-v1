@@ -112,14 +112,17 @@ public class CasinoCoinController implements Initializable {
         return randint;
     }
 
-    int feltoltott_penz, nyert_penz;
+    @FXML
+    private Label BankMoney,ChipMoney,getID;
 
     int bet = 1000;
-    int coin;   //  0-tail  1-head
+    int jatekospenz = 0;
+    int jatekospenz2 = 0;
     Random rand = new Random();
 
     @FXML
     private Label BetLabel;
+
     @FXML
     private Label ResultLabel;
     @FXML
@@ -130,22 +133,20 @@ public class CasinoCoinController implements Initializable {
     @FXML
     void MoreButtonPushed() {
 
-        bet += 1000;
-
-        BetLabel.setText("Bet: " + bet);
+        if(bet < 10000) {
+            bet += 1000;
+        }
+        BetLabel.setText("" + bet);
         ResultLabel.setText("");
 
     }
 
     @FXML
     void LessButtonPushed() {
-
-
-
-
-        bet -= 1000;
-
-        BetLabel.setText("Bet: " + bet);
+        if(bet > 1000) {
+            bet -= 1000;
+        }
+        BetLabel.setText("" + bet);
         ResultLabel.setText("");
 
     }
@@ -154,125 +155,79 @@ public class CasinoCoinController implements Initializable {
     //  0-tail  1-head
     @FXML
     void HeadButtonPushed() {
-        int eredmeny = dobottErtek();
 
-        if (bet <= nyert_penz) {
+        if ((jatekospenz2 + jatekospenz) - bet > 0) {
 
-            if(eredmeny==1)
-            {
-                ResultLabel.setText("Win!");
+            int eredmeny = dobottErtek();
 
-                nyert_penz += bet;
-
-                global.saveData(id, feltoltott_penz, nyert_penz, nem, hajszem, Kellekek);
-                ChipMoney.setText("" + nyert_penz);
-                BankMoney.setText("" + feltoltott_penz);
-            }
-            else
-            {
-                ResultLabel.setText("Loss!");
-
-                nyert_penz -= bet;
-
-
-                global.saveData(id, feltoltott_penz, nyert_penz, nem, hajszem, Kellekek);
-                ChipMoney.setText("" + nyert_penz);
-                BankMoney.setText("" + feltoltott_penz);
+            if ((jatekospenz + jatekospenz2) >= bet) {
+                if (jatekospenz - bet < 0) {
+                    int fennmarado = bet - jatekospenz;
+                    jatekospenz = 0;
+                    jatekospenz2 -= fennmarado;
+                    BankMoney.setText("" + jatekospenz);
+                    ChipMoney.setText("" + jatekospenz2);
+                } else {
+                    jatekospenz -= bet;
+                    BankMoney.setText("" + jatekospenz);
+                }
             }
 
-            //MoneyLabel.setText("Money: " + feltoltott_penz/*+ "\n Rand: " + randint*/);
-            BetLabel.setText("Bet: " + bet);
-        }else
-        if((feltoltott_penz + nyert_penz) >= bet){
 
-            feltoltott_penz -= (bet-nyert_penz);
-            nyert_penz = 0;
+            if (eredmeny == 1) {
+                ResultLabel.setText("Nyertél!");
 
-            if(eredmeny==1)
-            {
-                ResultLabel.setText("Win!");
+                jatekospenz2 += bet * 2;
 
-                nyert_penz += bet;
+                BankMoney.setText("" + jatekospenz);
+                ChipMoney.setText("" + jatekospenz2);
+            } else {
+                ResultLabel.setText("Vesztettél!");
 
-                global.saveData(id, feltoltott_penz, nyert_penz, nem, hajszem, Kellekek);
-                ChipMoney.setText("" + nyert_penz);
-                BankMoney.setText("" + feltoltott_penz);
+
             }
-            else
-            {
-                ResultLabel.setText("Loss!");
 
-                //feltoltott_penz -= bet;
-
-
-                global.saveData(id, feltoltott_penz, nyert_penz, nem, hajszem, Kellekek);
-                ChipMoney.setText("" + nyert_penz);
-                BankMoney.setText("" + feltoltott_penz);
-            }
+            global.saveData(id, jatekospenz, jatekospenz2, nem, hajszem, Kellekek);
         }
     }
+
 
 
     @FXML
     void TailButtonPushed() {
 
-        int eredmeny = dobottErtek();
+        if ((jatekospenz2 + jatekospenz) - bet > 0) {
 
-        if (bet <= nyert_penz) {
+            int eredmeny = dobottErtek();
 
-            if(eredmeny==0)
-            {
-                ResultLabel.setText("Win!");
-
-                nyert_penz += bet;
-
-                global.saveData(id, feltoltott_penz, nyert_penz, nem, hajszem, Kellekek);
-                ChipMoney.setText("" + nyert_penz);
-                BankMoney.setText("" + feltoltott_penz);
-            }
-            else
-            {
-                ResultLabel.setText("Loss!");
-
-                nyert_penz -= bet;
-
-
-                global.saveData(id, feltoltott_penz, nyert_penz, nem, hajszem, Kellekek);
-                ChipMoney.setText("" + nyert_penz);
-                BankMoney.setText("" + feltoltott_penz);
+            if ((jatekospenz + jatekospenz2) >= bet) {
+                if (jatekospenz - bet < 0) {
+                    int fennmarado = bet - jatekospenz;
+                    jatekospenz = 0;
+                    jatekospenz2 -= fennmarado;
+                    BankMoney.setText("" + jatekospenz);
+                    ChipMoney.setText("" + jatekospenz2);
+                } else {
+                    jatekospenz -= bet;
+                    BankMoney.setText("" + jatekospenz);
+                }
             }
 
-            //MoneyLabel.setText("Money: " + feltoltott_penz/*+ "\n Rand: " + randint*/);
-            BetLabel.setText("Bet: " + bet);
-        }else
-        if((feltoltott_penz + nyert_penz) >= bet){
 
-            feltoltott_penz -= (bet-nyert_penz);
-            nyert_penz = 0;
+            if (eredmeny == 0) {
+                ResultLabel.setText("Nyertél!");
 
-            if(eredmeny==0)
-            {
-                ResultLabel.setText("Win!");
+                jatekospenz2 += bet * 2;
 
-                nyert_penz += bet;
+                BankMoney.setText("" + jatekospenz);
+                ChipMoney.setText("" + jatekospenz2);
+            } else {
+                ResultLabel.setText("Vesztettél!");
 
-                global.saveData(id, feltoltott_penz, nyert_penz, nem, hajszem, Kellekek);
-                ChipMoney.setText("" + nyert_penz);
-                BankMoney.setText("" + feltoltott_penz);
             }
-            else
-            {
-                ResultLabel.setText("Loss!");
 
-                //feltoltott_penz -= bet;
-
-
-                global.saveData(id, feltoltott_penz, nyert_penz, nem, hajszem, Kellekek);
-                ChipMoney.setText("" + nyert_penz);
-                BankMoney.setText("" + feltoltott_penz);
-            }
+            global.saveData(id, jatekospenz, jatekospenz2, nem, hajszem, Kellekek);
         }
-
     }
 
 
@@ -280,15 +235,13 @@ public class CasinoCoinController implements Initializable {
     /////////////////////
 
     
-    @FXML
-    private Label BankMoney,ChipMoney,getID;
+
 
     @FXML
     private Button ProfilKep;
-    
+
     String id = "";
-    int jatekospenz = 0;
-    int jatekospenz2 = 0;
+
     String nem = "", hajszem = "";
     String[] Kellekek = new String[4];
     

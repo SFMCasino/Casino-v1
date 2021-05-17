@@ -2,18 +2,20 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.CasinoCoinController">
    <children>
       <AnchorPane prefHeight="768.0" prefWidth="1024.0" styleClass="coinBody" stylesheets="@../styles/Games.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <Label fx:id="ResultLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="503.0" layoutY="432.0" prefHeight="100.0" prefWidth="191.0" styleClass="resultLabel" stylesheets="@../styles/Games.css" textFill="#ebaf05">
+               <font>
+                  <Font name="Calisto MT" size="36.0" />
+               </font></Label>
 
-            <Button alignment="CENTER" layoutX="463.0" layoutY="30.0" mnemonicParsing="false" onAction="#MoreButtonPushed" prefHeight="100.0" prefWidth="100.0" styleClass="moreButton" stylesheets="@../styles/Games.css" text="+1000" textAlignment="CENTER" AnchorPane.bottomAnchor="638.0" AnchorPane.leftAnchor="463.0" AnchorPane.rightAnchor="431.0">
+            <Button alignment="CENTER" layoutX="460.0" layoutY="30.0" mnemonicParsing="false" onAction="#MoreButtonPushed" prefHeight="100.0" prefWidth="100.0" styleClass="moreButton" stylesheets="@../styles/Games.css" text="+1000" textAlignment="CENTER" AnchorPane.bottomAnchor="638.0" AnchorPane.leftAnchor="460.0" AnchorPane.rightAnchor="434.0">
 
             </Button>
             <Button alignment="CENTER" layoutX="190.0" layoutY="31.0" mnemonicParsing="false" onAction="#LessButtonPushed" prefHeight="100.0" prefWidth="100.0" styleClass="lessButton" stylesheets="@../styles/Games.css" text="-1000" textAlignment="CENTER" AnchorPane.bottomAnchor="637.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="705.0">
@@ -21,23 +23,12 @@
                   <Font size="10.0" />
                </font>
             </Button>
-            <Label fx:id="BetLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="319.0" layoutY="42.0" prefHeight="78.0" prefWidth="130.0" styleClass="betLabel" stylesheets="@../styles/Games.css" text="1000" textFill="#daae00" AnchorPane.leftAnchor="319.0" AnchorPane.rightAnchor="576.0">
-               <font>
-                  <Font name="Rockwell" size="30.0" />
-               </font>
-               <effect>
-                  <Shadow height="1.0" radius="0.0" width="1.0">
-                     <color>
-                        <Color red="0.1599658876657486" green="0.8552631735801697" blue="0.7509685754776001" />
-                     </color>
-                  </Shadow>
-               </effect></Label>
-            <Button alignment="CENTER" layoutX="195.0" layoutY="324.0" mnemonicParsing="false" onAction="#TailButtonPushed" prefHeight="120.0" prefWidth="120.0" styleClass="tailButton" stylesheets="@../styles/Games.css" text="tail" textAlignment="CENTER">
+            <Button alignment="CENTER" layoutX="195.0" layoutY="324.0" mnemonicParsing="false" onAction="#TailButtonPushed" prefHeight="120.0" prefWidth="120.0" styleClass="tailButton" stylesheets="@../styles/Games.css" textAlignment="CENTER">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" layoutX="195.0" layoutY="506.0" mnemonicParsing="false" onAction="#HeadButtonPushed" prefHeight="120.0" prefWidth="120.0" styleClass="headButton" stylesheets="@../styles/Games.css" text="head" textAlignment="CENTER">
+            <Button alignment="CENTER" layoutX="195.0" layoutY="506.0" mnemonicParsing="false" onAction="#HeadButtonPushed" prefHeight="120.0" prefWidth="120.0" styleClass="headButton" stylesheets="@../styles/Games.css" textAlignment="CENTER">
                <font>
                   <Font size="10.0" />
                </font>
@@ -68,12 +59,13 @@
                   <Button layoutY="549.0" mnemonicParsing="false" onAction="#MenuKijelentkezesButton" prefHeight="23.0" prefWidth="180.0" styleClass="INFkijelentkezes" stylesheets="@../styles/CasinoInterface.css" />
                   <Button layoutX="14.0" layoutY="183.0" mnemonicParsing="false" onAction="#MenuCloseButton" prefHeight="43.0" prefWidth="24.0" styleClass="INFkilepes" stylesheets="@../styles/CasinoInterface.css" />
                </children></AnchorPane>
-            <Label fx:id="ResultLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="563.0" layoutY="464.0" prefHeight="90.0" prefWidth="90.0" styleClass="resultLabel" stylesheets="@../styles/Games.css" textFill="#ed0404">
-               <font>
-                  <Font size="36.0" />
-               </font></Label>
             <Label fx:id="getID" layoutX="191.0" layoutY="14.0" text="Label" visible="false" />
-            <ImageView fx:id="ResultImage" fitHeight="120.0" fitWidth="120.0" layoutX="548.0" layoutY="544.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="ResultImage" fitHeight="120.0" fitWidth="120.0" layoutX="354.0" layoutY="422.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="BetLabel" alignment="CENTER" layoutX="320.0" layoutY="35.0" prefHeight="80.0" prefWidth="142.0" text="1000" textAlignment="CENTER" textFill="#d7aa06" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="768.0" prefWidth="1024.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />

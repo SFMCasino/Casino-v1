@@ -24,6 +24,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -98,23 +100,52 @@ public class CasinoDiceController implements Initializable {
     
     //////////////////
     /////////////////
+    @FXML
+    private Label BankMoney,ChipMoney,getID;
+    int bet = 1000;
+    int jatekospenz = 0;
+    int jatekospenz2 = 0;
 
     Random rand = new Random();
 
     @FXML
-    private Label kocka1Label;
+    private Label BetLabel;
     @FXML
-    private Label kocka2Label;
+    private ImageView kocka1;
+
     @FXML
-    private Label kocka3Label;
+    private ImageView kocka2;
+
     @FXML
-    private Label kocka4Label;
+    private ImageView kocka3;
+
     @FXML
-    private Label kocka5Label;
+    private ImageView kocka4;
+
     @FXML
-    private Label kocka6Label;
+    private ImageView kocka5;
+
+    @FXML
+    private ImageView kocka6;
     @FXML
     private Label eredmenyLabel;
+
+    @FXML
+    void MoreButtonPushed() {
+
+        if(bet < 10000) {
+            bet += 1000;
+        }
+        BetLabel.setText("" + bet);
+    }
+
+    @FXML
+    void LessButtonPushed() {
+        if(bet > 1000) {
+            bet -= 1000;
+        }
+        BetLabel.setText("" + bet);
+    }
 
     public  int[] jatekosDobas(){
 
@@ -171,21 +202,21 @@ public class CasinoDiceController implements Initializable {
 
         if(kulonbozo == 6)
         {
-            return "6 különböző";
+            return "6 különböző kocka";
 
         }
         if (dobas[0] == dobas[5]) {
-            return "6 egyforma";
+            return "6 egyforma kocka";
         }
         if (dobas[0] == dobas[4] || dobas[1] == dobas[5]) {
-            return "5 egyforma";
+            return "5 egyforma kocka";
         }
         if (dobas[0] == dobas[3] || dobas[1] == dobas[4] || dobas[2] == dobas[5]) {
-            return "4 egyforma";
+            return "4 egyforma kocka";
         }
         if(tripla_darab > 0 && par_darab > 0)
         {
-            return par_darab + " par " + tripla_darab + " tripla";
+            return par_darab + " pár " + tripla_darab + " tripla";
         }
         if(tripla_darab > 0)
         {
@@ -193,11 +224,11 @@ public class CasinoDiceController implements Initializable {
         }
         if(par_darab > 0)
         {
-            return par_darab + " par";
+            return par_darab + " pár";
         }
 
 
-        return "semmi";
+        return "Semmi";
     }
 
     public int szorzo(int dobas[]){
@@ -262,21 +293,17 @@ public class CasinoDiceController implements Initializable {
         if(tripla_darab > 0)
         {
             if(tripla_darab > 1)
-                return 3;
-
-            return 1;
-        }
-        if(par_darab > 0)
-        {
-            if(par_darab == 3)
-                return 3;
-
-            if(par_darab == 2)
                 return 2;
 
             return 1;
         }
+        if(par_darab > 1)
+        {
+            if(par_darab == 3)
+                return 2;
 
+            return 1;
+        }
 
         return 0;
     }
@@ -284,35 +311,207 @@ public class CasinoDiceController implements Initializable {
     @FXML
     void Start(ActionEvent event) {
 
-        int[] dobas = jatekosDobas();
+        if ((jatekospenz2 + jatekospenz) - bet > 0) {
+
+            int[] dobas = jatekosDobas();
+
+            Arrays.sort(dobas);
 
 
-        Arrays.sort(dobas);
-
-        kocka1Label.setText(""+dobas[0]);
-        kocka2Label.setText(""+dobas[1]);
-        kocka3Label.setText(""+dobas[2]);
-        kocka4Label.setText(""+dobas[3]);
-        kocka5Label.setText(""+dobas[4]);
-        kocka6Label.setText(""+dobas[5]);
+            if (jatekospenz + jatekospenz2 > 0) {
 
 
-        eredmenyLabel.setText(eredmeny(dobas));
+                if ((jatekospenz + jatekospenz2) >= bet) {
+                    if (jatekospenz - bet < 0) {
+                        int fennmarado = bet - jatekospenz;
+                        jatekospenz = 0;
+                        jatekospenz2 -= fennmarado;
+                        BankMoney.setText("" + jatekospenz);
+                        ChipMoney.setText("" + jatekospenz2);
+                    } else {
+                        jatekospenz -= bet;
+                        BankMoney.setText("" + jatekospenz);
+                    }
+                }
+            }
+            switch (szorzo(dobas)) {
+                case 1:
+                    eredmenyLabel.setText("Nyeremény: " + bet + "\n" + eredmeny(dobas));
+                    jatekospenz2 += bet;
+                    BankMoney.setText("" + jatekospenz);
+                    ChipMoney.setText("" + jatekospenz2);
+                    break;
+                case 2:
+                    eredmenyLabel.setText("Nyeremény: " + bet * 2 + "\n" + eredmeny(dobas));
+                    jatekospenz2 += bet * 2;
+                    BankMoney.setText("" + jatekospenz);
+                    ChipMoney.setText("" + jatekospenz2);
+                    break;
+                case 3:
+                    eredmenyLabel.setText("Nyeremény: " + bet * 3 + "\n" + eredmeny(dobas));
+                    jatekospenz2 += bet * 3;
+                    BankMoney.setText("" + jatekospenz);
+                    ChipMoney.setText("" + jatekospenz2);
+                    break;
+                case 4:
+                    eredmenyLabel.setText("Nyeremény: " + bet * 4 + "\n" + eredmeny(dobas));
+                    jatekospenz2 += bet * 4;
+                    BankMoney.setText("" + jatekospenz);
+                    ChipMoney.setText("" + jatekospenz2);
+                    break;
+                case 5:
+                    eredmenyLabel.setText("Nyeremény: " + bet * 5 + "\n" + eredmeny(dobas));
+                    jatekospenz2 += bet * 5;
+                    BankMoney.setText("" + jatekospenz);
+                    ChipMoney.setText("" + jatekospenz2);
+                    break;
+                case 6:
+                    eredmenyLabel.setText("Nyeremény: " + bet * 6 + "\n" + eredmeny(dobas));
+                    jatekospenz2 += bet * 6;
+                    BankMoney.setText("" + jatekospenz);
+                    ChipMoney.setText("" + jatekospenz2);
+                    break;
+                default:
+                    eredmenyLabel.setText("Nem nyertél!\n" + eredmeny(dobas));
 
+
+            }
+
+            switch (dobas[0]) {
+                case 1:
+                    kocka1.setImage(new Image("/images/Dice/egy.png"));
+                    break;
+                case 2:
+                    kocka1.setImage(new Image("/images/Dice/ketto.png"));
+                    break;
+                case 3:
+                    kocka1.setImage(new Image("/images/Dice/harom.png"));
+                    break;
+                case 4:
+                    kocka1.setImage(new Image("/images/Dice/negy.png"));
+                    break;
+                case 5:
+                    kocka1.setImage(new Image("/images/Dice/ot.png"));
+                    break;
+                case 6:
+                    kocka1.setImage(new Image("/images/Dice/hat.png"));
+                    break;
+            }
+            switch (dobas[1]) {
+                case 1:
+                    kocka2.setImage(new Image("/images/Dice/egy.png"));
+                    break;
+                case 2:
+                    kocka2.setImage(new Image("/images/Dice/ketto.png"));
+                    break;
+                case 3:
+                    kocka2.setImage(new Image("/images/Dice/harom.png"));
+                    break;
+                case 4:
+                    kocka2.setImage(new Image("/images/Dice/negy.png"));
+                    break;
+                case 5:
+                    kocka2.setImage(new Image("/images/Dice/ot.png"));
+                    break;
+                case 6:
+                    kocka2.setImage(new Image("/images/Dice/hat.png"));
+                    break;
+            }
+            switch (dobas[2]) {
+                case 1:
+                    kocka3.setImage(new Image("/images/Dice/egy.png"));
+                    break;
+                case 2:
+                    kocka3.setImage(new Image("/images/Dice/ketto.png"));
+                    break;
+                case 3:
+                    kocka3.setImage(new Image("/images/Dice/harom.png"));
+                    break;
+                case 4:
+                    kocka3.setImage(new Image("/images/Dice/negy.png"));
+                    break;
+                case 5:
+                    kocka3.setImage(new Image("/images/Dice/ot.png"));
+                    break;
+                case 6:
+                    kocka3.setImage(new Image("/images/Dice/hat.png"));
+                    break;
+            }
+            switch (dobas[3]) {
+                case 1:
+                    kocka4.setImage(new Image("/images/Dice/egy.png"));
+                    break;
+                case 2:
+                    kocka4.setImage(new Image("/images/Dice/ketto.png"));
+                    break;
+                case 3:
+                    kocka4.setImage(new Image("/images/Dice/harom.png"));
+                    break;
+                case 4:
+                    kocka4.setImage(new Image("/images/Dice/negy.png"));
+                    break;
+                case 5:
+                    kocka4.setImage(new Image("/images/Dice/ot.png"));
+                    break;
+                case 6:
+                    kocka4.setImage(new Image("/images/Dice/hat.png"));
+                    break;
+            }
+            switch (dobas[4]) {
+                case 1:
+                    kocka5.setImage(new Image("/images/Dice/egy.png"));
+                    break;
+                case 2:
+                    kocka5.setImage(new Image("/images/Dice/ketto.png"));
+                    break;
+                case 3:
+                    kocka5.setImage(new Image("/images/Dice/harom.png"));
+                    break;
+                case 4:
+                    kocka5.setImage(new Image("/images/Dice/negy.png"));
+                    break;
+                case 5:
+                    kocka5.setImage(new Image("/images/Dice/ot.png"));
+                    break;
+                case 6:
+                    kocka5.setImage(new Image("/images/Dice/hat.png"));
+                    break;
+            }
+            switch (dobas[5]) {
+                case 1:
+                    kocka6.setImage(new Image("/images/Dice/egy.png"));
+                    break;
+                case 2:
+                    kocka6.setImage(new Image("/images/Dice/ketto.png"));
+                    break;
+                case 3:
+                    kocka6.setImage(new Image("/images/Dice/harom.png"));
+                    break;
+                case 4:
+                    kocka6.setImage(new Image("/images/Dice/negy.png"));
+                    break;
+                case 5:
+                    kocka6.setImage(new Image("/images/Dice/ot.png"));
+                    break;
+                case 6:
+                    kocka6.setImage(new Image("/images/Dice/hat.png"));
+                    break;
+            }
+
+            global.saveData(id, jatekospenz, jatekospenz2, nem, hajszem, Kellekek);
+
+
+        }
     }
-
     /////////////////
     ////////////////
 
-    @FXML
-    private Label BankMoney,ChipMoney,getID;
+
 
     @FXML
     private Button ProfilKep;
     
     String id = "";
-    int jatekospenz = 0;
-    int jatekospenz2 = 0;
     String nem = "", hajszem = "";
     String[] Kellekek = new String[4];
     
