@@ -128,9 +128,6 @@
 
     -fx-background-color: transparent;
     -fx-background-position: center;
-
-
-
 }
 
 .resultLabel{
@@ -154,6 +151,31 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
 }
+
+.diceBody{
+    -fx-background-image: url("/images/Dice/bg.png");
+
+}
+
+.dicePlus{
+    -fx-background-image: url("/images/Dice/plus.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+}
+
+.diceMinus{
+    -fx-background-image: url("/images/Dice/minus.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+
+}
+
+.diceJatek{
+    -fx-background-image: url("/images/Dice/circle.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+}
+
 
 /*Márk*/
 .BodyBG {
