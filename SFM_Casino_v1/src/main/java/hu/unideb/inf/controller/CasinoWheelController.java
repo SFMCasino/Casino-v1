@@ -256,8 +256,6 @@ public class CasinoWheelController implements Initializable {
         }
 
     }
-    int jatekospenz = 0;
-    int jatekospenz2 = 0;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -273,8 +271,8 @@ public class CasinoWheelController implements Initializable {
                 getID.setText(id);
                 BankMoney.setText(""+a.getJatekospenz());
                 ChipMoney.setText(""+a.getJatekospenz2());
-                jatekospenz = a.getJatekospenz();
-                jatekospenz2 = a.getJatekospenz2();
+                elso = a.getJatekospenz();
+                masodik = a.getJatekospenz2();
                 nem = a.getJatekos_neme();
                 hajszem = a.getJatekos_hajszem();
                 Kellekek[0] = ""+a.getKellekek0();
