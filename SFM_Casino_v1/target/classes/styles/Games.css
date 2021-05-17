@@ -81,30 +81,41 @@
 
 /*Szabi*/
 
+.coinBody{
+    -fx-background-image: url("/images/Coin/chest.png");
+    -fx-background-position: center;
+
+}
 .moreButton{
-    -fx-background-color: palegreen;
+    -fx-background-image: url("/images/Coin/plus.png");
+      -fx-background-color: transparent;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
+
 }
 
 .lessButton{
-      -fx-background-color: palegreen;
+    -fx-background-image: url("/images/Coin/minus.png");
+      -fx-background-color: transparent;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
 }
 
 .headButton{
-      -fx-background-color: black;
-    -fx-background-image: url("/images/Coin/head.png");
-    -fx-background-repeat: no-repeat;
+      -fx-background-color: transparent;
+    -fx-background-image: url("/images/Coin/head10.png");
     -fx-background-position: center;
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
+
 }
 
 .tailButton{
-      -fx-background-color: black;
-    -fx-background-image: url("/images/Coin/tail.png");
+      -fx-background-color: none;
+    -fx-background-image: url("/images/Coin/tail10.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
+
 }
 
 .moneyLabel{
@@ -114,10 +125,11 @@
 }
 
 .betLabel{
-    
-    -fx-background-color: whitesmoke;
-    -fx-background-repeat: no-repeat;
+
+    -fx-background-color: transparent;
     -fx-background-position: center;
+
+
 
 }
 
@@ -128,17 +140,12 @@
      text-align: center;
 }
 
-.coinBody{
-    -fx-background-color: cyan;
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: center;
-   
-}
+
 
 .jatekosLabel{
-      -fx-background-color: black;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
+   -fx-background-image: url("/Interface/INFbg.png");
 }
 
 .gepLabel{

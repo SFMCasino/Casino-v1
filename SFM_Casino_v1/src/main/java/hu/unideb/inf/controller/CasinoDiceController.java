@@ -96,8 +96,11 @@ public class CasinoDiceController implements Initializable {
         global.LoadScene(event, getID.getText(), "SlotII");
     }
     
+    //////////////////
+    /////////////////
+
     Random rand = new Random();
-    
+
     @FXML
     private Label kocka1Label;
     @FXML
@@ -105,161 +108,202 @@ public class CasinoDiceController implements Initializable {
     @FXML
     private Label kocka3Label;
     @FXML
-    private Label gep1Label;
+    private Label kocka4Label;
     @FXML
-    private Label gep2Label;
+    private Label kocka5Label;
     @FXML
-    private Label gep3Label;
+    private Label kocka6Label;
     @FXML
     private Label eredmenyLabel;
 
     public  int[] jatekosDobas(){
-        
-           int kocka1 = rand.nextInt(6)+1; 
-           int kocka2 = rand.nextInt(6)+1; 
-           int kocka3 = rand.nextInt(6)+1; 
-           
-           while(true)
-           {
-               if (kocka1 == kocka2 || kocka1 == kocka3 || kocka2 == kocka3 ) {
-                   break;
-               }
-               if (kocka1+kocka2+kocka3 == 6) {
-                   break;
-               }
-               if (kocka1+kocka2+kocka3 == 15) {
-                   break;
-               }
-               
-               kocka1 = rand.nextInt(6)+1; 
-               kocka2 = rand.nextInt(6)+1; 
-               kocka3 = rand.nextInt(6)+1;
-           }
-           
-           int[] dobas = new int[3];
-           
-           dobas[0] = kocka1;
-           dobas[1] = kocka2;
-           dobas[2] = kocka3;
-           
-           return dobas;
+
+        int[] dobas = new int[6];
+
+
+        for (int i = 0; i < 6; i++) {
+            dobas[i] = rand.nextInt(6)+1;
+        }
+
+        return dobas;
     }
-    public  int[] gepDobas(){
-        
-           int kocka1 = rand.nextInt(6)+1; 
-           int kocka2 = rand.nextInt(6)+1; 
-           int kocka3 = rand.nextInt(6)+1; 
-           
-           while(true)
-           {
-               if (kocka1 == kocka2 || kocka1 == kocka3 || kocka2 == kocka3 ) {
-                   break;
-               }
-               if (kocka1+kocka2+kocka3 == 6) {
-                   break;
-               }
-               if (kocka1+kocka2+kocka3 == 15) {
-                   break;
-               }
-               
-               kocka1 = rand.nextInt(6)+1; 
-               kocka2 = rand.nextInt(6)+1; 
-               kocka3 = rand.nextInt(6)+1;
-           }
-           
-           int[] dobas = new int[3];
-           
-           dobas[0] = kocka1;
-           dobas[1] = kocka2;
-           dobas[2] = kocka3;
-           
-           return dobas;
+
+    public String eredmeny(int dobas[]){
+
+        int kulonbozo = 1;
+        int egyezo = 1;
+        int par_darab = 0;
+        int tripla_darab = 0;
+
+
+        for (int i = 1; i < 6; i++) {
+            if((dobas[i]-1) == (dobas[i-1]))
+            {
+                kulonbozo++;
+            }
+            if((dobas[i] == dobas[i-1]))
+            {
+                egyezo++;
+            }
+            else if( egyezo == 2 )
+            {
+                par_darab++;
+                egyezo = 1;
+            }
+            else if(egyezo == 3)
+            {
+                tripla_darab++;
+                egyezo = 1;
+            }
+
+            if(i==5)    //  az utolsót is nézze, else miatt nem nézi
+            {
+                if( egyezo == 2 )
+                {
+                    par_darab++;
+                }
+                if(egyezo == 3)
+                {
+                    tripla_darab++;
+                }
+            }
+        }
+
+        if(kulonbozo == 6)
+        {
+            return "6 különböző";
+
+        }
+        if (dobas[0] == dobas[5]) {
+            return "6 egyforma";
+        }
+        if (dobas[0] == dobas[4] || dobas[1] == dobas[5]) {
+            return "5 egyforma";
+        }
+        if (dobas[0] == dobas[3] || dobas[1] == dobas[4] || dobas[2] == dobas[5]) {
+            return "4 egyforma";
+        }
+        if(tripla_darab > 0 && par_darab > 0)
+        {
+            return par_darab + " par " + tripla_darab + " tripla";
+        }
+        if(tripla_darab > 0)
+        {
+            return tripla_darab + " tripla";
+        }
+        if(par_darab > 0)
+        {
+            return par_darab + " par";
+        }
+
+
+        return "semmi";
     }
-    
-    public String eredmeny(int[] jatekos, int[] gep){
-        
-       
-        if (gep[0] == 1 && gep[1] == 2 && gep[2] == 3) {
-            return "Nyertél!";  
+
+    public int szorzo(int dobas[]){
+
+        int kulonbozo = 1;
+        int egyezo = 1;
+        int par_darab = 0;
+        int tripla_darab = 0;
+
+
+        for (int i = 1; i < 6; i++) {
+            if((dobas[i]-1) == (dobas[i-1]))
+            {
+                kulonbozo++;
+            }
+            if((dobas[i] == dobas[i-1]))
+            {
+                egyezo++;
+            }
+            else if( egyezo == 2 )
+            {
+                par_darab++;
+                egyezo = 1;
+            }
+            else if(egyezo == 3)
+            {
+                tripla_darab++;
+                egyezo = 1;
+            }
+
+            if(i==5)    //  az utolsót is nézze, else miatt nem nézi
+            {
+                if( egyezo == 2 )
+                {
+                    par_darab++;
+                }
+                if(egyezo == 3)
+                {
+                    tripla_darab++;
+                }
+            }
         }
-        
-        if (gep[0] == 4 && gep[1] == 5 && gep[2] == 6) {
-            return "Vesztettél!";
+
+        if(kulonbozo == 6)
+        {
+            return 6;
+
         }
-        
-        if (gep[0]==gep[1] && gep[0] == gep[2]) {
-            return "Vesztettél!";
+        if (dobas[0] == dobas[5]) {
+            return 6;
         }
-        
-        if (gep[1] != gep[2] && gep[2] == 6) {
-            return "Vesztettél!";
+        if (dobas[0] == dobas[4] || dobas[1] == dobas[5]) {
+            return 5;
         }
-        
-        if (gep[0] != gep[1] && gep[0] == 1) {
-            return "Nyertél!";
+        if (dobas[0] == dobas[3] || dobas[1] == dobas[4] || dobas[2] == dobas[5]) {
+            return 4;
         }
-        
-        int gep_pont;   //  nincs automata eredmény
-        
-        if (gep[0] == gep[1]) {
-            gep_pont = gep[2];
+        if(tripla_darab > 0 && par_darab > 0)
+        {
+            return 3;
         }
-        else
-            gep_pont = gep[0];
-        
-        if (jatekos[0] == 1 && jatekos[1] == 2 && jatekos[2] == 3) {
-            return "Vesztettél!";
+        if(tripla_darab > 0)
+        {
+            if(tripla_darab > 1)
+                return 3;
+
+            return 1;
         }
-        
-        if (jatekos[0] == 4 && jatekos[1] == 5 && jatekos[2] == 6) {
-            return "Nyertél!";
+        if(par_darab > 0)
+        {
+            if(par_darab == 3)
+                return 3;
+
+            if(par_darab == 2)
+                return 2;
+
+            return 1;
         }
-        
-        if (jatekos[0] == jatekos[1] && jatekos[0] == jatekos[2]) {
-            return "Nyertél!";
-        }
-        
-        int jatekos_pont;
-        
-        if(jatekos[0] == jatekos[1]){
-            jatekos_pont = jatekos[2];
-        }
-        else
-            jatekos_pont = jatekos[0];
-        
-        
-        if (jatekos_pont > gep_pont) {
-            return "Nyertél!";
-        }
-        else if(gep_pont > jatekos_pont){
-            return "Vesztettél!";
-        }
-        
-        
-        return "Döntetlen!";
+
+
+        return 0;
     }
-    
+
     @FXML
     void Start(ActionEvent event) {
-           int[] jatekos = jatekosDobas();
-           int[] gep = gepDobas(); 
-        
-           Arrays.sort(jatekos);
-           Arrays.sort(gep);
 
-           kocka1Label.setText(""+jatekos[0]);
-           kocka2Label.setText(""+jatekos[1]);
-           kocka3Label.setText(""+jatekos[2]);
-           
-           gep1Label.setText(""+gep[0]);
-           gep2Label.setText(""+gep[1]);
-           gep3Label.setText(""+gep[2]);
-           
-           
-           eredmenyLabel.setText(eredmeny(jatekos,gep));
-           
+        int[] dobas = jatekosDobas();
+
+
+        Arrays.sort(dobas);
+
+        kocka1Label.setText(""+dobas[0]);
+        kocka2Label.setText(""+dobas[1]);
+        kocka3Label.setText(""+dobas[2]);
+        kocka4Label.setText(""+dobas[3]);
+        kocka5Label.setText(""+dobas[4]);
+        kocka6Label.setText(""+dobas[5]);
+
+
+        eredmenyLabel.setText(eredmeny(dobas));
+
     }
-    
+
+    /////////////////
+    ////////////////
+
     @FXML
     private Label BankMoney,ChipMoney,getID;
 
