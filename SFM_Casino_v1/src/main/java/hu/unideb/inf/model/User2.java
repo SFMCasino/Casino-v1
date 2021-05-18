@@ -1,6 +1,7 @@
 package hu.unideb.inf.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User2 {
@@ -81,28 +82,6 @@ public class User2 {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    private int nyereseg;
-
-    @Basic
-    public int getNyereseg() {
-        return nyereseg;
-    }
-
-    public void setNyereseg(int nyereseg) {
-        this.nyereseg = nyereseg;
-    }
-
-    private int veszteseg;
-
-    @Basic
-    public int getVeszteseg() {
-        return veszteseg;
-    }
-
-    public void setVeszteseg(int veszteseg) {
-        this.veszteseg = veszteseg;
     }
 
     private String CreditCardNumber;
@@ -246,5 +225,38 @@ public class User2 {
 
     public void setKellekek3(int kellekek3) {
         this.kellekek3 = kellekek3;
+    }
+
+    private List<Integer> nyereseg;
+
+    @ElementCollection
+    public List<Integer> getNyereseg() {
+        return nyereseg;
+    }
+
+    public void setNyereseg(List<Integer> nyereseg) {
+        this.nyereseg = nyereseg;
+    }
+
+    private List<Integer> veszteseg;
+
+    @ElementCollection
+    public List<Integer> getVeszteseg() {
+        return veszteseg;
+    }
+
+    public void setVeszteseg(List<Integer> veszteseg) {
+        this.veszteseg = veszteseg;
+    }
+
+    private int login_db;
+
+    @Basic
+    public int getLogin_db() {
+        return login_db;
+    }
+
+    public void setLogin_db(int login_db) {
+        this.login_db = login_db;
     }
 }

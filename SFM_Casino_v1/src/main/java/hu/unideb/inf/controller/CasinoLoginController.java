@@ -74,20 +74,29 @@ public class CasinoLoginController implements Initializable {
                 Profile.add(new FelhasznaloProfile(SzovegTok[0],SzovegTok[1],SzovegTok[2]));
                 szoveg = bufferedReader.readLine();
             }*/
+
+            Globalis global = new Globalis();
             JpaCasinoDAO userDAO = new JpaCasinoDAO();
             List<User2> Profile = userDAO.getUser();
             String getFelhasznalo = Felhasznalo.getText();
             String getJelszo = Jelszo.getText();
             FelhasznaloProfile checkProfile = new FelhasznaloProfile(getFelhasznalo,getJelszo);
             String validID = "";
+//            ArrayList<Integer> proba = new ArrayList<>();
+//            proba.add(500);
+//            proba.add(1000);
+
             for(var a : Profile){
                 if(checkProfile.Felhasználó.equals(a.getUsername()) && checkProfile.Jelszó.equals(a.getPassword())){
                     valid = true;
                     validID = a.getSetID();
+                    a.setLogin_db(a.getLogin_db()+1);
+//                    a.setNyereseg(a.getNyereseg());
+                    userDAO.saveUser(a);
+//                    System.out.println(global.getOssznyeremeny(a.getNyereseg())); példa egy felhasználó össznyereményének a lekéréséhez
                 }
             }
-            
-            Globalis global = new Globalis();
+
             if(valid){
                 global.LoadScene(event, validID, "Fomenu");
                 /*FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CasinoFomenu.fxml"));

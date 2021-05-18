@@ -219,6 +219,7 @@ public class Globalis {
         List<User2> Profile = userDAO.getUser();
         for (var felhasznalo : Profile ) {
             if (felhasznalo.getSetID().equals(id)){
+                getOssznyeremeny(felhasznalo.getNyereseg());
                 felhasznalo.setJatekospenz(jatekospenz);
                 felhasznalo.setJatekospenz2(jatekospenz2);
                 felhasznalo.setNem(nem);
@@ -233,7 +234,15 @@ public class Globalis {
         }
 
     }
-    
+
+    public int getOssznyeremeny(List<Integer> nyereseg) {
+        int sum = 0;
+        for (var elem : nyereseg) {
+            sum += elem;
+        }
+        return sum;
+    }
+
     String ProfilKepCsere(String nemid, String id){
         String kep = "";
         if(nemid.equals("0")){
