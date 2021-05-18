@@ -23,6 +23,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -94,106 +96,152 @@ public class CasinoCoinController implements Initializable {
     void MenuSlotIIButton(ActionEvent event) throws IOException {
         global.LoadScene(event, getID.getText(), "SlotII");
     }
-    
-     int money = 5000;
-    int bet = 0;
-    int coin;   //  0-tail  1-head
-    Random rand = new Random();
-    
-    @FXML
-    private Label MoneyLabel;   
-    @FXML
-    private Label BetLabel;
-    @FXML
-    private Label ResultLabel;
-    
-  
+    ///////////////////////
+    ///////////////////////
 
-    @FXML
-    void MoreButtonPushed() {
-        if (bet >= money) {
-            
+    int dobottErtek(){
+        int randint = rand.nextInt(2);
+
+        if (randint == 0) {
+            ResultImage.setImage(new Image("/images/Coin/tail10.png"));
         }
-        else
-            bet += 1000;
-        
-        BetLabel.setText("Bet: " + bet);
-        ResultLabel.setText("");
-
-    }
-    
-    @FXML
-    void LessButtonPushed() {
-        if (bet == 0) {
-            
+        else{
+            ResultImage.setImage(new Image("/images/Coin/head10.png"));
         }
-        else
-         bet -= 1000;
-        
-        BetLabel.setText("Bet: " + bet);
-        ResultLabel.setText("");
 
-    }
-    
-    //  0-tail  1-head
-    @FXML
-    void HeadButtonPushed() {
-        if (bet > 0) {
-            
-            int randint = rand.nextInt(2);
-
-            if(randint==1)
-            {
-                ResultLabel.setText("Win!");
-
-                money += bet;
-            }
-            else
-            {
-                ResultLabel.setText("Loss!");        
-
-                money -= bet;
-            }
-            bet = 0;
-            MoneyLabel.setText("Money: " + money /*+ "\n Rand: " + randint*/);
-            BetLabel.setText("Bet: " + bet);
-        }
-    }
-    @FXML
-    void TailButtonPushed() {
-        if (bet > 0) {
-            
-
-            int randint = rand.nextInt(2);
-
-            if(randint==0)
-            {
-                ResultLabel.setText("Win!");
-
-                money += bet;
-            }
-            else
-            {
-                ResultLabel.setText("Loss!");
-
-                money -= bet;
-            }
-            bet = 0;
-            MoneyLabel.setText("Money: " + money /*+ "\n Rand: " + randint*/);
-            BetLabel.setText("Bet: " + bet);
-        }
+        return randint;
     }
 
-    
     @FXML
     private Label BankMoney,ChipMoney,getID;
 
-    @FXML
-    private Button ProfilKep;
-    
-    String id = "";
+    int bet = 1000;
     int jatekospenz = 0;
     int jatekospenz2 = 0;
+    Random rand = new Random();
+
+    @FXML
+    private Label BetLabel;
+
+    @FXML
+    private Label ResultLabel;
+    @FXML
+    private ImageView ResultImage;
+
+
+
+    @FXML
+    void MoreButtonPushed() {
+
+        if(bet < 10000) {
+            bet += 1000;
+        }
+        BetLabel.setText("" + bet);
+        ResultLabel.setText("");
+
+    }
+
+    @FXML
+    void LessButtonPushed() {
+        if(bet > 1000) {
+            bet -= 1000;
+        }
+        BetLabel.setText("" + bet);
+        ResultLabel.setText("");
+
+    }
+
+
+    //  0-tail  1-head
+    @FXML
+    void HeadButtonPushed() {
+
+        if ((jatekospenz2 + jatekospenz) - bet > 0) {
+
+            int eredmeny = dobottErtek();
+
+            if ((jatekospenz + jatekospenz2) >= bet) {
+                if (jatekospenz - bet < 0) {
+                    int fennmarado = bet - jatekospenz;
+                    jatekospenz = 0;
+                    jatekospenz2 -= fennmarado;
+                    BankMoney.setText("" + jatekospenz);
+                    ChipMoney.setText("" + jatekospenz2);
+                } else {
+                    jatekospenz -= bet;
+                    BankMoney.setText("" + jatekospenz);
+                }
+            }
+
+
+            if (eredmeny == 1) {
+                ResultLabel.setText("Nyertél!");
+
+                jatekospenz2 += bet * 2;
+
+                BankMoney.setText("" + jatekospenz);
+                ChipMoney.setText("" + jatekospenz2);
+            } else {
+                ResultLabel.setText("Vesztettél!");
+
+
+            }
+
+            global.saveData(id, jatekospenz, jatekospenz2, nem, hajszem, Kellekek);
+        }
+    }
+
+
+
+    @FXML
+    void TailButtonPushed() {
+
+        if ((jatekospenz2 + jatekospenz) - bet > 0) {
+
+            int eredmeny = dobottErtek();
+
+            if ((jatekospenz + jatekospenz2) >= bet) {
+                if (jatekospenz - bet < 0) {
+                    int fennmarado = bet - jatekospenz;
+                    jatekospenz = 0;
+                    jatekospenz2 -= fennmarado;
+                    BankMoney.setText("" + jatekospenz);
+                    ChipMoney.setText("" + jatekospenz2);
+                } else {
+                    jatekospenz -= bet;
+                    BankMoney.setText("" + jatekospenz);
+                }
+            }
+
+
+            if (eredmeny == 0) {
+                ResultLabel.setText("Nyertél!");
+
+                jatekospenz2 += bet * 2;
+
+                BankMoney.setText("" + jatekospenz);
+                ChipMoney.setText("" + jatekospenz2);
+            } else {
+                ResultLabel.setText("Vesztettél!");
+
+            }
+
+            global.saveData(id, jatekospenz, jatekospenz2, nem, hajszem, Kellekek);
+        }
+    }
+
+
+    //////////////////////
+    /////////////////////
+
+    
+
+
+    @FXML
+    private Button ProfilKep;
+
+    String id = "";
+
     String nem = "", hajszem = "";
     String[] Kellekek = new String[4];
     

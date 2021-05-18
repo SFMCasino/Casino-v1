@@ -24,6 +24,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -96,179 +98,420 @@ public class CasinoDiceController implements Initializable {
         global.LoadScene(event, getID.getText(), "SlotII");
     }
     
+    //////////////////
+    /////////////////
+    @FXML
+    private Label BankMoney,ChipMoney,getID;
+    int bet = 1000;
+    int jatekospenz = 0;
+    int jatekospenz2 = 0;
+
     Random rand = new Random();
-    
+
     @FXML
-    private Label kocka1Label;
+    private Label BetLabel;
     @FXML
-    private Label kocka2Label;
+    private ImageView kocka1;
+
     @FXML
-    private Label kocka3Label;
+    private ImageView kocka2;
+
     @FXML
-    private Label gep1Label;
+    private ImageView kocka3;
+
     @FXML
-    private Label gep2Label;
+    private ImageView kocka4;
+
     @FXML
-    private Label gep3Label;
+    private ImageView kocka5;
+
+    @FXML
+    private ImageView kocka6;
     @FXML
     private Label eredmenyLabel;
 
+    @FXML
+    void MoreButtonPushed() {
+
+        if(bet < 10000) {
+            bet += 1000;
+        }
+        BetLabel.setText("" + bet);
+    }
+
+    @FXML
+    void LessButtonPushed() {
+        if(bet > 1000) {
+            bet -= 1000;
+        }
+        BetLabel.setText("" + bet);
+    }
+
     public  int[] jatekosDobas(){
-        
-           int kocka1 = rand.nextInt(6)+1; 
-           int kocka2 = rand.nextInt(6)+1; 
-           int kocka3 = rand.nextInt(6)+1; 
-           
-           while(true)
-           {
-               if (kocka1 == kocka2 || kocka1 == kocka3 || kocka2 == kocka3 ) {
-                   break;
-               }
-               if (kocka1+kocka2+kocka3 == 6) {
-                   break;
-               }
-               if (kocka1+kocka2+kocka3 == 15) {
-                   break;
-               }
-               
-               kocka1 = rand.nextInt(6)+1; 
-               kocka2 = rand.nextInt(6)+1; 
-               kocka3 = rand.nextInt(6)+1;
-           }
-           
-           int[] dobas = new int[3];
-           
-           dobas[0] = kocka1;
-           dobas[1] = kocka2;
-           dobas[2] = kocka3;
-           
-           return dobas;
+
+        int[] dobas = new int[6];
+
+
+        for (int i = 0; i < 6; i++) {
+            dobas[i] = rand.nextInt(6)+1;
+        }
+
+        return dobas;
     }
-    public  int[] gepDobas(){
-        
-           int kocka1 = rand.nextInt(6)+1; 
-           int kocka2 = rand.nextInt(6)+1; 
-           int kocka3 = rand.nextInt(6)+1; 
-           
-           while(true)
-           {
-               if (kocka1 == kocka2 || kocka1 == kocka3 || kocka2 == kocka3 ) {
-                   break;
-               }
-               if (kocka1+kocka2+kocka3 == 6) {
-                   break;
-               }
-               if (kocka1+kocka2+kocka3 == 15) {
-                   break;
-               }
-               
-               kocka1 = rand.nextInt(6)+1; 
-               kocka2 = rand.nextInt(6)+1; 
-               kocka3 = rand.nextInt(6)+1;
-           }
-           
-           int[] dobas = new int[3];
-           
-           dobas[0] = kocka1;
-           dobas[1] = kocka2;
-           dobas[2] = kocka3;
-           
-           return dobas;
+
+    public String eredmeny(int dobas[]){
+
+        int kulonbozo = 1;
+        int egyezo = 1;
+        int par_darab = 0;
+        int tripla_darab = 0;
+
+
+        for (int i = 1; i < 6; i++) {
+            if((dobas[i]-1) == (dobas[i-1]))
+            {
+                kulonbozo++;
+            }
+            if((dobas[i] == dobas[i-1]))
+            {
+                egyezo++;
+            }
+            else if( egyezo == 2 )
+            {
+                par_darab++;
+                egyezo = 1;
+            }
+            else if(egyezo == 3)
+            {
+                tripla_darab++;
+                egyezo = 1;
+            }
+
+            if(i==5)    //  az utolsót is nézze, else miatt nem nézi
+            {
+                if( egyezo == 2 )
+                {
+                    par_darab++;
+                }
+                if(egyezo == 3)
+                {
+                    tripla_darab++;
+                }
+            }
+        }
+
+        if(kulonbozo == 6)
+        {
+            return "6 különböző kocka";
+
+        }
+        if (dobas[0] == dobas[5]) {
+            return "6 egyforma kocka";
+        }
+        if (dobas[0] == dobas[4] || dobas[1] == dobas[5]) {
+            return "5 egyforma kocka";
+        }
+        if (dobas[0] == dobas[3] || dobas[1] == dobas[4] || dobas[2] == dobas[5]) {
+            return "4 egyforma kocka";
+        }
+        if(tripla_darab > 0 && par_darab > 0)
+        {
+            return par_darab + " pár " + tripla_darab + " tripla";
+        }
+        if(tripla_darab > 0)
+        {
+            return tripla_darab + " tripla";
+        }
+        if(par_darab > 0)
+        {
+            return par_darab + " pár";
+        }
+
+
+        return "Semmi";
     }
-    
-    public String eredmeny(int[] jatekos, int[] gep){
-        
-       
-        if (gep[0] == 1 && gep[1] == 2 && gep[2] == 3) {
-            return "Nyertél!";  
+
+    public int szorzo(int dobas[]){
+
+        int kulonbozo = 1;
+        int egyezo = 1;
+        int par_darab = 0;
+        int tripla_darab = 0;
+
+
+        for (int i = 1; i < 6; i++) {
+            if((dobas[i]-1) == (dobas[i-1]))
+            {
+                kulonbozo++;
+            }
+            if((dobas[i] == dobas[i-1]))
+            {
+                egyezo++;
+            }
+            else if( egyezo == 2 )
+            {
+                par_darab++;
+                egyezo = 1;
+            }
+            else if(egyezo == 3)
+            {
+                tripla_darab++;
+                egyezo = 1;
+            }
+
+            if(i==5)    //  az utolsót is nézze, else miatt nem nézi
+            {
+                if( egyezo == 2 )
+                {
+                    par_darab++;
+                }
+                if(egyezo == 3)
+                {
+                    tripla_darab++;
+                }
+            }
         }
-        
-        if (gep[0] == 4 && gep[1] == 5 && gep[2] == 6) {
-            return "Vesztettél!";
+
+        if(kulonbozo == 6)
+        {
+            return 6;
+
         }
-        
-        if (gep[0]==gep[1] && gep[0] == gep[2]) {
-            return "Vesztettél!";
+        if (dobas[0] == dobas[5]) {
+            return 6;
         }
-        
-        if (gep[1] != gep[2] && gep[2] == 6) {
-            return "Vesztettél!";
+        if (dobas[0] == dobas[4] || dobas[1] == dobas[5]) {
+            return 5;
         }
-        
-        if (gep[0] != gep[1] && gep[0] == 1) {
-            return "Nyertél!";
+        if (dobas[0] == dobas[3] || dobas[1] == dobas[4] || dobas[2] == dobas[5]) {
+            return 4;
         }
-        
-        int gep_pont;   //  nincs automata eredmény
-        
-        if (gep[0] == gep[1]) {
-            gep_pont = gep[2];
+        if(tripla_darab > 0 && par_darab > 0)
+        {
+            return 3;
         }
-        else
-            gep_pont = gep[0];
-        
-        if (jatekos[0] == 1 && jatekos[1] == 2 && jatekos[2] == 3) {
-            return "Vesztettél!";
+        if(tripla_darab > 0)
+        {
+            if(tripla_darab > 1)
+                return 2;
+
+            return 1;
         }
-        
-        if (jatekos[0] == 4 && jatekos[1] == 5 && jatekos[2] == 6) {
-            return "Nyertél!";
+        if(par_darab > 1)
+        {
+            if(par_darab == 3)
+                return 2;
+
+            return 1;
         }
-        
-        if (jatekos[0] == jatekos[1] && jatekos[0] == jatekos[2]) {
-            return "Nyertél!";
-        }
-        
-        int jatekos_pont;
-        
-        if(jatekos[0] == jatekos[1]){
-            jatekos_pont = jatekos[2];
-        }
-        else
-            jatekos_pont = jatekos[0];
-        
-        
-        if (jatekos_pont > gep_pont) {
-            return "Nyertél!";
-        }
-        else if(gep_pont > jatekos_pont){
-            return "Vesztettél!";
-        }
-        
-        
-        return "Döntetlen!";
+
+        return 0;
     }
-    
+
     @FXML
     void Start(ActionEvent event) {
-           int[] jatekos = jatekosDobas();
-           int[] gep = gepDobas(); 
-        
-           Arrays.sort(jatekos);
-           Arrays.sort(gep);
 
-           kocka1Label.setText(""+jatekos[0]);
-           kocka2Label.setText(""+jatekos[1]);
-           kocka3Label.setText(""+jatekos[2]);
-           
-           gep1Label.setText(""+gep[0]);
-           gep2Label.setText(""+gep[1]);
-           gep3Label.setText(""+gep[2]);
-           
-           
-           eredmenyLabel.setText(eredmeny(jatekos,gep));
-           
+        if ((jatekospenz2 + jatekospenz) - bet > 0) {
+
+            int[] dobas = jatekosDobas();
+
+            Arrays.sort(dobas);
+
+
+            if (jatekospenz + jatekospenz2 > 0) {
+
+
+                if ((jatekospenz + jatekospenz2) >= bet) {
+                    if (jatekospenz - bet < 0) {
+                        int fennmarado = bet - jatekospenz;
+                        jatekospenz = 0;
+                        jatekospenz2 -= fennmarado;
+                        BankMoney.setText("" + jatekospenz);
+                        ChipMoney.setText("" + jatekospenz2);
+                    } else {
+                        jatekospenz -= bet;
+                        BankMoney.setText("" + jatekospenz);
+                    }
+                }
+            }
+            switch (szorzo(dobas)) {
+                case 1:
+                    eredmenyLabel.setText("Nyeremény: " + bet + "\n" + eredmeny(dobas));
+                    jatekospenz2 += bet;
+                    BankMoney.setText("" + jatekospenz);
+                    ChipMoney.setText("" + jatekospenz2);
+                    break;
+                case 2:
+                    eredmenyLabel.setText("Nyeremény: " + bet * 2 + "\n" + eredmeny(dobas));
+                    jatekospenz2 += bet * 2;
+                    BankMoney.setText("" + jatekospenz);
+                    ChipMoney.setText("" + jatekospenz2);
+                    break;
+                case 3:
+                    eredmenyLabel.setText("Nyeremény: " + bet * 3 + "\n" + eredmeny(dobas));
+                    jatekospenz2 += bet * 3;
+                    BankMoney.setText("" + jatekospenz);
+                    ChipMoney.setText("" + jatekospenz2);
+                    break;
+                case 4:
+                    eredmenyLabel.setText("Nyeremény: " + bet * 4 + "\n" + eredmeny(dobas));
+                    jatekospenz2 += bet * 4;
+                    BankMoney.setText("" + jatekospenz);
+                    ChipMoney.setText("" + jatekospenz2);
+                    break;
+                case 5:
+                    eredmenyLabel.setText("Nyeremény: " + bet * 5 + "\n" + eredmeny(dobas));
+                    jatekospenz2 += bet * 5;
+                    BankMoney.setText("" + jatekospenz);
+                    ChipMoney.setText("" + jatekospenz2);
+                    break;
+                case 6:
+                    eredmenyLabel.setText("Nyeremény: " + bet * 6 + "\n" + eredmeny(dobas));
+                    jatekospenz2 += bet * 6;
+                    BankMoney.setText("" + jatekospenz);
+                    ChipMoney.setText("" + jatekospenz2);
+                    break;
+                default:
+                    eredmenyLabel.setText("Nem nyertél!\n" + eredmeny(dobas));
+
+
+            }
+
+            switch (dobas[0]) {
+                case 1:
+                    kocka1.setImage(new Image("/images/Dice/egy.png"));
+                    break;
+                case 2:
+                    kocka1.setImage(new Image("/images/Dice/ketto.png"));
+                    break;
+                case 3:
+                    kocka1.setImage(new Image("/images/Dice/harom.png"));
+                    break;
+                case 4:
+                    kocka1.setImage(new Image("/images/Dice/negy.png"));
+                    break;
+                case 5:
+                    kocka1.setImage(new Image("/images/Dice/ot.png"));
+                    break;
+                case 6:
+                    kocka1.setImage(new Image("/images/Dice/hat.png"));
+                    break;
+            }
+            switch (dobas[1]) {
+                case 1:
+                    kocka2.setImage(new Image("/images/Dice/egy.png"));
+                    break;
+                case 2:
+                    kocka2.setImage(new Image("/images/Dice/ketto.png"));
+                    break;
+                case 3:
+                    kocka2.setImage(new Image("/images/Dice/harom.png"));
+                    break;
+                case 4:
+                    kocka2.setImage(new Image("/images/Dice/negy.png"));
+                    break;
+                case 5:
+                    kocka2.setImage(new Image("/images/Dice/ot.png"));
+                    break;
+                case 6:
+                    kocka2.setImage(new Image("/images/Dice/hat.png"));
+                    break;
+            }
+            switch (dobas[2]) {
+                case 1:
+                    kocka3.setImage(new Image("/images/Dice/egy.png"));
+                    break;
+                case 2:
+                    kocka3.setImage(new Image("/images/Dice/ketto.png"));
+                    break;
+                case 3:
+                    kocka3.setImage(new Image("/images/Dice/harom.png"));
+                    break;
+                case 4:
+                    kocka3.setImage(new Image("/images/Dice/negy.png"));
+                    break;
+                case 5:
+                    kocka3.setImage(new Image("/images/Dice/ot.png"));
+                    break;
+                case 6:
+                    kocka3.setImage(new Image("/images/Dice/hat.png"));
+                    break;
+            }
+            switch (dobas[3]) {
+                case 1:
+                    kocka4.setImage(new Image("/images/Dice/egy.png"));
+                    break;
+                case 2:
+                    kocka4.setImage(new Image("/images/Dice/ketto.png"));
+                    break;
+                case 3:
+                    kocka4.setImage(new Image("/images/Dice/harom.png"));
+                    break;
+                case 4:
+                    kocka4.setImage(new Image("/images/Dice/negy.png"));
+                    break;
+                case 5:
+                    kocka4.setImage(new Image("/images/Dice/ot.png"));
+                    break;
+                case 6:
+                    kocka4.setImage(new Image("/images/Dice/hat.png"));
+                    break;
+            }
+            switch (dobas[4]) {
+                case 1:
+                    kocka5.setImage(new Image("/images/Dice/egy.png"));
+                    break;
+                case 2:
+                    kocka5.setImage(new Image("/images/Dice/ketto.png"));
+                    break;
+                case 3:
+                    kocka5.setImage(new Image("/images/Dice/harom.png"));
+                    break;
+                case 4:
+                    kocka5.setImage(new Image("/images/Dice/negy.png"));
+                    break;
+                case 5:
+                    kocka5.setImage(new Image("/images/Dice/ot.png"));
+                    break;
+                case 6:
+                    kocka5.setImage(new Image("/images/Dice/hat.png"));
+                    break;
+            }
+            switch (dobas[5]) {
+                case 1:
+                    kocka6.setImage(new Image("/images/Dice/egy.png"));
+                    break;
+                case 2:
+                    kocka6.setImage(new Image("/images/Dice/ketto.png"));
+                    break;
+                case 3:
+                    kocka6.setImage(new Image("/images/Dice/harom.png"));
+                    break;
+                case 4:
+                    kocka6.setImage(new Image("/images/Dice/negy.png"));
+                    break;
+                case 5:
+                    kocka6.setImage(new Image("/images/Dice/ot.png"));
+                    break;
+                case 6:
+                    kocka6.setImage(new Image("/images/Dice/hat.png"));
+                    break;
+            }
+
+            global.saveData(id, jatekospenz, jatekospenz2, nem, hajszem, Kellekek);
+
+
+        }
     }
-    
-    @FXML
-    private Label BankMoney,ChipMoney,getID;
+    /////////////////
+    ////////////////
+
+
 
     @FXML
     private Button ProfilKep;
     
     String id = "";
-    int jatekospenz = 0;
-    int jatekospenz2 = 0;
     String nem = "", hajszem = "";
     String[] Kellekek = new String[4];
     
