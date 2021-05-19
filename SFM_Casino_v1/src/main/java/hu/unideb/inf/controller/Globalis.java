@@ -51,10 +51,6 @@ public class Globalis {
                 CasinoWheelController menu5 = loader.getController();
                 menu5.Adatatvitel(ID);
                 break;
-            case "Roulette":
-                CasinoRouletteController menu6 = loader.getController();
-                menu6.Adatatvitel(ID);
-                break;
             case "Feltoltes":
                 CasinoFeltoltesController menu7 = loader.getController();
                 menu7.Adatatvitel(ID);

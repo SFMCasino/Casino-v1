@@ -59,13 +59,6 @@ public class CasinoBJController implements Initializable {
         global.LoadScene(event, getID.getText(), "Login");
         }
     }
-
-    @FXML
-    void MenuRouletteButton(ActionEvent event) throws IOException {
-        if(!BJSTOP){
-        global.LoadScene(event, getID.getText(), "Roulette");
-        }
-    }
     
     @FXML
     void MenuProfileButton(ActionEvent event) throws IOException {

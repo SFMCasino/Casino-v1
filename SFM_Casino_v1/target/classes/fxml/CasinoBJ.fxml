@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.CasinoBJController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.controller.CasinoBJController">
    <children>
       <AnchorPane prefHeight="768.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -34,7 +34,6 @@
                      </font>
                   </Label>
                   <Button layoutY="462.0" mnemonicParsing="false" onAction="#MenuSlotIIButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFslotII" stylesheets="@../styles/CasinoInterface.css" />
-                  <Button layoutY="499.0" mnemonicParsing="false" onAction="#MenuRouletteButton" prefHeight="37.0" prefWidth="180.0" styleClass="INFroulette" stylesheets="@../styles/CasinoInterface.css" />
                   <Button layoutY="549.0" mnemonicParsing="false" onAction="#MenuKijelentkezesButton" prefHeight="23.0" prefWidth="180.0" styleClass="INFkijelentkezes" stylesheets="@../styles/CasinoInterface.css" />
                   <Button layoutX="14.0" layoutY="183.0" mnemonicParsing="false" onAction="#MenuCloseButton" prefHeight="43.0" prefWidth="24.0" styleClass="INFkilepes" stylesheets="@../styles/CasinoInterface.css" />
                </children></AnchorPane>

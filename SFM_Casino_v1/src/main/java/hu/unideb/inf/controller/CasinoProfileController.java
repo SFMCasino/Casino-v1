@@ -86,11 +86,6 @@ public class CasinoProfileController implements Initializable {
     }
 
     @FXML
-    void MenuRouletteButton(ActionEvent event) throws IOException {
-        global.LoadScene(event, getID.getText(), "Roulette");
-    }
-
-    @FXML
     void MenuWheelButton(ActionEvent event) throws IOException {
         global.LoadScene(event, getID.getText(), "Wheel");
     }
