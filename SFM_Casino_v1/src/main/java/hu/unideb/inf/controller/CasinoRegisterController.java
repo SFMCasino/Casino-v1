@@ -136,6 +136,11 @@ public class CasinoRegisterController implements Initializable {
             hiba.setTitle("Hiba");
             hiba.setHeaderText("Helytelen E-mail formátum");
             hiba.showAndWait();
+        }else if(bank.length() != 16){
+            Alert hiba = new Alert(Alert.AlertType.ERROR);
+            hiba.setTitle("Hiba");
+            hiba.setHeaderText("Nem megfelelő Bankkártya");
+            hiba.showAndWait();
         }
         else {
             JpaCasinoDAO userDAO = new JpaCasinoDAO();
@@ -170,8 +175,7 @@ public class CasinoRegisterController implements Initializable {
             user2.setJatekos_neme(genderids[0]);
 //            String jatekos_neme = genderids[0];
             user2.setJatekos_hajszem(genderids[1]);
-            user2.setJatekospenz(1000000);
-            user2.setJatekospenz2(1000000);
+            user2.setJatekospenz(5000);
             user2.setKellekek0(2);
             ArrayList<Integer> proba = new ArrayList<>();
             proba.add(0);
