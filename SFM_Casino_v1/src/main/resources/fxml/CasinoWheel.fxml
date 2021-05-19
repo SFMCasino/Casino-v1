@@ -45,7 +45,7 @@
                         <Image url="@../images/Wheel/bg.jpg" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" layoutX="215.0" layoutY="46.0" prefHeight="66.0" prefWidth="416.0" text="Szerencse kerék" textAlignment="CENTER">
+                  <Label alignment="CENTER" layoutX="28.0" prefHeight="66.0" prefWidth="416.0" text="Szerencse kerék" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="SimSun" size="49.0" />
                      </font>
@@ -62,7 +62,7 @@
                      </image>
                   </ImageView>
                   <Button fx:id="wheelButt" layoutX="182.0" layoutY="143.0" mnemonicParsing="false" onAction="#wheelButtPushed" prefHeight="483.0" prefWidth="482.0" styleClass="wheelbutt" stylesheets="@../styles/Games.css" />
-                  <Label alignment="CENTER" layoutX="215.0" layoutY="657.0" prefHeight="66.0" prefWidth="416.0" text="5000 Ft a tét!" textAlignment="CENTER" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="422.0" layoutY="6.0" prefHeight="66.0" prefWidth="416.0" text="5000 Ft a tét!" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="SimSun" size="38.0" />
                      </font>
