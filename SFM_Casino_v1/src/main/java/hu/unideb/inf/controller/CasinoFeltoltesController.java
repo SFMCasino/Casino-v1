@@ -55,11 +55,6 @@ public class CasinoFeltoltesController implements Initializable {
     }
 
     @FXML
-    void MenuRouletteButton(ActionEvent event) throws IOException {
-        global.LoadScene(event, getID.getText(), "Roulette");
-    }
-
-    @FXML
     void MenuProfileButton(ActionEvent event) throws IOException {
         global.LoadScene(event, getID.getText(), "Profile");
     }

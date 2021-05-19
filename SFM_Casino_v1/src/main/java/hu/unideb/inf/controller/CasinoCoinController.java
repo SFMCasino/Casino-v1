@@ -52,11 +52,6 @@ public class CasinoCoinController implements Initializable {
     void MenuKijelentkezesButton(ActionEvent event) throws IOException {
         global.LoadScene(event, getID.getText(), "Login");
     }
-
-    @FXML
-    void MenuRouletteButton(ActionEvent event) throws IOException {
-        global.LoadScene(event, getID.getText(), "Roulette");
-    }
     
     @FXML
     void MenuProfileButton(ActionEvent event) throws IOException {
