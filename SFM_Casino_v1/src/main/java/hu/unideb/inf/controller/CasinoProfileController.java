@@ -150,7 +150,7 @@ public class CasinoProfileController implements Initializable {
                 //KNev, VNev, Nem, Datum, Mail, Bankszam, AccID, ONYP
                 KNev.setText(a.getKnev());
                 VNev.setText(a.getVnev());
-                Nem.setText((Integer.parseInt(a.getNem()) == 0) ? "Férfi" : "Nö");
+                Nem.setText((Integer.parseInt(a.getJatekos_neme()) == 0) ? "Férfi" : "Nö");
                 Datum.setText(a.getDatum());
                 Mail.setText(a.getEmail());
                 Bankszam.setText(a.getCreditCardNumber());
