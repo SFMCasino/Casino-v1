@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.UUID;
@@ -172,6 +173,11 @@ public class CasinoRegisterController implements Initializable {
             user2.setJatekospenz(1000000);
             user2.setJatekospenz2(1000000);
             user2.setKellekek0(2);
+            ArrayList<Integer> proba = new ArrayList<>();
+            proba.add(0);
+            user2.setNyereseg(proba);
+            user2.setVeszteseg(proba);
+
             entityManager.getTransaction().begin();
             entityManager.persist(user2);
             entityManager.getTransaction().commit();

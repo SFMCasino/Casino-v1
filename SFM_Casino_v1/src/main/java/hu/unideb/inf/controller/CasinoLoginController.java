@@ -82,16 +82,26 @@ public class CasinoLoginController implements Initializable {
             String getJelszo = Jelszo.getText();
             FelhasznaloProfile checkProfile = new FelhasznaloProfile(getFelhasznalo,getJelszo);
             String validID = "";
-//            ArrayList<Integer> proba = new ArrayList<>();
-//            proba.add(500);
-//            proba.add(1000);
+
+            ArrayList<Integer> proba = new ArrayList<>();
+            ArrayList<Integer> proba2 = new ArrayList<>();
 
             for(var a : Profile){
                 if(checkProfile.Felhasználó.equals(a.getUsername()) && checkProfile.Jelszó.equals(a.getPassword())){
                     valid = true;
                     validID = a.getSetID();
                     a.setLogin_db(a.getLogin_db()+1);
-//                    a.setNyereseg(a.getNyereseg());
+                    for (int i = 0; i <= a.getLogin_db(); i++) {
+                        if(i==a.getLogin_db()){
+                            proba.add(0);
+                            proba2.add(0);
+                        }else{
+                            proba.add(a.getNyereseg().get(i));
+                            proba2.add(a.getVeszteseg().get(i));
+                        }
+                    }
+                    a.setNyereseg(proba);
+                    a.setVeszteseg(proba2);
                     userDAO.saveUser(a);
 //                    System.out.println(global.getOssznyeremeny(a.getNyereseg())); példa egy felhasználó össznyereményének a lekéréséhez
                 }

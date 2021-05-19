@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -151,6 +152,7 @@ public class CasinoSlotIController implements Initializable {
     @FXML
     void GenjiStartButtonPressed(ActionEvent event) {
         if((jatekospenz + jatekospenz2) >= GenjiTét){
+            int nyertosszeg = 0;
             if(jatekospenz-GenjiTét < 0){
                 int genjitet = GenjiTét-jatekospenz;
                 jatekospenz = 0;
@@ -307,48 +309,75 @@ public class CasinoSlotIController implements Initializable {
         }
         boolean nyert = false;
         if(Slotertek[0] == 'C' && Slotertek[1] == 'C' && Slotertek[2] == 'C'){
-            jatekospenz2 += (GenjiTét/500) * 1500;
+            nyertosszeg = (GenjiTét/500) * 1500;
+            jatekospenz2 += nyertosszeg;
             GenjiNyertOsszeg(((GenjiTét/500) * 1500));
         }else if(Slotertek[0] == 'S' && Slotertek[1] == 'S' && Slotertek[2] == 'S'){
-            jatekospenz2 += (GenjiTét/500) * 3000;
-            GenjiNyertOsszeg(((GenjiTét/500) * 3000));
+            nyertosszeg = (GenjiTét/500) * 3000;
+            jatekospenz2 += nyertosszeg;
+            GenjiNyertOsszeg(nyertosszeg);
             nyert = true;
         }else if(Slotertek[0] == 'H' && Slotertek[1] == 'H' && Slotertek[2] == 'H'){
-            jatekospenz2 += (GenjiTét/500) * 5000;
-            GenjiNyertOsszeg(((GenjiTét/500) * 5000));
+            nyertosszeg = (GenjiTét/500) * 5000;
+            jatekospenz2 += nyertosszeg;
+            GenjiNyertOsszeg(nyertosszeg);
             nyert = true;
         }else if(Slotertek[0] == 'D' && Slotertek[1] == 'D' && Slotertek[2] == 'D'){
-            jatekospenz2 += (GenjiTét/500) * 10000;
-            GenjiNyertOsszeg(((GenjiTét/500) * 1000));
+            nyertosszeg = (GenjiTét/500) * 10000;
+            jatekospenz2 += nyertosszeg;
+            GenjiNyertOsszeg(nyertosszeg);
             nyert = true;
         }else if(Slotertek[0] == '7' && Slotertek[1] == '7' && Slotertek[2] == '7'){
-            jatekospenz2 += (GenjiTét/500) * 15000;
-            GenjiNyertOsszeg(((GenjiTét/500) * 15000));
+            nyertosszeg = (GenjiTét/500) * 15000;
+            jatekospenz2 += nyertosszeg;
+            GenjiNyertOsszeg(nyertosszeg);
             nyert = true;
         }else if(Slotertek[0] == 'W' && Slotertek[1] == 'W' && Slotertek[2] == 'W'){
-            jatekospenz2 += (GenjiTét/500) * 100000;
-            GenjiNyertOsszeg(((GenjiTét/500) * 100000));
+            nyertosszeg = (GenjiTét/500) * 100000;
+            jatekospenz2 += nyertosszeg;
+            GenjiNyertOsszeg(nyertosszeg);
             nyert = true;
         }else if((Slotertek[0] == 'O' && Slotertek[1] != 'O' && Slotertek[2] != 'O') ||
                 (Slotertek[0] != 'O' && Slotertek[1] == 'O' && Slotertek[2] != 'O') ||
                 (Slotertek[0] != 'O' && Slotertek[1] != 'O' && Slotertek[2] == 'O')){
-            jatekospenz2 += (GenjiTét/500) * 250;
-            GenjiNyertOsszeg(((GenjiTét/500) * 250));
+            nyertosszeg = (GenjiTét/500) * 250;
+            jatekospenz2 += nyertosszeg;
+            GenjiNyertOsszeg(nyertosszeg);
             nyert = true;
         }else if((Slotertek[0] == 'O' && Slotertek[1] == 'O' && Slotertek[2] != 'O') ||
                 (Slotertek[0] == 'O' && Slotertek[1] != 'O' && Slotertek[2] == 'O') ||
                 (Slotertek[0] != 'O' && Slotertek[1] == 'O' && Slotertek[2] == 'O')){
-            jatekospenz2 += (GenjiTét/500) * 1000;
-            GenjiNyertOsszeg(((GenjiTét/500) * 1000));
+            nyertosszeg = (GenjiTét/500) * 1000;
+            jatekospenz2 += nyertosszeg;
+            GenjiNyertOsszeg(nyertosszeg);
             nyert = true;
         }else if(Slotertek[0] == 'O' && Slotertek[1] == 'O' && Slotertek[2] == 'O'){
-            jatekospenz2 += (GenjiTét/500) * 25000;
-            GenjiNyertOsszeg(((GenjiTét/500) * 25000));
+            nyertosszeg = (GenjiTét/500) * 25000;
+            jatekospenz2 += nyertosszeg;
+            GenjiNyertOsszeg(nyertosszeg);
             nyert = true;
         }
         if(nyert){
             ChipMoney.setText("" + jatekospenz2);
-
+            JpaCasinoDAO userDAO = new JpaCasinoDAO();
+            List<User2> Profile = userDAO.getUser();
+            for(var a : Profile) {
+                if (id.equals(a.getSetID())) {
+                    proba.set(a.getLogin_db(),a.getNyereseg().get(a.getLogin_db())+nyertosszeg);
+                    a.setNyereseg(proba);
+                    userDAO.saveUser(a);
+                }
+            }
+        }else{
+            JpaCasinoDAO userDAO = new JpaCasinoDAO();
+            List<User2> Profile = userDAO.getUser();
+            for(var a : Profile) {
+                if (id.equals(a.getSetID())) {
+                    proba2.set(a.getLogin_db(),a.getVeszteseg().get(a.getLogin_db())+GenjiTét);
+                    a.setVeszteseg(proba2);
+                    userDAO.saveUser(a);
+                }
+            }
         }
             global.saveData(id, jatekospenz, jatekospenz2, nem, hajszem, Kellekek);
         }
@@ -358,14 +387,17 @@ public class CasinoSlotIController implements Initializable {
 
     @FXML
     private Button ProfilKep;
-    
+
+    ArrayList<Integer> proba = new ArrayList<>();
+    ArrayList<Integer> proba2 = new ArrayList<>();
+
     String id = "";
     String nem = "", hajszem = "";
     String[] Kellekek = new String[4];
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
 
     public void Adatatvitel(String ID){
@@ -385,6 +417,12 @@ public class CasinoSlotIController implements Initializable {
                 Kellekek[1] = ""+a.getKellekek1();
                 Kellekek[2] = ""+a.getKellekek2();
                 Kellekek[3] = ""+a.getKellekek3();
+                for(var b : a.getNyereseg()){
+                    proba.add(b);
+                }
+                for(var b : a.getVeszteseg()){
+                    proba2.add(b);
+                }
                 break;
             }
         }
