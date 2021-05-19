@@ -82,7 +82,7 @@
                         <Font name="Agency FB" size="24.0" />
                      </font>
                   </Label>
-                  <LineChart fx:id="MoneyChart" layoutX="20.0" layoutY="431.0" legendVisible="false" prefHeight="266.0" prefWidth="804.0" styleClass="ProfileMoneyChart" stylesheets="@../styles/Games.css" title="Pénzmozgás">
+                  <LineChart fx:id="MoneyChart" layoutX="20.0" layoutY="441.0" legendVisible="false" prefHeight="326.0" prefWidth="804.0" styleClass="ProfileMoneyChart" stylesheets="@../styles/Games.css" title="Pénzmozgás">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" styleClass="ChartAxisX" stylesheets="@../styles/Games.css" />
                     </xAxis>
