@@ -123,63 +123,9 @@ public class CasinoProfileController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        XYChart.Series<String, Number> penzm = new XYChart.Series<String, Number>();
-        XYChart.Series<String, Number> penzm2 = new XYChart.Series<String, Number>();
-        penzm.setName("Nyert");
-        penzm2.setName("Bukott");
-        
-        for (int i = 0; i < 12; i++) {
-            Random random = new Random();
-            int asd = (random.nextInt(50000 - (0)) + (0));
-            int asd3 = (random.nextInt(50000 - (0)) + (0));
-            String asd2 = "";
-            switch(i){
-                case 0:
-                    asd2 = "Jan";
-                    break;
-                case 1:
-                    asd2 = "Feb";
-                    break;
-                case 2:
-                    asd2 = "Mar";
-                    break;
-                case 3:
-                    asd2 = "Apr";
-                    break;
-                case 4:
-                    asd2 = "Maj";
-                    break;
-                case 5:
-                    asd2 = "Jun";
-                    break;
-                case 6:
-                    asd2 = "Jul";
-                    break;
-                case 7:
-                    asd2 = "Aug";
-                    break;
-                case 8:
-                    asd2 = "Sep";
-                    break;
-                case 9:
-                    asd2 = "Oct";
-                    break;
-                case 10:
-                    asd2 = "Nov";
-                    break;
-                case 11:
-                    asd2 = "Dec";
-                    break;
-                default:
-                    break;
-            }
-            penzm.getData().add(new XYChart.Data<String, Number>(asd2, asd));
-            penzm2.getData().add(new XYChart.Data<String, Number>(asd2, asd3));
-            
-        }
-        MoneyChart.getData().addAll(penzm,penzm2);
         
     }
+
     int jatekospenz = 0;
     int jatekospenz2 = 0;
 
@@ -187,6 +133,7 @@ public class CasinoProfileController implements Initializable {
         id = ID;
         JpaCasinoDAO userDAO = new JpaCasinoDAO();
         List<User2> Profile = userDAO.getUser();
+        int maxlogin = 0;
         for(var a : Profile){
             if(id.equals(a.getSetID())){
                 getID.setText(id);
@@ -208,6 +155,24 @@ public class CasinoProfileController implements Initializable {
                 Mail.setText(a.getEmail());
                 Bankszam.setText(a.getCreditCardNumber());
                 AccID.setText(a.getSetID());
+
+                maxlogin = a.getLogin_db();
+                int[] nyeresegek = new int[maxlogin+1];
+                int[] veresegek = new int[maxlogin+1];
+                for(int i = 0; i <= maxlogin; i++){
+                    nyeresegek[i] = a.getNyereseg().get(i);
+                    veresegek[i] = a.getVeszteseg().get(i);
+                }
+                XYChart.Series<String, Number> penzm = new XYChart.Series<String, Number>();
+                XYChart.Series<String, Number> penzm2 = new XYChart.Series<String, Number>();
+                penzm.setName("Nyert");
+                penzm2.setName("Bukott");
+
+                for (int i = 0; i <= maxlogin; i++) {
+                    penzm.getData().add(new XYChart.Data<String, Number>("Belépés: "+i, nyeresegek[i]));
+                    penzm2.getData().add(new XYChart.Data<String, Number>("Belépés: "+i, veresegek[i]));
+                }
+                MoneyChart.getData().addAll(penzm,penzm2);
                 break;
             }
         }

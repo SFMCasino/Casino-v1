@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -201,7 +202,10 @@ public class CasinoBJController implements Initializable {
     
     @FXML
     private Button ProfilKep;
-    
+
+    ArrayList<Integer> proba = new ArrayList<>();
+    ArrayList<Integer> proba2 = new ArrayList<>();
+
     String id = "";
     String nem = "", hajszem = "";
     String[] Kellekek = new String[4];
@@ -228,6 +232,12 @@ public class CasinoBJController implements Initializable {
                 Kellekek[1] = ""+a.getKellekek1();
                 Kellekek[2] = ""+a.getKellekek2();
                 Kellekek[3] = ""+a.getKellekek3();
+                for(var b : a.getNyereseg()){
+                    proba.add(b);
+                }
+                for(var b : a.getVeszteseg()){
+                    proba2.add(b);
+                }
                 break;
             }
         }
@@ -664,6 +674,15 @@ public class CasinoBJController implements Initializable {
                 eredmeny.setTitle("Eredmény");
                 eredmeny.setHeaderText("Vesztettél");
                 eredmeny.showAndWait();
+                    JpaCasinoDAO userDAO = new JpaCasinoDAO();
+                    List<User2> Profile = userDAO.getUser();
+                    for(var a : Profile) {
+                        if (id.equals(a.getSetID())) {
+                            proba2.set(a.getLogin_db(), a.getVeszteseg().get(a.getLogin_db()) + BJTét);
+                            a.setVeszteseg(proba2);
+                            userDAO.saveUser(a);
+                        }
+                    }
             }else if(BJSumCards(BJoszto) < BJSumCards(BJjatekos) || BJSumCards(BJoszto) > 21){
                 jatekospenz2 += BJTét*2;
                 ChipMoney.setText("" + jatekospenz2);
@@ -672,6 +691,15 @@ public class CasinoBJController implements Initializable {
                 eredmeny.setTitle("Eredmény");
                 eredmeny.setHeaderText("Gyöztél");
                 eredmeny.showAndWait();
+                    JpaCasinoDAO userDAO = new JpaCasinoDAO();
+                    List<User2> Profile = userDAO.getUser();
+                    for(var a : Profile) {
+                        if (id.equals(a.getSetID())) {
+                            proba.set(a.getLogin_db(),a.getNyereseg().get(a.getLogin_db())+BJTét);
+                            a.setNyereseg(proba);
+                            userDAO.saveUser(a);
+                        }
+                    }
             }else if(BJSumCards(BJoszto) == BJSumCards(BJjatekos)){
                 jatekospenz += bjtet;
                 jatekospenz2 += BJTét-bjtet;
@@ -695,6 +723,15 @@ public class CasinoBJController implements Initializable {
                     eredmeny.setTitle("Eredmény");
                     eredmeny.setHeaderText("Vesztettél");
                     eredmeny.showAndWait();
+                        JpaCasinoDAO userDAO = new JpaCasinoDAO();
+                        List<User2> Profile = userDAO.getUser();
+                        for(var a : Profile) {
+                            if (id.equals(a.getSetID())) {
+                                proba2.set(a.getLogin_db(), a.getVeszteseg().get(a.getLogin_db()) + BJTét);
+                                a.setVeszteseg(proba2);
+                                userDAO.saveUser(a);
+                            }
+                        }
                 }
             BJTét /= 2;
         }else{
@@ -763,6 +800,15 @@ public class CasinoBJController implements Initializable {
                     eredmeny.setTitle("Eredmény");
                     eredmeny.setHeaderText("Vesztettél");
                     eredmeny.showAndWait();
+                        JpaCasinoDAO userDAO = new JpaCasinoDAO();
+                        List<User2> Profile = userDAO.getUser();
+                        for(var a : Profile) {
+                            if (id.equals(a.getSetID())) {
+                                proba2.set(a.getLogin_db(), a.getVeszteseg().get(a.getLogin_db()) + BJTét);
+                                a.setVeszteseg(proba2);
+                                userDAO.saveUser(a);
+                            }
+                        }
                 }
             }
         }
@@ -828,6 +874,15 @@ public class CasinoBJController implements Initializable {
                 eredmeny.setTitle("Eredmény");
                 eredmeny.setHeaderText("Vesztettél");
                 eredmeny.showAndWait();
+                    JpaCasinoDAO userDAO = new JpaCasinoDAO();
+                    List<User2> Profile = userDAO.getUser();
+                    for(var a : Profile) {
+                        if (id.equals(a.getSetID())) {
+                            proba2.set(a.getLogin_db(), a.getVeszteseg().get(a.getLogin_db()) + BJTét);
+                            a.setVeszteseg(proba2);
+                            userDAO.saveUser(a);
+                        }
+                    }
             }else if(BJSumCards(BJoszto) < BJSumCards(BJjatekos) || BJSumCards(BJoszto) > 21){
                 jatekospenz2 += BJTét*2;
                 ChipMoney.setText("" + jatekospenz2);
@@ -836,6 +891,15 @@ public class CasinoBJController implements Initializable {
                 eredmeny.setTitle("Eredmény");
                 eredmeny.setHeaderText("Gyöztél");
                 eredmeny.showAndWait();
+                    JpaCasinoDAO userDAO = new JpaCasinoDAO();
+                    List<User2> Profile = userDAO.getUser();
+                    for(var a : Profile) {
+                        if (id.equals(a.getSetID())) {
+                            proba.set(a.getLogin_db(),a.getNyereseg().get(a.getLogin_db())+BJTét);
+                            a.setNyereseg(proba);
+                            userDAO.saveUser(a);
+                        }
+                    }
             }else if(BJSumCards(BJoszto) == BJSumCards(BJjatekos)){
                 jatekospenz += bjtet;
                 jatekospenz2 += BJTét-bjtet;
