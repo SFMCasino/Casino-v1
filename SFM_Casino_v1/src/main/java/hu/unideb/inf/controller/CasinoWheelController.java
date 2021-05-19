@@ -284,16 +284,22 @@ public class CasinoWheelController implements Initializable {
         if(elso >= 5000)
         {
             elso -=5000;
+            BankMoney.setText("" + elso);
+            ChipMoney.setText("" + masodik);
+            global.saveData(id, elso, masodik, nem, hajszem, Kellekek);
+            wheelButt.setDisable(true);
+            porges();
         }
         else if((elso + masodik) >= 5000)
         {
             masodik -= (5000-elso);
             elso = 0;
+            BankMoney.setText("" + elso);
+            ChipMoney.setText("" + masodik);
+            global.saveData(id, elso, masodik, nem, hajszem, Kellekek);
+            wheelButt.setDisable(true);
+            porges();
         }
-        BankMoney.setText("" + elso);
-        ChipMoney.setText("" + masodik);
-        global.saveData(id, elso, masodik, nem, hajszem, Kellekek);
-        wheelButt.setDisable(true);
-        porges();
+
     }
 }
