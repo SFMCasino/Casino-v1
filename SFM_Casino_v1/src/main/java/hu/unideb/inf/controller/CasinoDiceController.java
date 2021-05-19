@@ -102,6 +102,10 @@ public class CasinoDiceController implements Initializable {
     /////////////////
     @FXML
     private Label BankMoney,ChipMoney,getID;
+
+    int nyereseg = 0;
+    int veszteseg = 0;
+
     int bet = 1000;
     int jatekospenz = 0;
     int jatekospenz2 = 0;
@@ -310,7 +314,8 @@ public class CasinoDiceController implements Initializable {
 
     @FXML
     void Start(ActionEvent event) {
-
+        JpaCasinoDAO userDAO = new JpaCasinoDAO();
+        List<User2> Profile = userDAO.getUser();
         if ((jatekospenz2 + jatekospenz) - bet > 0) {
 
             int[] dobas = jatekosDobas();
@@ -328,53 +333,110 @@ public class CasinoDiceController implements Initializable {
                         jatekospenz2 -= fennmarado;
                         BankMoney.setText("" + jatekospenz);
                         ChipMoney.setText("" + jatekospenz2);
+                        for(var a : Profile) {
+                            if (id.equals(a.getSetID())) {
+                                veszteseg = a.getVeszteseg() + bet;
+                                a.setVeszteseg(veszteseg);
+                                userDAO.saveUser(a);
+                            }
+                        }
                     } else {
                         jatekospenz -= bet;
                         BankMoney.setText("" + jatekospenz);
+                        for(var a : Profile) {
+                            if (id.equals(a.getSetID())) {
+                                veszteseg = a.getVeszteseg() + bet;
+                                a.setVeszteseg(veszteseg);
+                                userDAO.saveUser(a);
+                            }
+                        }
                     }
                 }
             }
+
+
             switch (szorzo(dobas)) {
                 case 1:
                     eredmenyLabel.setText("Nyeremény: " + bet + "\n" + eredmeny(dobas));
                     jatekospenz2 += bet;
                     BankMoney.setText("" + jatekospenz);
                     ChipMoney.setText("" + jatekospenz2);
+
+                    for(var a : Profile) {
+                        if (id.equals(a.getSetID())) {
+                            nyereseg = a.getNyereseg() + bet;
+                            a.setNyereseg(nyereseg);
+                            userDAO.saveUser(a);
+                        }
+                    }
                     break;
                 case 2:
                     eredmenyLabel.setText("Nyeremény: " + bet * 2 + "\n" + eredmeny(dobas));
                     jatekospenz2 += bet * 2;
                     BankMoney.setText("" + jatekospenz);
                     ChipMoney.setText("" + jatekospenz2);
+                    for(var a : Profile) {
+                        if (id.equals(a.getSetID())) {
+                            nyereseg = a.getNyereseg() + bet*2;
+                            a.setNyereseg(nyereseg);
+                            userDAO.saveUser(a);
+                        }
+                    }
                     break;
                 case 3:
                     eredmenyLabel.setText("Nyeremény: " + bet * 3 + "\n" + eredmeny(dobas));
                     jatekospenz2 += bet * 3;
                     BankMoney.setText("" + jatekospenz);
                     ChipMoney.setText("" + jatekospenz2);
+                    for(var a : Profile) {
+                        if (id.equals(a.getSetID())) {
+                            nyereseg = a.getNyereseg() + bet*3;
+                            a.setNyereseg(nyereseg);
+                            userDAO.saveUser(a);
+                        }
+                    }
                     break;
                 case 4:
                     eredmenyLabel.setText("Nyeremény: " + bet * 4 + "\n" + eredmeny(dobas));
                     jatekospenz2 += bet * 4;
                     BankMoney.setText("" + jatekospenz);
                     ChipMoney.setText("" + jatekospenz2);
+                    for(var a : Profile) {
+                        if (id.equals(a.getSetID())) {
+                            nyereseg = a.getNyereseg() + bet*4;
+                            a.setNyereseg(nyereseg);
+                            userDAO.saveUser(a);
+                        }
+                    }
                     break;
                 case 5:
                     eredmenyLabel.setText("Nyeremény: " + bet * 5 + "\n" + eredmeny(dobas));
                     jatekospenz2 += bet * 5;
                     BankMoney.setText("" + jatekospenz);
                     ChipMoney.setText("" + jatekospenz2);
+                    for(var a : Profile) {
+                        if (id.equals(a.getSetID())) {
+                            nyereseg = a.getNyereseg() + bet*5;
+                            a.setNyereseg(nyereseg);
+                            userDAO.saveUser(a);
+                        }
+                    }
                     break;
                 case 6:
                     eredmenyLabel.setText("Nyeremény: " + bet * 6 + "\n" + eredmeny(dobas));
                     jatekospenz2 += bet * 6;
                     BankMoney.setText("" + jatekospenz);
                     ChipMoney.setText("" + jatekospenz2);
+                    for(var a : Profile) {
+                        if (id.equals(a.getSetID())) {
+                            nyereseg = a.getNyereseg() + bet*6;
+                            a.setNyereseg(nyereseg);
+                            userDAO.saveUser(a);
+                        }
+                    }
                     break;
                 default:
                     eredmenyLabel.setText("Nem nyertél!\n" + eredmeny(dobas));
-
-
             }
 
             switch (dobas[0]) {
