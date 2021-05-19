@@ -294,8 +294,9 @@ public class CasinoFomenuController implements Initializable {
         HashMap<String, Integer> map = new HashMap<>();
 
         for (var user : Profile ) {
-            map.put(user.getUsername(),(user.getNyereseg()-user.getVeszteseg()));
+            map.put(user.getUsername(),(global.getOssznyeremeny(user.getNyereseg())));
         }
+
 
         LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
         map.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
@@ -312,7 +313,7 @@ public class CasinoFomenuController implements Initializable {
         pieChartData.forEach(data ->
                 data.nameProperty().bind(
                         Bindings.concat(
-                                data.getName(), " ", data.pieValueProperty().divide(100)," K"
+                                data.getName(), " ", data.pieValueProperty().divide(1000)," K"
                         )
                 )
         );
@@ -326,7 +327,7 @@ public class CasinoFomenuController implements Initializable {
         HashMap<String, Integer> map2 = new HashMap<>();
 
         for (var user : Profile ) {
-            map2.put(user.getUsername(),user.getVeszteseg());
+            map2.put(user.getUsername(),user.getLogin_db());
         }
 
         LinkedHashMap<String, Integer> result2 = new LinkedHashMap<>();

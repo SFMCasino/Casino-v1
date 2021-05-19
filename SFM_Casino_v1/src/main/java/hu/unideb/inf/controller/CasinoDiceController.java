@@ -11,10 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import hu.unideb.inf.model.JpaCasinoDAO;
 import hu.unideb.inf.model.User2;
@@ -103,8 +100,8 @@ public class CasinoDiceController implements Initializable {
     @FXML
     private Label BankMoney,ChipMoney,getID;
 
-    int nyereseg = 0;
-    int veszteseg = 0;
+    ArrayList<Integer> nyereseg = new ArrayList<>();
+    ArrayList<Integer> veszteseg = new ArrayList<>();
 
     int bet = 1000;
     int jatekospenz = 0;
@@ -335,7 +332,7 @@ public class CasinoDiceController implements Initializable {
                         ChipMoney.setText("" + jatekospenz2);
                         for(var a : Profile) {
                             if (id.equals(a.getSetID())) {
-                                veszteseg = a.getVeszteseg() + bet;
+                                veszteseg.set(a.getLogin_db(),a.getVeszteseg().get(a.getLogin_db())+bet);
                                 a.setVeszteseg(veszteseg);
                                 userDAO.saveUser(a);
                             }
@@ -345,7 +342,7 @@ public class CasinoDiceController implements Initializable {
                         BankMoney.setText("" + jatekospenz);
                         for(var a : Profile) {
                             if (id.equals(a.getSetID())) {
-                                veszteseg = a.getVeszteseg() + bet;
+                                veszteseg.set(a.getLogin_db(),a.getVeszteseg().get(a.getLogin_db())+bet);
                                 a.setVeszteseg(veszteseg);
                                 userDAO.saveUser(a);
                             }
@@ -364,7 +361,7 @@ public class CasinoDiceController implements Initializable {
 
                     for(var a : Profile) {
                         if (id.equals(a.getSetID())) {
-                            nyereseg = a.getNyereseg() + bet;
+                            nyereseg.set(a.getLogin_db(),a.getNyereseg().get(a.getLogin_db())+bet);
                             a.setNyereseg(nyereseg);
                             userDAO.saveUser(a);
                         }
@@ -377,7 +374,7 @@ public class CasinoDiceController implements Initializable {
                     ChipMoney.setText("" + jatekospenz2);
                     for(var a : Profile) {
                         if (id.equals(a.getSetID())) {
-                            nyereseg = a.getNyereseg() + bet*2;
+                            nyereseg.set(a.getLogin_db(),a.getNyereseg().get(a.getLogin_db())+bet*2);
                             a.setNyereseg(nyereseg);
                             userDAO.saveUser(a);
                         }
@@ -390,7 +387,7 @@ public class CasinoDiceController implements Initializable {
                     ChipMoney.setText("" + jatekospenz2);
                     for(var a : Profile) {
                         if (id.equals(a.getSetID())) {
-                            nyereseg = a.getNyereseg() + bet*3;
+                            nyereseg.set(a.getLogin_db(),a.getNyereseg().get(a.getLogin_db())+bet*3);
                             a.setNyereseg(nyereseg);
                             userDAO.saveUser(a);
                         }
@@ -403,7 +400,7 @@ public class CasinoDiceController implements Initializable {
                     ChipMoney.setText("" + jatekospenz2);
                     for(var a : Profile) {
                         if (id.equals(a.getSetID())) {
-                            nyereseg = a.getNyereseg() + bet*4;
+                            nyereseg.set(a.getLogin_db(),a.getNyereseg().get(a.getLogin_db())+bet*4);
                             a.setNyereseg(nyereseg);
                             userDAO.saveUser(a);
                         }
@@ -416,7 +413,7 @@ public class CasinoDiceController implements Initializable {
                     ChipMoney.setText("" + jatekospenz2);
                     for(var a : Profile) {
                         if (id.equals(a.getSetID())) {
-                            nyereseg = a.getNyereseg() + bet*5;
+                            nyereseg.set(a.getLogin_db(),a.getNyereseg().get(a.getLogin_db())+bet*5);
                             a.setNyereseg(nyereseg);
                             userDAO.saveUser(a);
                         }
@@ -429,7 +426,7 @@ public class CasinoDiceController implements Initializable {
                     ChipMoney.setText("" + jatekospenz2);
                     for(var a : Profile) {
                         if (id.equals(a.getSetID())) {
-                            nyereseg = a.getNyereseg() + bet*6;
+                            nyereseg.set(a.getLogin_db(),a.getNyereseg().get(a.getLogin_db())+bet*6);
                             a.setNyereseg(nyereseg);
                             userDAO.saveUser(a);
                         }
@@ -599,6 +596,12 @@ public class CasinoDiceController implements Initializable {
                 Kellekek[1] = ""+a.getKellekek1();
                 Kellekek[2] = ""+a.getKellekek2();
                 Kellekek[3] = ""+a.getKellekek3();
+                for(var b : a.getNyereseg()){
+                    nyereseg.add(b);
+                }
+                for(var b : a.getVeszteseg()){
+                    veszteseg.add(b);
+                }
                 break;
             }
         }

@@ -41,7 +41,7 @@
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <PieChart id="chart-pie-label-line" fx:id="pieChart" layoutX="1.0" layoutY="98.0" legendVisible="false" prefHeight="323.0" prefWidth="437.0" styleClass="default-color" stylesheets="@../styles/Games.css" />
+                  <PieChart id="chart-pie-label-line" fx:id="pieChart" layoutX="1.0" layoutY="110.0" legendVisible="false" prefHeight="323.0" prefWidth="437.0" styleClass="default-color" stylesheets="@../styles/Games.css" />
                   <Button layoutX="87.0" layoutY="591.0" mnemonicParsing="false" onAction="#Slot2Pushed" prefHeight="150.0" prefWidth="210.0" styleClass="menuSlotII" stylesheets="@../styles/Games.css">
                      <font>
                         <Font size="20.0" />
@@ -52,7 +52,7 @@
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <BarChart fx:id="barChart" alternativeRowFillVisible="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="407.0" layoutY="143.0" legendVisible="false" prefHeight="278.0" prefWidth="437.0" styleClass="bar_color" stylesheets="@../styles/Games.css" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+                  <BarChart fx:id="barChart" alternativeRowFillVisible="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="407.0" layoutY="155.0" legendVisible="false" prefHeight="278.0" prefWidth="437.0" styleClass="bar_color" stylesheets="@../styles/Games.css" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" styleClass="xx" stylesheets="@../styles/Games.css" fx:id="x" />
                     </xAxis>
@@ -65,12 +65,12 @@
                         <Font name="Arial Rounded MT Bold" size="50.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="532.0" layoutY="109.0" prefHeight="38.0" prefWidth="260.0" text="Legaktívabb játékosok" textFill="#e3e331">
+                  <Label alignment="CENTER" layoutX="523.0" layoutY="88.0" prefHeight="38.0" prefWidth="260.0" text="Legaktívabb játékosok" textFill="#e3e331">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="100.0" layoutY="109.0" prefHeight="38.0" prefWidth="260.0" text="Legsikeresebb játékosok" textFill="#e3e331">
+                  <Label alignment="CENTER" layoutX="100.0" layoutY="88.0" prefHeight="38.0" prefWidth="260.0" text="Legsikeresebb játékosok" textFill="#e3e331">
                      <font>
                         <Font size="20.0" />
                      </font>
