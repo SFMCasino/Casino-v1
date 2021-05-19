@@ -54,11 +54,6 @@ public class CasinoProfileController implements Initializable {
     void MenuKijelentkezesButton(ActionEvent event) throws IOException {
         global.LoadScene(event, getID.getText(), "Login");
     }
-
-    @FXML
-    void MenuRouletteButton(ActionEvent event) throws IOException {
-        global.LoadScene(event, getID.getText(), "Roulette");
-    }
     
     @FXML
     void MenuBJButton(ActionEvent event) throws IOException {
@@ -101,7 +96,7 @@ public class CasinoProfileController implements Initializable {
     }
     
       @FXML
-    private Label KNev, VNev, Nem, Datum, Mail, Bankszam, AccID, ONYP, OLJ, LGYS, LNYO, LJJ;
+    private Label KNev, VNev, Nem, Datum, Mail, Bankszam, AccID, ONYP;
 
     @FXML
     private LineChart<String, Number> MoneyChart;
@@ -147,7 +142,7 @@ public class CasinoProfileController implements Initializable {
                 Kellekek[1] = ""+a.getKellekek1();
                 Kellekek[2] = ""+a.getKellekek2();
                 Kellekek[3] = ""+a.getKellekek3();
-                //KNev, VNev, Nem, Datum, Mail, Bankszam, AccID
+                //KNev, VNev, Nem, Datum, Mail, Bankszam, AccID, ONYP
                 KNev.setText(a.getKnev());
                 VNev.setText(a.getVnev());
                 Nem.setText(a.getNem());
@@ -155,6 +150,7 @@ public class CasinoProfileController implements Initializable {
                 Mail.setText(a.getEmail());
                 Bankszam.setText(a.getCreditCardNumber());
                 AccID.setText(a.getSetID());
+                ONYP.setText(""+global.getOssznyeremeny(a.getNyereseg()));
 
                 maxlogin = a.getLogin_db();
                 int[] nyeresegek = new int[maxlogin+1];
