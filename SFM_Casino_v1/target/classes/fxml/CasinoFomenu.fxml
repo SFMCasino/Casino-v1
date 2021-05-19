@@ -14,6 +14,68 @@
    <children>
       <AnchorPane prefHeight="768.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <Pane layoutX="180.0" prefHeight="768.0" prefWidth="844.0" styleClass="menuBG" stylesheets="@../styles/Games.css">
+               <children>
+                  <Label fx:id="getID" layoutX="14.0" layoutY="747.0" prefHeight="15.0" prefWidth="752.0" visible="false">
+                     <font>
+                        <Font size="6.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="87.0" layoutY="435.0" mnemonicParsing="false" onAction="#Slot1Pushed" prefHeight="150.0" prefWidth="210.0" styleClass="menuSlotI" stylesheets="@../styles/Games.css">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="322.0" layoutY="591.0" mnemonicParsing="false" onAction="#CoinPushed" prefHeight="150.0" prefWidth="210.0" styleClass="menuCoin" stylesheets="@../styles/Games.css">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="566.0" layoutY="591.0" mnemonicParsing="false" onAction="#WheelPushed" prefHeight="150.0" prefWidth="210.0" styleClass="menuWheel" stylesheets="@../styles/Games.css">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="566.0" layoutY="435.0" mnemonicParsing="false" onAction="#BJPushed" prefHeight="150.0" prefWidth="210.0" styleClass="menuBJ" stylesheets="@../styles/Games.css">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <PieChart id="chart-pie-label-line" fx:id="pieChart" layoutX="1.0" layoutY="98.0" legendVisible="false" prefHeight="323.0" prefWidth="437.0" styleClass="default-color" stylesheets="@../styles/Games.css" />
+                  <Button layoutX="87.0" layoutY="591.0" mnemonicParsing="false" onAction="#Slot2Pushed" prefHeight="150.0" prefWidth="210.0" styleClass="menuSlotII" stylesheets="@../styles/Games.css">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="322.0" layoutY="435.0" mnemonicParsing="false" onAction="#DicePushed" prefHeight="150.0" prefWidth="210.0" styleClass="menuDice" stylesheets="@../styles/Games.css">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <BarChart fx:id="barChart" alternativeRowFillVisible="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="407.0" layoutY="143.0" legendVisible="false" prefHeight="278.0" prefWidth="437.0" styleClass="bar_color" stylesheets="@../styles/Games.css" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" styleClass="xx" stylesheets="@../styles/Games.css" fx:id="x" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis fx:id="y" side="LEFT" styleClass="yy" stylesheets="@../styles/Games.css" />
+                    </yAxis>
+                  </BarChart>
+                  <Label alignment="CENTER" layoutX="30.0" layoutY="-19.0" prefHeight="117.0" prefWidth="785.0" text="Casino SFM" textFill="#e3e331">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="50.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="532.0" layoutY="109.0" prefHeight="38.0" prefWidth="260.0" text="Legaktívabb játékosok" textFill="#e3e331">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="100.0" layoutY="109.0" prefHeight="38.0" prefWidth="260.0" text="Legsikeresebb játékosok" textFill="#e3e331">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
             <AnchorPane prefHeight="768.0" prefWidth="180.0" styleClass="INFleftM" stylesheets="@../styles/CasinoInterface.css">
                <children>
                   <Button layoutY="240.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="180.0" styleClass="INFfomenu" stylesheets="@../styles/CasinoInterface.css" />
@@ -40,53 +102,6 @@
                   <Button layoutY="549.0" mnemonicParsing="false" onAction="#MenuKijelentkezesButton" prefHeight="23.0" prefWidth="180.0" styleClass="INFkijelentkezes" stylesheets="@../styles/CasinoInterface.css" />
                   <Button layoutX="14.0" layoutY="183.0" mnemonicParsing="false" onAction="#MenuCloseButton" prefHeight="43.0" prefWidth="24.0" styleClass="INFkilepes" stylesheets="@../styles/CasinoInterface.css" />
                </children></AnchorPane>
-            <Pane layoutX="180.0" prefHeight="768.0" prefWidth="844.0" stylesheets="@../styles/CasinoInterface.css">
-               <children>
-                  <Label fx:id="getID" layoutX="14.0" layoutY="747.0" prefHeight="15.0" prefWidth="752.0" visible="false">
-                     <font>
-                        <Font size="6.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="91.0" layoutY="365.0" mnemonicParsing="false" onAction="#Slot1Pushed" prefHeight="150.0" prefWidth="210.0" text="Slot1">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="326.0" layoutY="521.0" mnemonicParsing="false" onAction="#CoinPushed" prefHeight="150.0" prefWidth="210.0" text="Coin">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="570.0" layoutY="521.0" mnemonicParsing="false" onAction="#WheelPushed" prefHeight="150.0" prefWidth="210.0" text="Wheel">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="570.0" layoutY="365.0" mnemonicParsing="false" onAction="#BJPushed" prefHeight="150.0" prefWidth="210.0" text="BJ">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <PieChart fx:id="pieChart" layoutX="38.0" layoutY="37.0" prefHeight="254.0" prefWidth="381.0" />
-                  <Button layoutX="91.0" layoutY="521.0" mnemonicParsing="false" onAction="#Slot2Pushed" prefHeight="150.0" prefWidth="210.0" text="Slot2">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="326.0" layoutY="365.0" mnemonicParsing="false" onAction="#DicePushed" prefHeight="150.0" prefWidth="210.0" text="Dice">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <BarChart fx:id="barChart" layoutX="396.0" layoutY="44.0" prefHeight="240.0" prefWidth="408.0">
-                    <xAxis>
-                      <CategoryAxis side="BOTTOM" fx:id="x" />
-                    </xAxis>
-                    <yAxis>
-                      <NumberAxis fx:id="y" side="LEFT" />
-                    </yAxis>
-                  </BarChart>
-               </children></Pane>
          </children>
       </AnchorPane>
    </children>

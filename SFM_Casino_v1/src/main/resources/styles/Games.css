@@ -88,10 +88,16 @@
 }
 .moreButton{
     -fx-background-image: url("/images/Coin/plus.png");
-      -fx-background-color: transparent;
+     -fx-background-color: transparent;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
 
+}
+
+.moreButton:hover{
+
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
 }
 
 .lessButton{
@@ -101,12 +107,20 @@
     -fx-background-position: center;
 }
 
+.lessButton:hover{
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
+}
+
 .headButton{
-      -fx-background-color: transparent;
+    -fx-background-color: transparent;
     -fx-background-image: url("/images/Coin/head10.png");
     -fx-background-position: center;
+}
 
-
+.headButton:hover{
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
 }
 
 .tailButton{
@@ -114,7 +128,11 @@
     -fx-background-image: url("/images/Coin/tail10.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
+}
 
+.tailButton:hover{
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
 }
 
 .moneyLabel{
@@ -137,23 +155,8 @@
 }
 
 
-
-.jatekosLabel{
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: center;
-   -fx-background-image: url("/Interface/INFbg.png");
-}
-
-.gepLabel{
-      -fx-background-color: black;
-    -fx-background-image: url("/images/Dice/robot.png");
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: center;
-}
-
 .diceBody{
     -fx-background-image: url("/images/Dice/bg.png");
-
 }
 
 .dicePlus{
@@ -162,11 +165,20 @@
     -fx-background-position: center;
 }
 
+.dicePlus:hover{
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
+}
+
 .diceMinus{
     -fx-background-image: url("/images/Dice/minus.png");
     -fx-background-color: transparent;
     -fx-background-position: center;
+}
 
+.diceMinus:hover{
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
 }
 
 .diceJatek{
@@ -174,6 +186,129 @@
     -fx-background-color: transparent;
     -fx-background-position: center;
 }
+
+.diceJatek:hover{
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
+}
+
+.menuBJ{
+    -fx-background-image: url("/images/Fomenu/blackjack.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+        -fx-border: 10px solid; -fx-border-color: #e3e331;
+
+}
+.menuBJ:hover{
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
+}
+
+.menuCoin{
+    -fx-background-image: url("/images/Fomenu/coin.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+        -fx-border: 10px solid; -fx-border-color: #e3e331;
+
+}
+.menuCoin:hover{
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
+}
+
+.menuDice{
+    -fx-background-image: url("/images/Fomenu/dice.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+        -fx-border: 10px solid; -fx-border-color: #e3e331;
+
+
+}
+.menuDice:hover{
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
+}
+
+.menuSlotI{
+    -fx-background-image: url("/images/Fomenu/slot1.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+        -fx-border: 10px solid; -fx-border-color: #e3e331;
+
+}
+.menuSlotI:hover{
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
+}
+
+.menuSlotII{
+    -fx-background-image: url("/images/Fomenu/slot2.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+        -fx-border: 10px solid; -fx-border-color: #e3e331;
+
+}
+.menuSlotII:hover{
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
+}
+.menuWheel{
+    -fx-background-image: url("/images/Fomenu/kerek.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-border: 10px solid; -fx-border-color: #e3e331;
+
+}
+.menuWheel:hover{
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
+}
+
+.menuBG{
+    -fx-background-image: url("/images/Fomenu/bg.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+}
+
+.default-color0.chart-pie { -fx-pie-color: #ffd700; }
+.default-color1.chart-pie { -fx-pie-color: #ffa500; }
+.default-color2.chart-pie { -fx-pie-color: #860061; }
+.default-color3.chart-pie { -fx-pie-color: #adff2f; }
+.default-color4.chart-pie { -fx-pie-color: #ff5700; }
+
+#chart-pie-label-line {
+    -fx-stroke: #e3e331;
+    -fx-fill: #e3e331;
+    -fx-font-size: 16px;
+
+}
+
+.chart-pie-label {
+    -fx-fill: #e3e331;
+    -fx-font-size: 1em;
+}
+
+
+
+/* Change the color of the numerical values ​​on the x and y axes */
+.axis {
+    /* Change the font color of the x and y axis values ​​*/
+    -fx-tick-label-fill: #e3e331;
+    /* Change the font type and size of the x and y axis values ​​*/
+    -fx-tick-label-font: 16px System;
+}
+
+
+.axis:left
+{
+    -fx-border-color: transparent #e3e331 transparent transparent;
+}
+.axis:bottom
+{
+    -fx-border-color: #e3e331 transparent transparent;
+}
+
+
 
 
 /*Márk*/

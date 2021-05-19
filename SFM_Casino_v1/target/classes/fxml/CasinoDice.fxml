@@ -6,7 +6,6 @@
 <?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.effect.Shadow?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -45,12 +44,12 @@
                </children></AnchorPane>
             <Pane fx:id="DiceBody" layoutX="180.0" prefHeight="768.0" prefWidth="844.0" styleClass="diceBody" stylesheets="@../styles/Games.css">
                <children>
-                  <Label fx:id="BetLabel" alignment="CENTER" layoutX="510.0" layoutY="110.0" prefHeight="72.0" prefWidth="142.0" text="1000" textFill="#e209a8">
+                  <Label fx:id="BetLabel" alignment="CENTER" layoutX="351.0" layoutY="492.0" prefHeight="72.0" prefWidth="142.0" text="1000" textFill="#e209a8">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="36.0" />
                      </font>
                   </Label>
-                  <Button fx:id="Start" layoutX="361.0" layoutY="392.0" mnemonicParsing="false" onAction="#Start" prefHeight="110.0" prefWidth="110.0" styleClass="diceJatek" text="Játék" textFill="#e209a8" textOverrun="CENTER_ELLIPSIS">
+                  <Button fx:id="Start" layoutX="361.0" layoutY="374.0" mnemonicParsing="false" onAction="#Start" prefHeight="110.0" prefWidth="110.0" styleClass="diceJatek" text="Játék" textFill="#e209a8" textOverrun="CENTER_ELLIPSIS">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -64,7 +63,7 @@
                            </light>
                         </Lighting>
                      </effect></Button>
-                  <Label fx:id="eredmenyLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="302.0" layoutY="514.0" prefHeight="194.0" prefWidth="350.0" text="eredmeny" textAlignment="CENTER" textFill="#e209a8">
+                  <Label fx:id="eredmenyLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="241.0" layoutY="609.0" prefHeight="137.0" prefWidth="350.0" text="eredmeny" textAlignment="CENTER" textFill="#e209a8">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -76,38 +75,14 @@
                         </DropShadow>
                      </effect></Label>
                   <Label fx:id="getID" layoutX="49.0" layoutY="40.0" text="Label" visible="false" />
-                  <Button layoutX="652.0" layoutY="96.0" mnemonicParsing="false" onAction="#MoreButtonPushed" prefHeight="100.0" prefWidth="100.0" styleClass="dicePlus" />
-                  <Button layoutX="410.0" layoutY="96.0" mnemonicParsing="false" onAction="#LessButtonPushed" prefHeight="100.0" prefWidth="100.0" styleClass="diceMinus" />
-                  <ImageView fx:id="kocka1" fitHeight="125.0" fitWidth="125.0" layoutX="152.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/Dice/egy.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="kocka2" fitHeight="125.0" fitWidth="125.0" layoutX="152.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/Dice/egy.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="kocka3" fitHeight="125.0" fitWidth="125.0" layoutX="152.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/Dice/egy.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="kocka4" fitHeight="125.0" fitWidth="125.0" layoutX="153.0" layoutY="385.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/Dice/egy.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="kocka5" fitHeight="125.0" fitWidth="125.0" layoutX="153.0" layoutY="514.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/Dice/egy.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="kocka6" fitHeight="125.0" fitWidth="125.0" layoutX="153.0" layoutY="642.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/Dice/egy.png" />
-                     </image>
-                  </ImageView>
+                  <Button layoutX="533.0" layoutY="478.0" mnemonicParsing="false" onAction="#MoreButtonPushed" prefHeight="100.0" prefWidth="100.0" styleClass="dicePlus" />
+                  <Button layoutX="220.0" layoutY="478.0" mnemonicParsing="false" onAction="#LessButtonPushed" prefHeight="100.0" prefWidth="100.0" styleClass="diceMinus" />
+                  <ImageView fx:id="kocka1" fitHeight="125.0" fitWidth="125.0" layoutX="151.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="kocka2" fitHeight="125.0" fitWidth="125.0" layoutX="353.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="kocka3" fitHeight="125.0" fitWidth="125.0" layoutX="561.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="kocka4" fitHeight="125.0" fitWidth="125.0" layoutX="145.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="kocka5" fitHeight="125.0" fitWidth="125.0" layoutX="353.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="kocka6" fitHeight="125.0" fitWidth="125.0" layoutX="561.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true" />
                </children></Pane>
          </children>
       </AnchorPane>

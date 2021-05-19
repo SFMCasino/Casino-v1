@@ -115,6 +115,9 @@ public class CasinoCoinController implements Initializable {
     @FXML
     private Label BankMoney,ChipMoney,getID;
 
+    int nyereseg = 0;
+    int veszteseg = 0;
+
     int bet = 1000;
     int jatekospenz = 0;
     int jatekospenz2 = 0;
@@ -155,6 +158,8 @@ public class CasinoCoinController implements Initializable {
     //  0-tail  1-head
     @FXML
     void HeadButtonPushed() {
+        JpaCasinoDAO userDAO = new JpaCasinoDAO();
+        List<User2> Profile = userDAO.getUser();
 
         if ((jatekospenz2 + jatekospenz) - bet > 0) {
 
@@ -167,9 +172,23 @@ public class CasinoCoinController implements Initializable {
                     jatekospenz2 -= fennmarado;
                     BankMoney.setText("" + jatekospenz);
                     ChipMoney.setText("" + jatekospenz2);
+                    for(var a : Profile) {
+                        if (id.equals(a.getSetID())) {
+                            veszteseg = a.getVeszteseg() + bet;
+                            a.setVeszteseg(veszteseg);
+                            userDAO.saveUser(a);
+                        }
+                    }
                 } else {
                     jatekospenz -= bet;
                     BankMoney.setText("" + jatekospenz);
+                    for(var a : Profile) {
+                        if (id.equals(a.getSetID())) {
+                            veszteseg = a.getVeszteseg() + bet;
+                            a.setVeszteseg(veszteseg);
+                            userDAO.saveUser(a);
+                        }
+                    }
                 }
             }
 
@@ -181,10 +200,17 @@ public class CasinoCoinController implements Initializable {
 
                 BankMoney.setText("" + jatekospenz);
                 ChipMoney.setText("" + jatekospenz2);
+
+                for(var a : Profile) {
+                    if (id.equals(a.getSetID())) {
+                        nyereseg = a.getNyereseg() + bet*2;
+                        a.setNyereseg(nyereseg);
+                        userDAO.saveUser(a);
+                    }
+                }
+
             } else {
                 ResultLabel.setText("Vesztettél!");
-
-
             }
 
             global.saveData(id, jatekospenz, jatekospenz2, nem, hajszem, Kellekek);
@@ -195,6 +221,8 @@ public class CasinoCoinController implements Initializable {
 
     @FXML
     void TailButtonPushed() {
+        JpaCasinoDAO userDAO = new JpaCasinoDAO();
+        List<User2> Profile = userDAO.getUser();
 
         if ((jatekospenz2 + jatekospenz) - bet > 0) {
 
@@ -207,9 +235,23 @@ public class CasinoCoinController implements Initializable {
                     jatekospenz2 -= fennmarado;
                     BankMoney.setText("" + jatekospenz);
                     ChipMoney.setText("" + jatekospenz2);
+                    for(var a : Profile) {
+                        if (id.equals(a.getSetID())) {
+                            veszteseg = a.getVeszteseg() + bet;
+                            a.setVeszteseg(veszteseg);
+                            userDAO.saveUser(a);
+                        }
+                    }
                 } else {
                     jatekospenz -= bet;
                     BankMoney.setText("" + jatekospenz);
+                    for(var a : Profile) {
+                        if (id.equals(a.getSetID())) {
+                            veszteseg = a.getVeszteseg() + bet;
+                            a.setVeszteseg(veszteseg);
+                            userDAO.saveUser(a);
+                        }
+                    }
                 }
             }
 
@@ -221,9 +263,18 @@ public class CasinoCoinController implements Initializable {
 
                 BankMoney.setText("" + jatekospenz);
                 ChipMoney.setText("" + jatekospenz2);
+
+
+                for(var a : Profile) {
+                    if (id.equals(a.getSetID())) {
+                        nyereseg = a.getNyereseg() + bet*2;
+                        a.setNyereseg(nyereseg);
+                        userDAO.saveUser(a);
+                    }
+                }
+
             } else {
                 ResultLabel.setText("Vesztettél!");
-
             }
 
             global.saveData(id, jatekospenz, jatekospenz2, nem, hajszem, Kellekek);
