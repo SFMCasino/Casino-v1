@@ -759,13 +759,13 @@ public class CasinoSlotIIController implements Initializable {
             if(!bonuszvalto) {
                 if(egyenleg < vonal*vonaltet || egyenleg == 0)
                 {
-                    Chipmoney -= (vonal*vonal)-egyenleg;
+                    Chipmoney -= (vonal*vonaltet)-egyenleg;
                     egyenleg = 0;
                     BankMoney.setText("" + egyenleg);
                 }
                 else
                 {
-                    egyenleg -= vonal*vonaltet;
+                    egyenleg -= (vonal*vonaltet);
                     BankMoney.setText("" + egyenleg);
                 }
             }
