@@ -77,32 +77,12 @@
                         <Font name="Agency FB" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="ONYP" layoutX="335.0" layoutY="356.0" prefHeight="29.0" prefWidth="450.0" textFill="#363636">
+                  <Label fx:id="ONYP" layoutX="335.0" layoutY="356.0" prefHeight="29.0" prefWidth="450.0" textFill="#aeaeae">
                      <font>
                         <Font name="Agency FB" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="OLJ" layoutX="455.0" layoutY="393.0" prefHeight="29.0" prefWidth="368.0" textFill="#363636">
-                     <font>
-                        <Font name="Agency FB" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="LGYS" layoutX="452.0" layoutY="431.0" prefHeight="29.0" prefWidth="368.0" textFill="#363636">
-                     <font>
-                        <Font name="Agency FB" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="LNYO" layoutX="397.0" layoutY="468.0" prefHeight="29.0" prefWidth="391.0" textFill="#363636">
-                     <font>
-                        <Font name="Agency FB" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="LJJ" layoutX="397.0" layoutY="505.0" prefHeight="29.0" prefWidth="391.0" textFill="#363636">
-                     <font>
-                        <Font name="Agency FB" size="24.0" />
-                     </font>
-                  </Label>
-                  <LineChart fx:id="MoneyChart" layoutX="20.0" layoutY="555.0" prefHeight="212.0" prefWidth="804.0" styleClass="ProfileMoneyChart" stylesheets="@../styles/Games.css" title="Pénzmozgás">
+                  <LineChart fx:id="MoneyChart" layoutX="20.0" layoutY="431.0" legendVisible="false" prefHeight="266.0" prefWidth="804.0" styleClass="ProfileMoneyChart" stylesheets="@../styles/Games.css" title="Pénzmozgás">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" styleClass="ChartAxisX" stylesheets="@../styles/Games.css" />
                     </xAxis>
